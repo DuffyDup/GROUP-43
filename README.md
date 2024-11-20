@@ -16,7 +16,11 @@ Tech Nova
 - A software aimed towards selling second-hand technology for an affordable price.
 
 Programming Languages used
-- // Add languages as we use them
+- HTML
+- CSS
+- JS
+- PHP
+- MYSQL
 
 Coding Platform used
-- //Visual Studio
+- Visual Studio
