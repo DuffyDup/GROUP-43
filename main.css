@@ -6,11 +6,11 @@
     background-color: white;
     font-family: Arial, sans-serif;
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 /* Links inside the navigation bar */
 .top-navigation a {
-    float: left;
     font-size: 16px;
     color: black;
     text-align: center;
@@ -20,8 +20,7 @@
 
 /* Dropdown containers */
 .menu-dropdown, .cart-dropdown {
-    float: left;
-    overflow: hidden;
+    position: relative; 
 }
 
 /* Buttons for dropdowns */
@@ -32,13 +31,16 @@
     color: black;
     padding: 14px 16px;
     background-color: inherit;
-    font-family: inherit; 
-    margin: 0;
+    font-family: inherit;
+    cursor: pointer;
 }
 
 /* Hover effects for links and dropdown buttons */
-.top-navigation a:hover, .menu-dropdown:hover .menu-button, .cart-dropdown:hover .cart-button {
-    background-color: grey;
+.top-navigation a:hover,
+.menu-dropdown:hover .menu-button,
+.cart-dropdown:hover .cart-button {
+    background-color: #ddd;
+    color: black;
 }
 
 /* Dropdown content */
@@ -47,18 +49,19 @@
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    border-radius: 5px;
 }
 
 /* Links inside dropdown content */
 .menu-options a, .cart-options a {
-    float: none;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
+    border-radius: 5px;
 }
 
 /* Hover effects for dropdown links */
