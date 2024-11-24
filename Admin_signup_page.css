@@ -69,7 +69,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+/* Hover over effect for signup button */
 .signup-btn:hover {
     background-color: #0056b3;
 }
