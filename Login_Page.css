@@ -1,0 +1,44 @@
+/*
+This div is for the outer box style of the login page.
+
+NOTE:
+    Change the bg colours after colour palette is selected.
+*/
+.loginuser{
+    display: flex;
+    background-color: rgba(56, 54, 54, 0.566);
+    border: solid #00000036;
+    border-radius: 16px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 400px;
+    margin: auto;
+    padding: 10px 0px 10px 0px;
+}
+
+.entrybox{
+    height: 50px;
+    width: 250px;
+    border: solid rgb(93, 93, 97);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.signupbutton{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.signup, .loged{
+    width: 250px;
+    height: 25px;
+    border-radius: 5px;
+} 
+
+a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
