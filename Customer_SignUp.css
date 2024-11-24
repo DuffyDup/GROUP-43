@@ -1,10 +1,5 @@
 /* General styling for the body */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+
 
 /* Container for the signup form */
 .signup-container {
@@ -16,6 +11,8 @@ body {
     max-width: 400px;
     margin: 20px auto; /* Center the form horizontally with spacing from the top */
     text-align: center;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+
 }
 
 /* Heading style */
@@ -27,22 +24,54 @@ body {
 
 /* Form group styling */
 .form-group {
-    margin-bottom: 15px;
-    text-align: left;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 /* Input fields */
 .form-group input {
     width: 100%;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
+    outline: none;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+/* Labels */
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #888;
+    background: #fff;
+    padding: 0 5px;
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+/* When input is focused or has a value */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+/* Input focus effects */
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Button styling */
 .signup-btn {
-    background-color:  #007bff;
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -54,13 +83,6 @@ body {
 
 .signup-btn:hover {
     background-color: #0056b3;
-}
-
-/* Focus effects for input fields */
-.form-group input:focus {
-    border-color:  #007bff;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
-    outline: none;
 }
 
 /* Responsive design */
