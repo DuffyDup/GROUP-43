@@ -1,11 +1,11 @@
 /* Navigation bar container */
 .top-navigation {
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
     font-family: Arial, sans-serif;
-    padding: 10px; /* Add padding for better spacing */
+    padding: 10px;
 }
 
 /* Links inside the navigation bar */
