@@ -7,9 +7,40 @@
     <title>Login</title>
     <link rel="website icon" type="jpeg" href="Tech_Nova.png"> <!--Set up the company logo as the website icon-->
     <link rel="stylesheet" href="Login_Page.css">
+    <link rel="website icon" type="jpeg" href="Tech_Nova.png"><!--logo-->
+  <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="main.css"> <!--The main css for the navigation on each page.-->
 </head>
 <body>
+    <div class="top-navigation">
+        <a href="Home_Page.html">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact Us</a>
+        <a href="Login_Page.html">Login</a>
+    
+        <!-- Dropdown for Products -->
+        <div class="menu-dropdown">
+          <button class="menu-button">Products
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="menu-options">
+            <a href="#">Phone</a>
+            <a href="#">Watch</a>
+          </div>
+        </div>
+    
+        <!-- Dropdown for Basket -->
+        <div class="cart-dropdown">
+          <button class="cart-button">Basket
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="cart-options">
+            <a href="#">Basket</a>
+            <a href="#">Previous Order</a>
+          </div>
+        </div>
+      </div>
+    
     <div class="loginuser">
         <form id="loginforuser" method="POST">
             <input type="email" placeholder="Email" class="entrybox" required> <br> <br>
