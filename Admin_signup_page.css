@@ -75,7 +75,7 @@
     background-color: #0056b3;
 }
 
-/* Responsive design */
+/* Responsive designs */
 @media (max-width: 480px) {
     .signup-container {
         padding: 20px;
