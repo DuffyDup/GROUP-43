@@ -1,3 +1,6 @@
+CREATE DATABASE TechNova;
+USE TechNova;
+
 -- Create the Users table
 CREATE TABLE Users (
     email VARCHAR(255) PRIMARY KEY, -- Primary Key
@@ -23,9 +26,9 @@ CREATE TABLE Purchased (
     email VARCHAR(255), -- Foreign Key to Users
     product_id INT,  -- Foreign Key to Products
     quantity INT NOT NULL,-- Quantity the user purchased
-    address VARCHAR(255) NOT NULL, --address of where the order will be sent 
-    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE,--Make the values in both tables the same
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE--Make the values in both tables the same
+    address VARCHAR(255) NOT NULL, -- address of where the order will be sent 
+    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE,-- Make the values in both tables the same
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE -- Make the values in both tables the same
 );
 
 -- Create the Basket table
@@ -33,16 +36,16 @@ CREATE TABLE Basket (
     email VARCHAR(255),-- Foreign Key to Users
     product_id INT, -- Foreign Key to Products
     quantity INT NOT NULL, -- Quantity of the item in the basket
-    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE,--Make the values in both tables the same
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE--Make the values in both tables the same
+    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE, -- Make the values in both tables the same
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE -- Make the values in both tables the same
 );
 
 -- Create the Reviews table
 CREATE TABLE Reviews (
     email VARCHAR(255),-- Foreign Key to Users
     product_id INT,-- Foreign Key to Products
-    rating ENUM('1','2','3','4','5') NOT NULL,--the rating given to the product
-    review VARCHAR(255) NOT NULL,-- Text of the review
-    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE,--Make the values in both tables the same
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE--Make the values in both tables the same
+    rating ENUM('1','2','3','4','5') NOT NULL,-- the rating given to the product
+    review VARCHAR(255) NOT NULL, -- Text of the review
+    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE, -- Make the values in both tables the same
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE -- , ,Make the values in both tables the same
 );
