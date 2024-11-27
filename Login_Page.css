@@ -5,52 +5,83 @@ NOTE:
     Change the bg colours after colour palette is selected.
 */
 
-/* This section styles the main login area. 
-It sets the colours, border, height, width, margin and padding
-along with aligning and justifying items, */
+/* This section styles the main login area. */
 .loginuser{
-    display: flex;
-    background-color: rgba(56, 54, 54, 0.566);
-    border: solid #00000036;
-    border-radius: 16px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 350px;
-    height: 350px;
-    margin: auto;
-    padding: 10px 0px 10px 0px;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    margin-top: 20px;
+    color: black;
 }
 
 /* This section sets the style of the entry boxes. */
 .entrybox{
-    height: 50px;
-    width: 250px;
-    border: solid rgb(93, 93, 97);
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    text-align: center;
+    outline: none;
+    background: transparent;
+    box-sizing: border-box;
 }
+
+.entrybox input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
 
 /* This section is for the  */
 .signupbutton{
     display: flex;
     justify-content: center;
-    padding: 10px;
+    margin-top: 15px;
 }
 
 .loged{
-    width: 250px;
-    height: 50px;
-    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.loged:hover {
+    background-color: #0056b3;
 }
 
 .signup{
-    width: 350px;
-    height: 25px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 } 
 
+
+#forgetlink{
+    color: #000;
+}
 a{
     text-decoration: none;
-    color: rgb(0, 0, 0);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 20px;
+    }
 }
