@@ -68,5 +68,7 @@
 <script>
     /**
      * Function to check for login details
+     * Admin login
+     * Customer login
      */
 </script>
