@@ -11,37 +11,41 @@
 </head>
 <body>
   <!--The Navigation (Start)-->
-    <div class="top-navigation">
-        <a href="Home_Page.html">Home</a>
-        <a href="#">About US</a>
-        <a href="#">Contact Us</a>
-        <a href="Login_Page.html">Login</a>
+  <!-- Navigation -->
+  <div class="top-navigation">
     
-        <!-- Dropdown for Products -->
-        <div class="menu-dropdown">
-          <button class="menu-button">Products
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="menu-options">
-            <a href="#">Phone</a>
-            <a href="#">Tablets</a>
-            <a href="#">Laptops</a>
-            <a href="#">Audio Devices</a>
-            <a href="#">Smart Watches</a>
-          </div>
-        </div>
-    
-        <!-- Dropdown for Basket -->
-        <div class="cart-dropdown">
-          <button class="cart-button">Basket
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="cart-options">
-            <a href="#">Basket</a>
-            <a href="#">Previous Order</a>
-          </div>
-        </div>
-      </div>
+    <!-- Logo -->
+    <a href="Home_Page.html" class="logo">
+     <img src="Tech_Nova.png" alt="Tech Nova Logo">
+    </a>
+
+     <!-- Navigation Links -->
+   <a href="Home_Page.html">Home</a>
+   <a href="#">About Us</a>
+   <a href="#">Contact Us</a>
+   <a href="Login_Page.html">Login</a>
+
+   <!-- Dropdown for Products -->
+   <div class="menu-dropdown">
+     <button class="menu-button">Products</button>
+     <div class="menu-options">
+       <a href="#">Phone</a>
+       <a href="#">Tablets</a>
+       <a href="#">Laptops</a>
+       <a href="#">Audio Devices</a>
+       <a href="#">Smart Watches</a>
+     </div>
+   </div>
+
+   <!-- Dropdown for Basket -->
+   <div class="cart-dropdown">
+     <button class="cart-button">Basket</button>
+     <div class="cart-options">
+       <a href="#">Basket</a>
+       <a href="#">Previous Order</a>
+     </div>
+   </div>
+ </div>
     <!--The Navigation (End)-->
 
     <div class="loginuser">
@@ -64,5 +68,7 @@
 <script>
     /**
      * Function to check for login details
+     * Admin login
+     * Customer login
      */
 </script>
