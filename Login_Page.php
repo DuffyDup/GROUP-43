@@ -48,7 +48,7 @@
         <form id="loginforuser" method="POST">
             <input type="email" placeholder="Email" class="entrybox" required> <br> <br>
             <input type="password" placeholder="Password" class="entrybox" required> <br> <br>
-            <label for="forgetpasswordlabel" style="color: black; text-decoration: none;"><a href="Forgot_Password_Page.html">Forgot password?</a></label> <br>
+            <label for="forgetpasswordlabel"><a href="Forgot_Password_Page.html">Forgot password?</a></label> <br>
             <label for="keeplogedinlabel">Keep me Logged in </label>
             <input type="checkbox" id="keeplogedin"> 
             <br> <br> <br>
