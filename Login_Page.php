@@ -23,7 +23,7 @@
    <a href="Home_Page.html">Home</a>
    <a href="#">About Us</a>
    <a href="#">Contact Us</a>
-   <a href="Login_Page.html">Login</a>
+   <a href="Login_Page.php">Login</a>
 
    <!-- Dropdown for Products -->
    <div class="menu-dropdown">
@@ -60,7 +60,7 @@
         </form>
     </div>
     <div class="signupbutton">
-        <button type="submit" class="signup"><a href="Customer_SignUp.html">Create new account</a></button>
+        <button type="submit" class="signup"><a href="Customer_SignUp.php">Create new account</a></button>
     </div>
 </body>
 </html>
