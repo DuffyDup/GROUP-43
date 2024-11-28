@@ -48,12 +48,10 @@
   <!-- Signup Form -->
   <div class="signup-container">
     <h1>Customer Signup</h1>
-<<<<<<< HEAD
     <form action="Customer_SignUp.php" method="post">
       <div class="form-group">
-=======
-    <form method="post" action="Customer_SignUp.php">      <div class="form-group">
->>>>>>> 37f92574cdc88df43944ad460900e87788c1104f
+    <form method="post" action="Customer_SignUp.php">      
+      <div class="form-group">
         <input type="text" id="full-name" name="full_name" placeholder=" " required>
         <label for="full-name">Full Name</label>
       </div>
@@ -123,6 +121,8 @@
                 $stat->execute(array($email,$name, $hashed_password, $number,"customer"));
                 
                 $id = $db->lastInsertId();
+                echo "<p style='color:green'>Account created please log in.<br>";
+
             } catch (PDOException $ex) {
                 echo "Failed to connect to the database.<br>";
                 echo $ex->getMessage();
