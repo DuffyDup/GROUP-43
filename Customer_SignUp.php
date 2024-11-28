@@ -48,8 +48,12 @@
   <!-- Signup Form -->
   <div class="signup-container">
     <h1>Customer Signup</h1>
+<<<<<<< HEAD
     <form action="Customer_SignUp.php" method="post">
       <div class="form-group">
+=======
+    <form method="post" action="Customer_SignUp.php">      <div class="form-group">
+>>>>>>> 37f92574cdc88df43944ad460900e87788c1104f
         <input type="text" id="full-name" name="full_name" placeholder=" " required>
         <label for="full-name">Full Name</label>
       </div>

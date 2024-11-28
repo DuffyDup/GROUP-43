@@ -1,4 +1,4 @@
-/* Navigation bar container */
+/* General navigation bar container */
 .top-navigation {
     display: flex;
     justify-content: center;
@@ -7,24 +7,28 @@
     font-family: Arial, sans-serif;
     padding: 10px 20px;
     margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
 }
 
-/* Links inside the navigation bar */
+/* Navigation links inside the bar */
 .top-navigation a {
     font-size: 16px;
     color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dropdown containers */
-.menu-dropdown, .cart-dropdown {
+/* Dropdown containers for menus */
+.menu-dropdown, .cart-dropdown, .admin-dropdown {
     position: relative; 
 }
 
 /* Buttons for dropdowns */
-.menu-dropdown .menu-button, .cart-dropdown .cart-button {
+.menu-dropdown .menu-button,
+.cart-dropdown .cart-button,
+.admin-dropdown .menu-button {
     font-size: 16px;
     border: none;
     outline: none;
@@ -33,18 +37,20 @@
     background-color: inherit;
     font-family: inherit;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover effects for links and dropdown buttons */
+/* Hover effects for navigation links and buttons */
 .top-navigation a:hover,
 .menu-dropdown:hover .menu-button,
-.cart-dropdown:hover .cart-button {
+.cart-dropdown:hover .cart-button,
+.admin-dropdown:hover .menu-button {
     background-color: #ddd;
     color: black;
 }
 
-/* Dropdown content */
-.menu-options, .cart-options {
+/* Dropdown content styling */
+.menu-options, .cart-options, .admin-options {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -55,25 +61,27 @@
 }
 
 /* Links inside dropdown content */
-.menu-options a, .cart-options a {
+.menu-options a, .cart-options a, .admin-options a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 /* Hover effects for dropdown links */
-.menu-options a:hover, .cart-options a:hover {
+.menu-options a:hover, .cart-options a:hover, .admin-options a:hover {
     background-color: #ddd;
 }
 
 /* Show dropdown content on hover */
-.menu-dropdown:hover .menu-options, .cart-dropdown:hover .cart-options {
+.menu-dropdown:hover .menu-options,
+.cart-dropdown:hover .cart-options,
+.admin-dropdown:hover .admin-options {
     display: block;
 }
-
 
 /* Logo styling */
 .top-navigation .logo img {
@@ -95,8 +103,31 @@
     pointer-events: auto;
 }
 
-/* Remove background colour change */
+/* Remove background color change on hover for logo */
 .top-navigation .logo:hover {
     color: inherit;
     background: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-navigation {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+
+    /* Admin nav bar */
+    .top-navigation a,
+    .menu-dropdown .menu-button,
+    .cart-dropdown .cart-button,
+    .admin-dropdown .menu-button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .top-navigation .logo img {
+        height: 60px;
+    }
 }
