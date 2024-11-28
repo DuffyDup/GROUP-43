@@ -48,7 +48,7 @@
   <!-- Signup Form -->
   <div class="signup-container">
     <h1>Customer Signup</h1>
-    <form action="submit_customer_signup.php" method="post">
+    <form action="Customer_SignUp.php" method="post">
       <div class="form-group">
         <input type="text" id="full-name" name="full_name" placeholder=" " required>
         <label for="full-name">Full Name</label>
@@ -69,7 +69,8 @@
         <input type="text" id="phone-number" name="phone_number" placeholder=" " required>
         <label for="phone-number">Phone Number</label>
       </div>
-      <button type="submit" name="signup" class="signup-btn">Sign Up</button>
+      <button type="submit"  class="signup-btn">Sign Up</button>
+      <input type="hidden" name="signup" value="True">
     </form>
   </div>
 
@@ -82,8 +83,8 @@
 
     //save input fields to variable 
     $name = isset($_POST['full_name'])?$_POST['full_name']:false;
-    $password = isset($_POST['password'])?password_hash($_POST['password'],PASSWORD_DEFAULT):false;
-    $c_password = isset($_POST['confirm_password'])?password_hash($_POST['confirm_password'],PASSWORD_DEFAULT):false;
+    $password = isset($_POST['password'])?$_POST['password']:false;
+    $c_password = isset($_POST['confirm_password'])?$_POST['confirm_password']:false;
     $email = isset($_POST['email'])?$_POST['email']:false;
     $number = isset($_POST['phone_number'])?$_POST['phone_number']:false;
 
@@ -93,11 +94,15 @@
     }
 
     //check if password is same as confirm password
-    elseif (!($_POST['cpassword']==$_POST['password'])){
+    elseif ($password!=$c_password){
         echo "<p style='color:red'>passwords dont match";
     }
+
     
     else{
+      //hash pasword for data security
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
       try {
         //search database for account maching email
         $stat = $db->prepare('SELECT * FROM users WHERE email = ?');
@@ -111,7 +116,7 @@
             try {
                 // Register user by inserting user info
                 $stat = $db->prepare("INSERT INTO users VALUES (?,?,?,?,?)");
-                $stat->execute(array($email,$name, $password, $number,"customer"));
+                $stat->execute(array($email,$name, $hashed_password, $number,"customer"));
                 
                 $id = $db->lastInsertId();
             } catch (PDOException $ex) {
@@ -130,4 +135,5 @@
       
       
   ?>
+
 </html>
