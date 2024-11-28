@@ -120,8 +120,9 @@
                 $stat = $db->prepare("INSERT INTO users VALUES (?,?,?,?,?)");
                 $stat->execute(array($email,$name, $hashed_password, $number,"customer"));
                 
-                $id = $db->lastInsertId();
-                echo "<p style='color:green'>Account created please log in.<br>";
+                // Redirect to login page after successful sign-up
+                header("Location: Login_Page.php");
+                exit();
 
             } catch (PDOException $ex) {
                 echo "Failed to connect to the database.<br>";
