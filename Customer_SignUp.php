@@ -48,7 +48,8 @@
   <!-- Signup Form -->
   <div class="signup-container">
     <h1>Customer Signup</h1>
-    <form method="post" action="Customer_SignUp.php">      <div class="form-group">
+    <form action="submit_customer_signup.php" method="post">
+      <div class="form-group">
         <input type="text" id="full-name" name="full_name" placeholder=" " required>
         <label for="full-name">Full Name</label>
       </div>
