@@ -1,11 +1,12 @@
 <?php
 require_once 'connectdb.php';
+session_start(); // Start the session to manage login state
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Sanitize and trim inputs
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
     try {
         // Query to fetch password and user type
@@ -15,36 +16,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Check if user exists and password matches
-        if ($user && $password === $user['password']) {
-            session_start();
+        if ($user && password_verify($password, $user['password'])) {
+            // Set session variables for logged-in user
             $_SESSION['email'] = $email;
             $_SESSION['type'] = $user['type'];
 
             // Redirect based on user type
             if ($user['type'] === 'admin') {
-                header('Location: Admin_Signup_page.html');
+                header('Location: Admin_Dashboard.php');
                 exit();
             } elseif ($user['type'] === 'customer') {
-                header('Location: Customer_SignUp.html');
+                header('Location: Customer_SignUp.php');
                 exit();
             }
         } else {
-            // Display a single error message
-            echo "<p style='color:red; text-align:center; margin-top:20px;'>An error occurred. Please try again later.</p>";
+            // Display error message if login fails
+            echo "<p style='color:red; text-align:center; margin-top:20px;'>Invalid email or password. Please try again.</p>";
         }
-
     } catch (PDOException $e) {
-        // Generic error message for any DB-related issue
+        // Display generic error message for database issues
         echo "<p style='color:red; text-align:center; margin-top:20px;'>An error occurred. Please try again later.</p>";
         error_log("Database error: " . $e->getMessage());
     }
 }
 ?>
 
-
-
-
-<!--Manahil Firdous-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,55 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="main.css"> <!--The main css for the navigation on each page.-->
 </head>
 <body>
-  <!--The Navigation (Start)-->
-    <div class="top-navigation">
-        <a href="Home_Page.html">Home</a>
-        <a href="#">About US</a>
-        <a href="#">Contact Us</a>
-        <a href="Login_Page.html">Login</a>
-    
-        <!-- Dropdown for Products -->
-        <div class="menu-dropdown">
-          <button class="menu-button">Products
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="menu-options">
-            <a href="#">Phone</a>
-            <a href="#">Tablets</a>
-            <a href="#">Laptops</a>
-            <a href="#">Audio Devices</a>
-            <a href="#">Smart Watches</a>
-          </div>
-        </div>
-    
-        <!-- Dropdown for Basket -->
-        <div class="cart-dropdown">
-          <button class="cart-button">Basket
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="cart-options">
-            <a href="#">Basket</a>
-            <a href="#">Previous Order</a>
-          </div>
-        </div>
-      </div>
-    <!--The Navigation (End)-->
+  
+<!-- Include the Navigation -->
+<?php include 'Navbar.php'; ?>
 
-    <div class="loginuser">
-      <form id="loginforuser" method="POST" action="Login_page.php">
-        <input type="email" name="email" placeholder="Email" class="entrybox" required><br><br>
-        <input type="password" name="password" placeholder="Password" class="entrybox" required><br><br>
-        <label for="forgetpasswordlabel"><a href="Forgot_Password_Page.html">Forgot password?</a></label><br>
-        <label for="keeplogedinlabel">Keep me Logged in</label>
-        <input type="checkbox" id="keeplogedin"><br><br>
-        <button type="submit" class="loged">Login</button>
-        
+  <!-- Login Form -->
+  <div class="loginuser">
+    <form id="loginforuser" method="POST" action="Login_page.php">
+      <input type="email" name="email" placeholder="Email" class="entrybox" required><br><br>
+      <input type="password" name="password" placeholder="Password" class="entrybox" required><br><br>
+      <label for="forgetpasswordlabel"><a href="Forgot_Password_Page.html">Forgot password?</a></label><br>
+      <label for="keeplogedinlabel">Keep me Logged in</label>
+      <input type="checkbox" id="keeplogedin"><br><br>
+      <button type="submit" class="loged">Login</button>
     </form>
-    
-    </div>
-    <div class="signupbutton">
-        <button type="submit" class="signup"><a href="Customer_SignUp.php">Create new account</a></button>
-    </div>
+  </div>
+
+  <!-- Signup Button -->
+  <div class="signupbutton">
+      <button type="submit" class="signup"><a href="Customer_SignUp.php">Create new account</a></button>
+  </div>
 </body>
 </html>
-

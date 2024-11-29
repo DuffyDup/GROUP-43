@@ -1,3 +1,9 @@
+<?php
+// Connect to database
+require_once("connectdb.php");
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,41 +15,9 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <div class="top-navigation">
-    
-    <!-- Logo -->
-    <a href="Home_Page.html" class="logo">
-     <img src="Tech_Nova.png" alt="Tech Nova Logo">
-   </a>
+<!-- Include the Navigation -->
+<?php include 'Navbar.php'; ?>
 
-     <!-- Navigation Links -->
-   <a href="Home_Page.html">Home</a>
-   <a href="#">About Us</a>
-   <a href="#">Contact Us</a>
-   <a href="Login_Page.html">Login</a>
-
-   <!-- Dropdown for Products -->
-   <div class="menu-dropdown">
-     <button class="menu-button">Products</button>
-     <div class="menu-options">
-       <a href="#">Phone</a>
-       <a href="#">Tablets</a>
-       <a href="#">Laptops</a>
-       <a href="#">Audio Devices</a>
-       <a href="#">Smart Watches</a>
-     </div>
-   </div>
-
-   <!-- Dropdown for Basket -->
-   <div class="cart-dropdown">
-     <button class="cart-button">Basket</button>
-     <div class="cart-options">
-       <a href="#">Basket</a>
-       <a href="#">Previous Order</a>
-     </div>
-   </div>
- </div>
 
   <!-- Signup Form -->
   <div class="signup-container">
@@ -80,8 +54,9 @@
 <?php
   if (isset($_POST['signup'])){
 
-    //connect to database
-    require_once("connectdb.php");
+
+
+
 
     //save input fields to variable 
     $name = isset($_POST['full_name'])?$_POST['full_name']:false;
