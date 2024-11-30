@@ -1,40 +1,33 @@
 <?php
 require_once 'connectdb.php';
-session_start(); // Start the session to manage login state
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Sanitize and trim inputs
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
-
+  
+    $email = $_POST['email'];
+    $password = $_POST['password'];
     try {
-        // Query to fetch password and user type
+  
         $stmt = $db->prepare('SELECT password, type FROM users WHERE email = :email');
         $stmt->execute([':email' => $email]);
-
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Check if user exists and password matches
-        if ($user && password_verify($password, $user['password'])) {
-            // Set session variables for logged-in user
+        if ($user && $password === $user['password']) {
+            session_start();
             $_SESSION['email'] = $email;
             $_SESSION['type'] = $user['type'];
-
-            // Redirect based on user type
+        
             if ($user['type'] === 'admin') {
-                header('Location: Admin_Dashboard.php');
+                header('Location: Admin_Signup_page.php');
                 exit();
             } elseif ($user['type'] === 'customer') {
-                header('Location: Customer_SignUp.php');
+                header('Location: Customer_SignUp.html');
                 exit();
             }
         } else {
-            // Display error message if login fails
-            echo "<p style='color:red; text-align:center; margin-top:20px;'>Invalid email or password. Please try again.</p>";
+            
+            echo "<p style='color:red; text-align:center; margin-top:20px;'>An error occurred. Please try again later.</p>";
         }
     } catch (PDOException $e) {
-        // Display generic error message for database issues
+        
         echo "<p style='color:red; text-align:center; margin-top:20px;'>An error occurred. Please try again later.</p>";
         error_log("Database error: " . $e->getMessage());
     }
