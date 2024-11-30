@@ -43,7 +43,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="cart-dropdown">
         <button class="cart-button">Basket</button>
         <div class="cart-options">
-            <a href="#">Basket</a>
+            <a href="basket.php">Basket</a>
             <a href="#">Previous Order</a>
         </div>
     </div>
