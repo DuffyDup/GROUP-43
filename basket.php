@@ -116,8 +116,8 @@ foreach ($basket_items as $item) {
             <a href="help.php">Help</a>
         </div>
         <div class="contact-info">
-            <p>Email:  </p>
-            <p>Phone: </p>
+            <p>Email: group43@gmail.com  </p>
+            <p>Phone: 12345678 </p>
         </div>
     </footer>
 </body>
