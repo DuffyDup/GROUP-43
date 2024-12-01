@@ -1,6 +1,6 @@
 <?php
 require_once 'connectdb.php';
-session_start();
+session_start(); 
 
 
 
@@ -115,7 +115,7 @@ foreach ($basket_items as $item) {
             <a href="help.php">Help</a>
         </div>
         <div class="contact-info">
-            <p>Email: </p>
+            <p>Email:  </p>
             <p>Phone: </p>
         </div>
     </footer>
