@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isse
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
 
+
     if ($quantity > 0) {
         $stmt = $db->prepare("UPDATE basket SET quantity = :quantity WHERE email = :email AND product_id = :product_id");
         $stmt->execute([':quantity' => $quantity, ':email' => $user_email, ':product_id' => $product_id]);
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isse
 $stmt = $db->prepare("
     SELECT 
         b.quantity, p.product_id, p.name, p.description, p.price, 
-         p.picture FROM basket b JOIN products p ON b.product_id = p.product_id WHERE b.email = :email
+         p.picture,p.stock FROM basket b JOIN products p ON b.product_id = p.product_id WHERE b.email = :email
 ");
 $stmt->execute([':email' => $user_email]);
 $basket_items = $stmt->fetchAll(PDO::FETCH_ASSOC);

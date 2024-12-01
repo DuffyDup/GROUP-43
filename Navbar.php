@@ -1,7 +1,7 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start(); // Start session to access login status
-}
+
+    session_start();
+
 ?>
 <div class="top-navigation">
     <!-- Logo -->
@@ -39,12 +39,14 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
     </div>
 
-    <!-- Dropdown for Basket -->
-    <div class="cart-dropdown">
-        <button class="cart-button">Basket</button>
-        <div class="cart-options">
-            <a href="basket.php">Basket</a>
-            <a href="#">Previous Order</a>
+    <!-- Conditional Dropdown for Basket -->
+    <?php if (isset($_SESSION['email'])): ?>
+        <div class="cart-dropdown">
+            <button class="cart-button">Basket</button>
+            <div class="cart-options">
+                <a href="basket.php">Basket</a>
+                <a href="#">Previous Order</a>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
 </div>
