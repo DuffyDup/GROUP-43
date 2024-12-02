@@ -1,7 +1,7 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
-
+}
 ?>
 <div class="top-navigation">
     <!-- Logo -->
@@ -12,20 +12,7 @@
     <!-- Navigation Links -->
     <a href="Home_Page.php">Home</a>
     <a href="#">About Us</a>
-    <a href="Admin_Signup_page.php">Contact Us</a>
-
-    <!-- Conditional Dropdown for Logged-in User -->
-    <?php if (isset($_SESSION['email'])): ?>
-        <div class="menu-dropdown">
-            <button class="menu-button">Account</button>
-            <div class="menu-options">
-                <a href="My_Account.php">My Account</a>
-                <a href="logout.php">Logout</a>
-            </div>
-        </div>
-    <?php else: ?>
-        <a href="Login_Page.php">Login</a>
-    <?php endif; ?>
+    <a href="Contact_Us.php">Contact Us</a>
 
     <!-- Dropdown for Products -->
     <div class="menu-dropdown">
@@ -45,8 +32,25 @@
             <button class="cart-button">Basket</button>
             <div class="cart-options">
                 <a href="basket.php">Basket</a>
-                <a href="#">Previous Order</a>
+                <a href="Previous_Order.php">Previous Order</a>
             </div>
         </div>
+    <?php endif; ?>
+
+     <!-- Conditional Dropdown for Logged-in User -->
+     <?php if (isset($_SESSION['email'])): ?>
+        <div class="menu-dropdown">
+            <button class="menu-button">
+                <img src="account_logo/computer-icons-google-account-icon-design-login-png-favpng-jFjxPac6saRuDE3LiyqsYTEZM.jpg" 
+                     alt="Account Logo" 
+                     style="width: 20px; height: 20px; vertical-align: middle; border-radius: 50%;">
+            </button>
+            <div class="menu-options">
+                <a href="My_Account.php">My Account</a>
+                <a href="logout.php">Logout</a>
+            </div>
+        </div>
+    <?php else: ?>
+        <a href="Login_Page.php">Login</a>
     <?php endif; ?>
 </div>
