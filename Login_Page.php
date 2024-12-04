@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: Admin_Signup_page.php');
                 exit();
             } elseif ($user['type'] === 'customer') {
-                header('Location: Customer_SignUp.php');
+                header('Location: Home_page.php');
                 exit();
             }
         } else {
