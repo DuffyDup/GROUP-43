@@ -103,7 +103,7 @@ foreach ($basket_items as $item) {
                 <p>Total Price: £<?php echo number_format($total_price, 2); ?></p>
             </div>
 
-            <button class="checkout">Proceed to Checkout</button>
+            <button class="checkout"><a herf="Checkout_page.php">Proceed to Checkout</a></button>
         <?php else: ?>
             <p>Your basket is empty.</p>
         <?php endif; ?>
