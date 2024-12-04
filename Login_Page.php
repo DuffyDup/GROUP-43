@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form id="loginforuser" method="POST" action="Login_Page.php">
         <input type="email" name="email" placeholder="Email" class="entrybox" required><br><br>
         <input type="password" name="password" placeholder="Password" class="entrybox" required><br><br>
-        <label for="forgetpasswordlabel"><a href="Forgot_Password_Page.html">Forgot password?</a></label><br>
+        <label for="forgetpasswordlabel"><a href="Forgot_Password_Page.php">Forgot password?</a></label><br>
         <label for="keeplogedinlabel">Keep me Logged in</label>
         <input type="checkbox" id="keeplogedin"><br><br>
         <button type="submit" class="loged">Login</button>

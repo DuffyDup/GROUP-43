@@ -1,4 +1,7 @@
 <!--Manahil Firdous-->
+<?php
+session_start(); // Start the session to check login status
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -11,7 +14,7 @@
 </head>
 <body>
     <!--The Navigation (Start)-->
-    
+    <?php include 'Navbar.php'; ?>
     <!--The Navigation (End)-->
     <div class="sendtheOTP">
         <input type="email" placeholder="Email" id="Enter Email" class="entrybox"> <br> <br>
