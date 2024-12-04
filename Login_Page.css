@@ -45,7 +45,7 @@ NOTE:
     margin-top: 15px;
 }
 
-.loged{
+.loged, button{
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
