@@ -1,3 +1,6 @@
+<?php
+session_start(); // Start the session to check login status
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
     <link rel="stylesheet" href="Checkout_Page.css"> <!-- Checkout-specific CSS -->
 </head>
 <body>
-    <!-- Top Navigation -->
+    <!-- Navigation -->
     <?php include 'Navbar.php';?>
 
     <!-- Main Content Start -->

@@ -1,3 +1,6 @@
+<?php
+session_start(); // Start the session to check login status
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,39 +12,7 @@
 </head>
 <body>
     <!-- Top Navigation -->
-    <div class="top-navigation">
-        <!-- Logo -->
-        <a href="Home_Page.html" class="logo">
-            <img src="Tech_Nova.png" alt="Tech Nova Logo">
-        </a>
-        <!-- Navigation Links -->
-        <a href="Home_Page.html">Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
-        <a href="Login_Page.html">Login</a>
-
-        <!-- Dropdown for Products -->
-        <div class="menu-dropdown">
-            <button class="menu-button">Products</button>
-            <div class="menu-options">
-                <a href="#">Phone</a>
-                <a href="#">Tablets</a>
-                <a href="#">Laptops</a>
-                <a href="#">Audio Devices</a>
-                <a href="#">Smart Watches</a>
-            </div>
-        </div>
-
-        <!-- Dropdown for Basket -->
-        <div class="cart-dropdown">
-            <button class="cart-button">Basket</button>
-            <div class="cart-options">
-                <a href="#">Basket</a>
-                <a href="#">Previous Orders</a>
-            </div>
-        </div>
-    </div>
-    <!-- End For Navigation -->
+    <?php include 'Navbar.php';?>
 
     <!-- About Us Content -->
     <div class="about-us-container">
