@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <!-- Navigation Links -->
     <a href="Home_Page.php">Home</a>
-    <a href="#">About Us</a>
+    <a href="About_us_page.html">About Us</a>
     <a href="Contact_Us.php">Contact Us</a>
 
     <!-- Dropdown for Products -->
