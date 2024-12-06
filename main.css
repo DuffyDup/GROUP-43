@@ -46,6 +46,18 @@
     margin-right: 20px;
 }
 
+/* Remove hover effect on the logo while keeping it clickable */
+.top-navigation .logo {
+    text-decoration: none;
+    color: inherit;
+    pointer-events: auto; /* Ensures the logo remains clickable */
+}
+
+.top-navigation .logo:hover {
+    background: none;
+    color: inherit; /* No color change on hover */
+}
+
 /* Buttons for dropdowns */
 .menu-button, .cart-button {
     font-size: 16px;
@@ -76,7 +88,7 @@
     display: none;
     position: absolute;
     left: 0;
-    top: calc(100%); /* Reduce gap between button and dropdown */
+    top: calc(100%);
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -99,8 +111,8 @@
 
 /* Ensure dropdown stays inside the screen */
 .menu-options-account {
-    right: 0; /* Align dropdown to the right */
-    left: auto; /* Reset left alignment */
+    right: 0;
+    left: auto;
 }
 
 /* Links inside dropdown content */
