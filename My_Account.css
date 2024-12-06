@@ -1,5 +1,4 @@
-
-/* Container for the signup form */
+/* Container for the account form */
 .signup-container {
     background-color: #fff;
     padding: 30px;
@@ -7,11 +6,10 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
-    margin: 0 auto; 
+    margin: 0 auto;
     text-align: center;
     background: linear-gradient(135deg, #ffffff, #f7f7f7);
     margin-top: 20px;
-
 }
 
 /* Heading style */
@@ -19,6 +17,7 @@
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
+    font-weight: bold;
 }
 
 /* Form group styling */
@@ -37,6 +36,7 @@
     outline: none;
     background: transparent;
     box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Labels */
@@ -68,26 +68,30 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Button styling */
+/* Button styling (shared for Confirm Changes and Sign Up buttons) */
 .signup-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-/* Hover over effect for signup button */
+/* Hover effect for the button */
 .signup-btn:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* Responsive design */
+/* Responsive design adjustments */
 @media (max-width: 480px) {
     .signup-container {
         padding: 20px;
+    }
+
+    .signup-btn {
+        width: 100%; /* Full-width button on small screens */
     }
 }
