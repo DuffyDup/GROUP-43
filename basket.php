@@ -57,21 +57,12 @@ foreach ($basket_items as $item) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basket</title>
     <link rel="stylesheet" href="basket.css">
+    <link rel="stylesheet" href="main.css">
+    
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="Tech_Nova.png" alt="Logo">
-        </div>
-        <nav class="navigation">
-            <a href="">Home</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
-            <a href="Login_Page.php">Login</a>
-            <a href="products.php">Products</a>
-            <a href="basket.php">Basket</a>
-        </nav>
-    </header>
+    <!-- Include the Navigation -->
+  <?php include 'Navbar.php'; ?>
 
     <div class="container">
         <h1>Your Basket</h1>
@@ -103,7 +94,9 @@ foreach ($basket_items as $item) {
                 <p>Total Price: £<?php echo number_format($total_price, 2); ?></p>
             </div>
 
-            <button class="checkout"><a herf="Checkout_page.php">Proceed to Checkout</a></button>
+            <button class="checkout">
+    <a href="Checkout_page.php">Proceed to Checkout</a>
+</button>
         <?php else: ?>
             <p>Your basket is empty.</p>
         <?php endif; ?>
