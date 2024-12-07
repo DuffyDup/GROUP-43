@@ -1,5 +1,5 @@
 /* Main container for the checkout page */
-.checkout-container {
+ .checkout-container {
     display: flex;
     justify-content: space-between;
     margin: 20px auto;
