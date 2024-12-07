@@ -17,7 +17,7 @@
 .big-text h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #007bff; /* Blue from your color palette */
+    color: #000; /* Blue from your color palette */
     margin-bottom: 20px;
 }
 
@@ -47,7 +47,7 @@
 
 .sub-text h2 {
     font-size: 20px;
-    color: #007bff;
+    color: #000;
     margin-bottom: 10px;
 }
 
