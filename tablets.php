@@ -8,6 +8,7 @@ session_start(); // Start the session to check login status
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tablets</title>
     <link rel="stylesheet" href="tablets.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 

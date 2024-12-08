@@ -21,10 +21,10 @@ if (session_status() === PHP_SESSION_NONE) {
             <button class="menu-button">Products</button>
             <div class="menu-options">
                 <a href="Phone.php">Phone</a>
-                <a href="#">Tablets</a>
-                <a href="#">Laptops</a>
-                <a href="#">Audio Devices</a>
-                <a href="#">Smart Watches</a>
+                <a href="tablets.php">Tablets</a>
+                <a href="laptops.php">Laptops</a>
+                <a href="audiodevices.php">Audio Devices</a>
+                <a href="smartwatches.php">Smart Watches</a>
             </div>
         </div>
 
