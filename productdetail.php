@@ -1,10 +1,25 @@
+<?php
+    session_start(); // Start the session to check login status
+    require 'connectdb.php'; // Ensure this initializes a PDO connection in $db
+    $user_email = $_SESSION['email'];
+    // Check if 'product_id' is set in the URL
+    if (isset($_GET['product_id'])) {
+    $product_id = $_GET['product_id'];
+
+    // Fetch product details from the database using product_id
+    $stmt = $db->prepare("SELECT * FROM products WHERE product_id = :product_id");
+    $stmt->execute([':product_id' => $product_id]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+   
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product details  Page</title>
+    <title></title>
     <link rel="stylesheet" href="productdetail.css">
 </head>
 <body>
@@ -28,19 +43,16 @@
     
     <section class="product">
         <div class="product-image">
-            <img src="image1.jpg" alt="Product Image" id="productImage">
+            <img src="<?= htmlspecialchars($product['picture']) ?>" alt="Product Image" id="productImage">
            
         </div>
         <div class="product-details">
-            <h1>Product Name</h1>
-            <p>Price: </p>
+            <h1>Name: <?= htmlspecialchars($product['name']) ?></h1>
+            <p>Price: £<?= htmlspecialchars($product['price']) ?></p>
 
             
             <div class="product-info">
-                <p>Display: 15.6 inches</p>
-                <p>USB: Type-C</p>
-                <p>Camera Quality: 1080p</p>
-                <p>Battery Capacity: 5000mAh</p>
+                <p><?= htmlspecialchars($product['description']) ?></p>
             </div>
 
           
