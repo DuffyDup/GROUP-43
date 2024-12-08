@@ -8,7 +8,7 @@ session_start(); // Start the session to check login status
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Signup Page</title>
   <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="Admin_signup_page.css">
+  <link rel="stylesheet" href="homepage.css">
 </head>
 <body>
      <!-- Include the Navigation -->
