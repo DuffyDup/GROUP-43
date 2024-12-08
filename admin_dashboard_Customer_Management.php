@@ -31,15 +31,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $full_name = $_POST['full_name'];
     $phone_number = $_POST['phone_number'];
+    $password = isset($_POST['password']) && !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
 
     if (isset($_POST['update_customer']) || isset($_POST['update_admin'])) {
         try {
-            $updateStmt = $db->prepare("UPDATE Users SET full_name = :full_name, phone_number = :phone_number WHERE email = :email");
-            $updateStmt->execute([
+            $updateQuery = "UPDATE Users SET full_name = :full_name, phone_number = :phone_number";
+            $params = [
                 'full_name' => $full_name,
                 'phone_number' => $phone_number,
-                'email' => $email
-            ]);
+                'email' => $email,
+            ];
+
+            if ($password) {
+                $updateQuery .= ", password = :password";
+                $params['password'] = $password;
+            }
+
+            $updateQuery .= " WHERE email = :email";
+            $updateStmt = $db->prepare($updateQuery);
+            $updateStmt->execute($params);
+
             echo "<script>alert('Details updated successfully.');</script>";
             header("Refresh:0");
         } catch (PDOException $e) {
@@ -74,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include 'Navbar.php'; ?>
 
     <div class="dashboard-container">
-
         <!-- Customers Table -->
         <h2>Manage Customers</h2>
         <table class="styled-table">
@@ -83,6 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <th>Email</th>
                     <th>Full Name</th>
                     <th>Phone Number</th>
+                    <th>New Password</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -93,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <td><?= htmlspecialchars($customer['email']) ?></td>
                             <td><input type="text" name="full_name" value="<?= htmlspecialchars($customer['full_name']) ?>" required></td>
                             <td><input type="text" name="phone_number" value="<?= htmlspecialchars($customer['phone_number']) ?>" required></td>
+                            <td><input type="password" name="password" placeholder="New Password"></td>
                             <td>
                                 <button type="submit" name="update_customer" class="btn update-btn">Update</button>
                                 <button type="submit" name="delete_customer" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</button>
@@ -112,6 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <th>Email</th>
                     <th>Full Name</th>
                     <th>Phone Number</th>
+                    <th>New Password</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -122,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <td><?= htmlspecialchars($admin['email']) ?></td>
                             <td><input type="text" name="full_name" value="<?= htmlspecialchars($admin['full_name']) ?>" required></td>
                             <td><input type="text" name="phone_number" value="<?= htmlspecialchars($admin['phone_number']) ?>" required></td>
+                            <td><input type="password" name="password" placeholder="New Password"></td>
                             <td>
                                 <button type="submit" name="update_admin" class="btn update-btn">Update</button>
                                 <button type="submit" name="delete_admin" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this admin?');">Delete</button>
