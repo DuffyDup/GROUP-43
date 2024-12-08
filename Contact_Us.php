@@ -1,5 +1,9 @@
 <?php
-session_start(); // Start the session to check login status
+session_start(); 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "<script>alert('Enquiry submitted'); window.location.href='Home_page.php';</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +21,7 @@ session_start(); // Start the session to check login status
 
 <div class="contact-container">
     <h1>Contact Us</h1>
-    <form action="contactus_submit.php" method="post">
+    <form action="Contact_Us.php" method="post">
         <div class="form-group">
             <input type="text" id="name" name="name" placeholder=" " required>
             <label for="name">Name</label>
