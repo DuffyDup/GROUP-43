@@ -7,6 +7,7 @@ session_start(); // Start the session to check login status
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Products</title>
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="phone.css">
 </head>
 <body>
@@ -15,7 +16,7 @@ session_start(); // Start the session to check login status
 <?php include 'Navbar.php'; ?>
 
 <div class="product-container">
-    <h1>Our Products</h1>
+    
     <div class="product-grid">
         <div class="product-card">
             <img src="product1.jpg" alt="Product 1">

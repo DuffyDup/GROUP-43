@@ -20,21 +20,32 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="menu-dropdown">
             <button class="menu-button">Products</button>
             <div class="menu-options">
-                <a href="#">Phone</a>
-                <a href="#">Tablets</a>
-                <a href="#">Laptops</a>
-                <a href="#">Audio Devices</a>
-                <a href="#">Smart Watches</a>
+                <a href="Phone.php">Phone</a>
+                <a href="tablets.php">Tablets</a>
+                <a href="laptops.php">Laptops</a>
+                <a href="audiodevices.php">Audio Devices</a>
+                <a href="smartwatches.php">Smart Watches</a>
             </div>
         </div>
 
-        <!-- Conditional Dropdown for Basket -->
-        <?php if (isset($_SESSION['email'])): ?>
+        <!-- Conditional Dropdown for Basket (Visible for customers only) -->
+        <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'customer'): ?>
             <div class="cart-dropdown">
                 <button class="cart-button">Basket</button>
                 <div class="cart-options">
                     <a href="basket.php">Basket</a>
                     <a href="Previous_Order.php">Previous Order</a>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <!-- Admin Options Dropdown (Visible for admins only) -->
+        <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'admin'): ?>
+            <div class="menu-dropdown">
+                <button class="menu-button">Admin Options</button>
+                <div class="menu-options">
+                    <a href="admin_dashboard_Customer_Management.php">User Management</a>
+                    <a href="product_update.php">Product Update</a>
                 </div>
             </div>
         <?php endif; ?>
