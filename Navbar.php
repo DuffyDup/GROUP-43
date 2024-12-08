@@ -20,7 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="menu-dropdown">
             <button class="menu-button">Products</button>
             <div class="menu-options">
-                <a href="#">Phone</a>
+                <a href="Phone.php">Phone</a>
                 <a href="#">Tablets</a>
                 <a href="#">Laptops</a>
                 <a href="#">Audio Devices</a>
