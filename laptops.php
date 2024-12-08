@@ -30,11 +30,16 @@
         }
         foreach ($products as $row) {
     ?>
-         <div class="product-card">
-            <img src="<?= htmlspecialchars($row["picture"]) ?>" alt="<?= htmlspecialchars($row["name"]) ?>">
-            <h2><?= htmlspecialchars($row["name"]) ?></h2>
-            <p><?= htmlspecialchars($row["description"]) ?></p>
-        </div>
+        
+            <div class="product-card">
+                <a href="productdetail?product_id=<?= urlencode($row["product_id"]) ?>">
+                <img src="<?= htmlspecialchars($row["picture"]) ?>" alt="<?= htmlspecialchars($row["name"]) ?>">
+                <h2><?= htmlspecialchars($row["name"]) ?></h2>
+                <p><?= htmlspecialchars($row["description"]) ?></p>
+                </a>
+            </div>
+        
+        
     
     <?php }
     ?>

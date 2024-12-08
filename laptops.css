@@ -23,6 +23,12 @@
     gap: 20px;
 }
 
+.product-card a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits the text color from its parent */
+    display: block; /* Makes the anchor tag block-level */
+}
+
 .product-card {
     background-color: #fff;
     border: 2px solid #ccc;
@@ -32,6 +38,8 @@
     text-align: center;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+
 
 .product-card:hover {
     border-color: #007bff;
@@ -71,3 +79,5 @@
         padding: 20px;
     }
 }
+
+
