@@ -16,7 +16,7 @@ session_start(); // Start the session to check login status
 <?php include 'Navbar.php'; ?>
 
 <div class="product-container">
-    <h1>Our Products</h1>
+    
     <div class="product-grid">
         <div class="product-card">
             <img src="product1.jpg" alt="Product 1">
