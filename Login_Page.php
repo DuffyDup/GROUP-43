@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['type'] = $user['type'];
 
             if ($user['type'] === 'admin') {
-                header('Location: Admin_Signup_page.php');
+                header('Location: Home_page.php');
                 exit();
             } elseif ($user['type'] === 'customer') {
                 header('Location: Home_page.php');
