@@ -1,6 +1,3 @@
-<?php
-session_start(); // Start the session to check login status
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +23,10 @@ session_start(); // Start the session to check login status
       <div class="form-group">
         <input type="email" id="email" name="email" placeholder=" " required>
         <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="phone-number" name="phone_number" placeholder=" " required>
+        <label for="phone-number">Phone Number</label>
       </div>
       <div class="form-group">
         <input type="password" id="password" name="password" placeholder=" " required>
