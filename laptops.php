@@ -19,7 +19,6 @@
 
 
 <div class="product-container">
-    <h1>Our Laptops</h1>
     <div class="product-grid">
     <?php
         $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'Laptop'");
