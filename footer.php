@@ -5,22 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sticky Footer Example</title>
     <style>
-        /* Ensure html and body take full height */
         html, body {
             height: 100%;
             margin: 0;
             display: flex;
             flex-direction: column;
         }
-
-        /* Footer styling */
         .footer {
             background-color: #f4f4f4;
             padding: 20px 0;
             text-align: center;
             display: flex;
             justify-content: space-around;
-            margin-top: auto; /* Push footer to bottom */
+            margin-top: auto; 
         }
 
         .footer-column {
@@ -48,8 +45,6 @@
             text-decoration: underline; 
             color: inherit; 
         }
-
-        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .footer {
                 flex-direction: column;
