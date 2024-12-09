@@ -42,17 +42,20 @@
             </div>
 
           
-            <div class="color-options">
+            <!-- <div class="color-options">
                 <span>Color: </span>
                 <div class="color-circle" style="background-color: red;"></div>
                 <div class="color-circle" style="background-color: blue;"></div>
                 <div class="color-circle" style="background-color: black;"></div>
             </div>
-
+            -->
           
+            <a href="">
             <div class="add-to-basket">
                 <button>Add to Basket</button>
             </div>
+            </a>
+            
         </div>
     </section>
 
