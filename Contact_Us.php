@@ -10,37 +10,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="Contact_Us.css">
+
 </head>
 <body>
+    
+    <!-- Include Navigation -->
+     
+    <?php include 'Navbar.php'; ?>
 
-<!-- Include Navigation -->
-<?php include 'Navbar.php'; ?>
+    <div class="main-container">
 
-<div class="contact-container">
-    <h1>Contact Us</h1>
-    <form action="Contact_Us.php" method="post">
-        <div class="form-group">
-            <input type="text" id="name" name="name" placeholder=" " required>
-            <label for="name">Name</label>
-        </div>
-        <div class="form-group">
-            <input type="email" id="email" name="email" placeholder=" " required>
-            <label for="email">Email</label>
-        </div>
-        <div class="form-group">
-            <input type="text" id="subject" name="subject" placeholder=" " required>
-            <label for="subject">Subject</label>
-        </div>
-        <div class="form-group">
-            <textarea id="message" name="message" placeholder=" " required></textarea>
-            <label for="message">Message</label>
-        </div>
-        <button type="submit" class="contact-btn">Send Message</button>
-    </form>
-</div>
+        <!-- Contact Us Section -->
 
+        <div class="contact-container">
+            <h1>Contact Us</h1>
+            <form action="submit_form.php" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder=" " required>
+                    <label>Your Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder=" " required>
+                    <label>Your Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" placeholder=" " required>
+                    <label>Subject</label>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="5" placeholder=" " required></textarea>
+                    <label>Your Message</label>
+                </div>
+                <button type="submit" class="contact-btn">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Our Details Section -->
+
+        <div class="details-container">
+            <h1>Our Details</h1>
+            <p>Email: [Enter Email]</p>
+            <p>Phone: [Enter Phone Number]</p>
+            <p>Address: [Enter Address]</p>
+        </div>
+    </div>
 </body>
 </html>
