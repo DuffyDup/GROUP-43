@@ -24,23 +24,20 @@ session_start(); // Start the session to check login status
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <a href="Phone.php">
-                    <img src="Phones/16blackback.png" alt="Product 1" style="width:100%">
+                    <img src="Phones/16blackback.png" alt="Product 1" style="width:70%">
                 </a>
-                <div class="text">Apple IPhone 16 Black</div>
             </div>
         
             <div class="mySlides fade">
                 <a href="smartwatches.php">
-                    <img src="Smart_watches_images/Apple watch 10 black.png" alt="Product 2" style="width:100%">
+                    <img src="Smart_watches_images/Apple watch 10 black.png" alt="Product 2" style="width:70%">
                 </a>
-                <div class="text">Apple Watch Series 10 Jet Black </div>
             </div>
         
             <div class="mySlides fade">
                 <a href="tablets.php">
-                    <img src="Tablet_images/ipadpro11inch.png" alt="Product 3" style="width:100%">
+                    <img src="Tablet_images/ipadpro11inch.png" alt="Product 3" style="width:70%">
                 </a>
-                <div class="text">Apple IPad Pro 11-Inch Space Grey</div>
             </div>
         
             <!-- Navigation buttons -->
@@ -61,36 +58,38 @@ session_start(); // Start the session to check login status
         <!-- Product Card Section --> 
         
         <section class="product-cards">
-            <div class="card">            
+            <div class="card">        
+                <a href="smartwatches.php">    
                 <img src="Smart_watches_images/Applewatch9.png" alt="Product 1" class="product-image">
                 <h1>Apple Watch</h1>
                 <p>Series 9</p>
                 <p class="price">£299.99</p>
-                <a href="smartwatches.php">VIEW</a>
             </div>
             
             <div class="card">
+                <a href="audiodevices.php">
                 <img src="Audio_Devices_images/Alexa1.png" alt="Product 2" class="product-image">
                 <h1>Amazon Echo Dot</h1>
                 <p>5th Generation</p>
                 <p class="price">£24.99</p>
-                <a href="audiodevices.php">VIEW</a>
+        
             </div>
 
             <div class="card">
+                <a href="laptops.php">
                 <img src="Laptops/samsung galaxybook4.png" alt="Product 3" class="product-image">
                 <h1>Samsung Galaxy Book </h1>
                 <p>4th Generation</p>
                 <p class="price">£699.99</p>
-                <a href="laptops.php">VIEW</a>
+    
             </div>
             
             <div class="card">
+                <a href="Phone.php">
                 <img src="Phones/s23black.png" alt="Product 4" class="product-image">
                 <h1>Samsung Galaxy</h1>
                 <p>S23</p>
                 <p class="price">£749.00</p>
-                <a href="Phone.php">VIEW</a>
             </div>
         </section>
 

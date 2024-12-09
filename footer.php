@@ -1,54 +1,84 @@
 <?php
 // footer.php
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Example</title>
     <style>
-        
-        .custom-footer {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-top: 1px solid #ccc;
+        body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
-        .footer-container {
+        .footer {
+            background-color: #f4f4f4;
+            padding: 20px 0;
+            text-align: center;
             display: flex;
-            justify-content: space-evenly; 
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            justify-content: space-around;
         }
 
-        .footer-item a {
-            text-decoration: none;
-            color: black;
-            font-size: 16px; 
-            padding: 5px 10px; 
-            border-radius: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+        .footer-column {
+            width: 20%;
         }
 
-        .footer-item a:hover {
-            background-color: grey; /* Grey hover effect */
-            color: white;
+        .footer-column h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .footer-column p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-column {
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <footer class="custom-footer">
-        <div class="footer-container">
-            <div class="footer-item">
-                <a href="Contact_Us.php">Contact Us</a>
-            </div>
-            <div class="footer-item">
-                <a href="About_us_page.php">About Us</a>
-            </div>
-            <div class="footer-item">
-                <a href="Admin-Signup_page.php">Admin Sign Up</a>
-            </div>
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="footer-column">
+            <h3>CONTACT INFORMATION</h3>
+            <p>Phone: 07893929457</p>
+            <p>Email: technova638@gmail.com</p>
+            <p>Address: Aston St, Birmingham B4 7ET</p>
         </div>
-    </footer>
+        <div class="footer-column">
+            <h3>WHO ARE WE?</h3>
+            <p><a href="contact.html">Contact Us</a></p>
+            <p><a href="about.html">About Us</a></p>
+            <p><a href="admin-signup.html">Admin Sign Up</a></p>
+
+        </div>
+        <div class="footer-column">
+            <h3>COMMITTED TO DELIVERING...</h3>
+            <p>Sustainablity with technology</p>
+            <p>Safeguarding the enviroment</p>
+            <p>Outstanding customer Support</p>
+        </div>
+        <div class="footer-column">
+            <h3>SHOP WITH US</h3>
+            <p>GIVE PRE-OWNED TECHNOLOGY A SECOND CHANCE</p>
+            <p>EXPLORE THE PRODUCT RANGE</p>
+        </div>
+    </div>
 </body>
 </html>
