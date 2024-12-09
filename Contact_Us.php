@@ -1,7 +1,34 @@
 <?php
 session_start(); 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+require "vendor/autoload.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "<script>alert('Enquiry submitted'); window.location.href='Home_page.php';</script>";
+    try {
+        // Configure PHPMailer
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        $mail->Username = "TechNova638@gmail.com";
+        $mail->Password = "kboxrgaqzjjymzlq";
+
+        $mail->addAddress("TechNova638@gmail.com");
+        $mail->AddReplyTo($_POST['email'], $_POST['name']);
+
+        // Email content
+        $mail->Subject = $_POST['subject'];
+        $mail->Body = $_POST['message'];
+
+        $mail->send('TechNova638@gmail.com');
+        echo "<script>alert('Enquiry submitted'); window.location.href='Home_page.php';</script>";
+    } catch (Exception $e) {
+        echo "<p style='color:red'>Failed to send message. Please try again later.</p>";
+        error_log($mail->ErrorInfo); // Log error for debugging
+    }
 }
 
 ?>
