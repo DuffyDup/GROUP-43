@@ -77,5 +77,7 @@ try {
             </table>
         <?php endif; ?>
     </div>
+    <!-- Footer -->
+<?php include 'footer.php'; ?>
 </body>
 </html>
