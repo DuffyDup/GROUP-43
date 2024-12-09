@@ -1,7 +1,3 @@
-<?php
-// footer.php
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +35,16 @@
             color: #666;
         }
 
+        .footer-column a {
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline; 
+            color: inherit; 
+        }
+
         @media (max-width: 768px) {
             .footer {
                 flex-direction: column;
@@ -63,21 +69,15 @@
         </div>
         <div class="footer-column">
             <h3>WHO ARE WE?</h3>
-            <p><a href="contact.html">Contact Us</a></p>
-            <p><a href="about.html">About Us</a></p>
-            <p><a href="admin-signup.html">Admin Sign Up</a></p>
-
+            <p><a href="Contact_Us.php">Contact Us</a></p>
+            <p><a href="About_us_page.php">About Us</a></p>
+            <p><a href="Admin_Signup_page.php">Admin Sign Up</a></p>
         </div>
         <div class="footer-column">
             <h3>COMMITTED TO DELIVERING...</h3>
             <p>Sustainablity with technology</p>
             <p>Safeguarding the enviroment</p>
             <p>Outstanding customer Support</p>
-        </div>
-        <div class="footer-column">
-            <h3>SHOP WITH US</h3>
-            <p>GIVE PRE-OWNED TECHNOLOGY A SECOND CHANCE</p>
-            <p>EXPLORE THE PRODUCT RANGE</p>
         </div>
     </div>
 </body>
