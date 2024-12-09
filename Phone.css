@@ -23,6 +23,12 @@
     gap: 20px;
 }
 
+.product-card a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits the text color from its parent */
+    display: block; /* Makes the anchor tag block-level */
+}
+
 .product-card {
     background-color: #fff;
     border: 2px solid #ccc;
