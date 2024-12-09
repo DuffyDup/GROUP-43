@@ -49,3 +49,9 @@ CREATE TABLE Reviews (
     FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE, -- Make the values in both tables the same
     FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE -- , ,Make the values in both tables the same
 );
+
+INSERT INTO `users` (`email`, `full_name`, `password`, `phone_number`, `type`) VALUES
+('admin1@ad.com', 'cole palmer', '$2y$10$B2p8HrvTA5uqYYVcSO5mfusVRtGfvUU0a/EqR/r/VuCDPB4j7Mbia', '071243214078', 'admin'),
+('bob@gmail.com', 'bill bob', '$2y$10$geYdMT8WPy4aDxr1Ok8tveTwdQeELtzIKTE6fQzsmr3/g9K1Rhk5G', '12321312', 'customer'),
+('noah@gmail.com', 'noah oliver smith', '$2y$10$pars6sq.xnjwZQOUKFs9b.Dxpw8ZWrIbVWKVCeMorDYvU3eJd3lj2', '076451251267', 'customer');
+
