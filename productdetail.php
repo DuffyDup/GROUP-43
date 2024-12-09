@@ -11,6 +11,7 @@
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
    
     }
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $product_id = $_POST['product_id'] ;
@@ -21,10 +22,14 @@
                 ':email' => $user_email,
                 ':product_id' => $product_id,
             ]);
-    
+            if (!isset($_SESSION['email'])) {
+                echo "<script>alert('Please log in to continue.'); window.location.href='Login_Page.php';</script>";
+                exit;
+            }
             echo "<script>alert('Successfully added to basket'); window.location.href='basket.php';</script>";
+            }
         }
-    }
+    
     
 ?>
 
