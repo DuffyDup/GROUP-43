@@ -58,7 +58,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="audiodevices.php">
+        <a href="productdetail.php?product_id=19">
           <img src="Audio_Devices_images/Alexa1.png" alt="Product 2" class="product-image">
           <h1>Amazon Echo Dot</h1>
           <p>5th Generation</p>
@@ -67,7 +67,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="laptops.php">
+        <a href="productdetail.php?product_id=6">
           <img src="Laptops/samsunggalaxybook2.png" alt="Product 3" class="product-image">
           <h1>Samsung Galaxy Book</h1>
           <p>2th Generation</p>
@@ -76,7 +76,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="Phone.php">
+        <a href="productdetail.php?product_id=9">
           <img src="Phones/s23black.png" alt="Product 4" class="product-image">
           <h1>Samsung Galaxy</h1>
           <p>S23</p>
