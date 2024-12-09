@@ -49,5 +49,7 @@ session_start(); // Start the session to check login status
         </div>
     </div>
     <!-- End of About Us -->
+    <!-- Footer -->
+    <?php include 'footer.php'; ?>
 </body>
 </html>

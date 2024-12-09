@@ -43,6 +43,8 @@ $user_email = $_SESSION['email'];
     ?>
     </div>
 </div>
+<!-- Footer -->
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
