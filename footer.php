@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer Example</title>
+    <title>Sticky Footer Example</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Ensure html and body take full height */
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 0;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Footer styling */
         .footer {
             background-color: #f4f4f4;
             padding: 20px 0;
             text-align: center;
             display: flex;
             justify-content: space-around;
+            margin-top: auto; /* Push footer to bottom */
         }
 
         .footer-column {
@@ -45,6 +49,7 @@
             color: inherit; 
         }
 
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .footer {
                 flex-direction: column;
@@ -59,6 +64,7 @@
     </style>
 </head>
 <body>
+
     <!-- Footer Section -->
     <div class="footer">
         <div class="footer-column">
@@ -75,8 +81,8 @@
         </div>
         <div class="footer-column">
             <h3>COMMITTED TO DELIVERING...</h3>
-            <p>Sustainablity with technology</p>
-            <p>Safeguarding the enviroment</p>
+            <p>Sustainability with technology</p>
+            <p>Safeguarding the environment</p>
             <p>Outstanding customer Support</p>
         </div>
     </div>
