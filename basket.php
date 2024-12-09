@@ -102,17 +102,7 @@ foreach ($basket_items as $item) {
         <?php endif; ?>
     </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="terms.php">Terms</a>
-            <a href="privacy.php">Privacy</a>
-            <a href="help.php">Help</a>
-        </div>
-        <div class="contact-info">
-            <p>Email: group43@gmail.com  </p>
-            <p>Phone: 12345678 </p>
-        </div>
-    </footer>
+ 
     <!-- Footer -->
 <?php include 'footer.php'; ?>
 </body>
