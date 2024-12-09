@@ -1,17 +1,36 @@
 <?php
     session_start(); // Start the session to check login status
-    require 'connectdb.php'; // Ensure this initializes a PDO connection in $db
+    require 'connectdb.php'; 
     $user_email = $_SESSION['email'];
-    // Check if 'product_id' is set in the URL
+ 
     if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
 
-    // Fetch product details from the database using product_id
     $stmt = $db->prepare("SELECT * FROM products WHERE product_id = :product_id");
     $stmt->execute([':product_id' => $product_id]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
    
     }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        $product_id = $_POST['product_id'] ;
+    
+        if ($product_id) {
+            $insertStmt = $db->prepare("INSERT INTO basket (email, product_id, quantity) VALUES (:email, :product_id, 1)");
+            $insertStmt->execute([
+                ':email' => $user_email,
+                ':product_id' => $product_id,
+            ]);
+            if (!isset($_SESSION['email'])) {
+                echo "<script>alert('Please log in to continue.'); window.location.href='Login_Page.php';</script>";
+                exit;
+            }
+            echo "<script>alert('Successfully added to basket'); window.location.href='basket.php';</script>";
+            }
+        }
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -41,19 +60,18 @@
                 <p><?= htmlspecialchars($product['description']) ?></p>
             </div>
 
-          
-            <div class="color-options">
-                <span>Color: </span>
-                <div class="color-circle" style="background-color: red;"></div>
-                <div class="color-circle" style="background-color: blue;"></div>
-                <div class="color-circle" style="background-color: black;"></div>
-            </div>
 
-          
-            <div class="add-to-basket">
-                <button>Add to Basket</button>
+        
+            <form action="productdetail.php" method="post" class="add-to-basket">
+            
+    <input type="hidden" name="product_id" value="<?= ($product_id) ?>">
+    <button type="submit" class="add-to-basket-btn">Add To Basket</button>
+</form>
+
             </div>
-        </div>
+            </form>
+
+  
     </section>
 
     
