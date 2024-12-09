@@ -1,53 +1,4 @@
-/* General Reset */
 
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-body, ul, li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-/* Header */
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 15px 20px;
-    color: #fff;
-    flex-wrap: wrap;
-}
-.logo img {
-    height: 50px;
-}
-nav ul {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
-}
-nav ul li a:hover {
-    background-color: #555;
-    border-radius: 5px;
-}
 
 /* Main Content */
 
@@ -63,56 +14,45 @@ nav ul li a:hover {
 /* Slideshow Section */
 
 /* Slideshow container */
-
 .slideshow-container {
     position: relative;
     max-width: 100%;
     margin: auto;
     overflow: hidden;
-    max-height: 500px;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center images vertically */
+    align-items: center;
+    height: auto;
+    background-color: #f4f4f4;
 }
 
 /* Slide images */
-
 .mySlides {
     display: none;
 }
 
-.slideshow-container a img {
-    transition: transform 0.2s ease; 
-}
-
-.slideshow-container a img:hover {
-    transform: scale(1.05);
-    cursor: pointer; 
-}
-
 .mySlides img {
-    width: auto; /* Allow for aspect ratio scaling */
-    max-width: 100%; /* Prevent overflow */
-    max-height: 100%; /* Contain image within container */
-    object-fit: contain; /* Ensure the full image is visible */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
     object-position: center;
 }
 
 /* Caption text */
-
 .text {
-    color: #fff;
-    font-size: 15px;
-    padding: 8px 12px;
     position: absolute;
-    bottom: 8px;
-    width: 100%;
+    bottom: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    color: #fff;
+    font-size: 20px; 
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 2; 
 }
 
 /* Navigation buttons */
-
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -145,7 +85,6 @@ nav ul li a:hover {
 }
 
 /* Dots */
-
 .dot {
     cursor: pointer;
     height: 15px;
@@ -162,7 +101,6 @@ nav ul li a:hover {
 }
 
 /* Fade animation */
-
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
@@ -224,44 +162,50 @@ footer {
     margin: 5px 0;
 }
 
-/* Boxes Section */
+/* Product Card Styles */
 
-.boxes {
+.product-cards {
     display: flex;
-    justify-content: space-around; 
-    align-items: flex-start; 
-    gap: 20px; 
+    justify-content: center;
+    gap: 20px;
     padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
-.box {
-    flex: 1 1 calc(25% - 40px); 
-    max-width: calc(25% - 40px); 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease; 
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 
-.box img {
-    width: 100%;
-    max-width: 150px;
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    border-radius: 10px;
+    max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    cursor: pointer;
 }
 
-.box-text {
-    font-size: 14px;
-    color: #555;
+.card h1 {
+    font-size: 18px;
+    color: #333;
 }
+
+.card .price {
+    color: green;
+    font-size: 16px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+}
+

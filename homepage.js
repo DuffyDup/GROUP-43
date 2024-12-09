@@ -34,6 +34,6 @@ function showSlides(n) {
 window.addEventListener("resize", () => {
     const slides = document.querySelectorAll(".mySlides img");
     slides.forEach(slide => {
-        slide.style.maxHeight = `${window.innerHeight * 0.5}px`; // Adjust this factor if necessary
+        slide.style.maxHeight = `${window.innerHeight * 0.5}px`; 
     });
 });

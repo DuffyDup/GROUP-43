@@ -1,17 +1,26 @@
-.contact-container {
+
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 80%;
+}
+
+.contact-container,
+.details-container {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
-    margin: 0 auto;
     text-align: center;
-    background: linear-gradient(135deg, #ffffff, #f7f7f7);
-    margin-top: 20px;
 }
 
-.contact-container h1 {
+.contact-container h1,
+.details-container h1 {
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
@@ -79,3 +88,8 @@
     background-color: #0056b3;
 }
 
+.details-container p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}

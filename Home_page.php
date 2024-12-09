@@ -23,22 +23,22 @@ session_start(); // Start the session to check login status
 
         <div class="slideshow-container">
             <div class="mySlides fade">
-                <a href="productdetail.html">
-                    <img src="16blackback.png" alt="Product 1" style="width:100%">
+                <a href="Phone.php">
+                    <img src="Phones/16blackback.png" alt="Product 1" style="width:100%">
                 </a>
                 <div class="text">Apple IPhone 16 Black</div>
             </div>
         
             <div class="mySlides fade">
-                <a href="productdetail.html">
-                    <img src="s24ultraback.png" alt="Product 2" style="width:100%">
+                <a href="smartwatches.php">
+                    <img src="Smart_watches_images/Apple watch 10 black.png" alt="Product 2" style="width:100%">
                 </a>
-                <div class="text">Samsung S24 Ultra Titanium Black </div>
+                <div class="text">Apple Watch Series 10 Jet Black </div>
             </div>
         
             <div class="mySlides fade">
-                <a href="productdetail.html">
-                    <img src="ipadpro11inch.png" alt="Product 3" style="width:100%">
+                <a href="tablets.php">
+                    <img src="Tablet_images/ipadpro11inch.png" alt="Product 3" style="width:100%">
                 </a>
                 <div class="text">Apple IPad Pro 11-Inch Space Grey</div>
             </div>
@@ -47,6 +47,7 @@ session_start(); // Start the session to check login status
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
         </div>
         
         <!-- Dots for navigation -->
@@ -57,54 +58,51 @@ session_start(); // Start the session to check login status
             <span class="dot" onclick="currentSlide(3)"></span>
         </div>
 
-        <!-- Box Section -->
+        <!-- Product Card Section --> 
+        
+        <section class="product-cards">
+            <div class="card">            
+                <img src="Smart_watches_images/Applewatch9.png" alt="Product 1" class="product-image">
+                <h1>Apple Watch</h1>
+                <p>Series 9</p>
+                <p class="price">£299.99</p>
+                <a href="smartwatches.php">VIEW</a>
+            </div>
+            
+            <div class="card">
+                <img src="Audio_Devices_images/Alexa1.png" alt="Product 2" class="product-image">
+                <h1>Amazon Echo Dot</h1>
+                <p>5th Generation</p>
+                <p class="price">£24.99</p>
+                <a href="audiodevices.php">VIEW</a>
+            </div>
 
-        <section class="boxes">
-            <div class="box">
-                <a href="productdetail.html">
-                    <img src="Tech_Nova.png" alt="Product 1">
-                </a>
-                <div class="box-text">Product 1 Description</div>
+            <div class="card">
+                <img src="Laptops/samsung galaxybook4.png" alt="Product 3" class="product-image">
+                <h1>Samsung Galaxy Book </h1>
+                <p>4th Generation</p>
+                <p class="price">£699.99</p>
+                <a href="laptops.php">VIEW</a>
             </div>
-            <div class="box">
-                <a href="product2.html">
-                    <img src="Tech_Nova.png" alt="Product 2">
-                </a>
-                <div class="box-text">Product 2 Description</div>
-            </div>
-            <div class="box">
-                <a href="product3.html">
-                    <img src="Tech_Nova.png" alt="Product 3">
-                </a>
-                <div class="box-text">Product 3 Description</div>
-            </div>
-            <div class="box">
-                <a href="product4.html">
-                    <img src="Tech_Nova.png" alt="Product 4">
-                </a>
-                <div class="box-text">Product 4 Description</div>
+            
+            <div class="card">
+                <img src="Phones/s23black.png" alt="Product 4" class="product-image">
+                <h1>Samsung Galaxy</h1>
+                <p>S23</p>
+                <p class="price">£749.00</p>
+                <a href="Phone.php">VIEW</a>
             </div>
         </section>
-    </section>
+
+
 
     <!-- Footer -->
 
-    <footer>
-        <div class="footer-links">
-            <a href="terms.html">Terms</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="help.html">Help</a>
-            <a href="Admin_Signup_page.html">Admin Signup</a>
-            <a href="Customer_SignUp.html">Signup</a>
-        </div>
-        <div class="contact-info">
-            <p>Email: sales@example.com</p>
-            <p>Phone: 123-456-7890</p>
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
-    <!-- javascript link -->
+    <!-- javascript link (homepage.js) -->
 
-    <script src="testpage.js"></script>
+    <script src="homepage.js"></script>
 
 </body>
+</html>
