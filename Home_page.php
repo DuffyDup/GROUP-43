@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session to check login status
+session_start(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
