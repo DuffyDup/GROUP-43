@@ -55,7 +55,7 @@
                 <p><?= htmlspecialchars($product['description']) ?></p>
             </div>
 
-<<<<<<< HEAD
+
         
             <form action="productdetail.php" method="post" class="add-to-basket">
             
@@ -65,25 +65,8 @@
 
             </div>
             </form>
-    
-=======
-          
-            <!-- <div class="color-options">
-                <span>Color: </span>
-                <div class="color-circle" style="background-color: red;"></div>
-                <div class="color-circle" style="background-color: blue;"></div>
-                <div class="color-circle" style="background-color: black;"></div>
-            </div>
-            -->
-          
-            <a href="">
-            <div class="add-to-basket">
-                <button>Add to Basket</button>
-            </div>
-            </a>
-            
-        </div>
->>>>>>> 24ce5468e5c239c8ca091c17c360fcff03b9447e
+
+  
     </section>
 
     
