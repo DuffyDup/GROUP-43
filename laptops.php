@@ -21,7 +21,7 @@
 <div class="product-container">
     <div class="product-grid">
     <?php
-        $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'Laptop'");
+        $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'laptop'");
         $stmt->execute();
         $products = $stmt ->fetchAll(PDO::FETCH_ASSOC);
         if (!$products) {
