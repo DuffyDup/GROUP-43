@@ -49,7 +49,7 @@ session_start();
     <!-- Product Card Section -->
     <section class="product-cards">
       <div class="card">
-        <a href="smartwatches.php">
+        <a href="productdetail.php?product_id=22">
           <img src="Smart_watches_images/Applewatch9.png" alt="Product 1" class="product-image">
           <h1>Apple Watch</h1>
           <p>Series 9</p>
