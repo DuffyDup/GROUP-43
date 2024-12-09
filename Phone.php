@@ -1,27 +1,26 @@
 <?php
-    session_start(); // Start the session to check login status
-    require 'connectdb.php'; // Ensure this initializes a PDO connection in $db
-    $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
+session_start(); // Start the session to check login status
+require 'connectdb.php'; // Ensure this initializes a PDO connection in $db
+$user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laptops</title>
-    <link rel="stylesheet" href="laptops.css">
+    <title>Phone Products</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="phone.css">
 </head>
 <body>
 
 <!-- Include Navigation -->
 <?php include 'Navbar.php'; ?>
 
-
 <div class="product-container">
     <div class="product-grid">
     <?php
-        $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'laptop'");
+        $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'phone'");
         $stmt->execute();
         $products = $stmt ->fetchAll(PDO::FETCH_ASSOC);
         if (!$products) {
