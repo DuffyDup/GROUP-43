@@ -16,38 +16,29 @@ session_start(); // Start the session to check login status
 <?php include 'Navbar.php'; ?>
 
 <div class="product-container">
-    <h1>Our Audio Devices</h1>
     <div class="product-grid">
-        <div class="product-card">
-            <img src="audio1.jpg" alt="Audio Device 1">
-            <h2>Audio Device 1</h2>
-            <p>Description for audio device 1.</p>
-        </div>
-        <div class="product-card">
-            <img src="audio2.jpg" alt="Audio Device 2">
-            <h2>Audio Device 2</h2>
-            <p>Description for audio device 2.</p>
-        </div>
-        <div class="product-card">
-            <img src="audio3.jpg" alt="Audio Device 3">
-            <h2>Audio Device 3</h2>
-            <p>Description for audio device 3.</p>
-        </div>
-        <div class="product-card">
-            <img src="audio4.jpg" alt="Audio Device 4">
-            <h2>Audio Device 4</h2>
-            <p>Description for audio device 4.</p>
-        </div>
-        <div class="product-card">
-            <img src="audio5.jpg" alt="Audio Device 5">
-            <h2>Audio Device 5</h2>
-            <p>Description for audio device 5.</p>
-        </div>
-        <div class="product-card">
-            <img src="audio6.jpg" alt="Audio Device 6">
-            <h2>Audio Device 6</h2>
-            <p>Description for audio device 6.</p>
-        </div>
+    <?php
+        $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'headphone'");
+        $stmt->execute();
+        $products = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+        if (!$products) {
+            echo "No results found.";
+        }
+        foreach ($products as $row) {
+    ?>
+        
+            <div class="product-card">
+                <a href="productdetail.php?product_id=<?= urlencode($row["product_id"]) ?>">
+                <img src="<?= htmlspecialchars($row["picture"]) ?>" alt="<?= htmlspecialchars($row["name"]) ?>">
+                <h2><?= htmlspecialchars($row["name"]) ?></h2>
+                <p><?= htmlspecialchars($row["description"]) ?></p>
+                </a>
+            </div>
+        
+        
+    
+    <?php }
+    ?>
     </div>
 </div>
 

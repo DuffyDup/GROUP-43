@@ -16,38 +16,29 @@ session_start(); // Start the session to check login status
 <?php include 'Navbar.php'; ?>
 
 <div class="product-container">
-    
     <div class="product-grid">
-        <div class="product-card">
-            <img src="product1.jpg" alt="Product 1">
-            <h2>Product Name 1</h2>
-            <p>Description for product 1.</p>
-        </div>
-        <div class="product-card">
-            <img src="product2.jpg" alt="Product 2">
-            <h2>Product Name 2</h2>
-            <p>Description for product 2.</p>
-        </div>
-        <div class="product-card">
-            <img src="product3.jpg" alt="Product 3">
-            <h2>Product Name 3</h2>
-            <p>Description for product 3.</p>
-        </div>
-        <div class="product-card">
-            <img src="product4.jpg" alt="Product 4">
-            <h2>Product Name 4</h2>
-            <p>Description for product 4.</p>
-        </div>
-        <div class="product-card">
-            <img src="product5.jpg" alt="Product 5">
-            <h2>Product Name 5</h2>
-            <p>Description for product 5.</p>
-        </div>
-        <div class="product-card">
-            <img src="product6.jpg" alt="Product 6">
-            <h2>Product Name 6</h2>
-            <p>Description for product 6.</p>
-        </div>
+    <?php
+        $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'phone'");
+        $stmt->execute();
+        $products = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+        if (!$products) {
+            echo "No results found.";
+        }
+        foreach ($products as $row) {
+    ?>
+        
+            <div class="product-card">
+                <a href="productdetail.php?product_id=<?= urlencode($row["product_id"]) ?>">
+                <img src="<?= htmlspecialchars($row["picture"]) ?>" alt="<?= htmlspecialchars($row["name"]) ?>">
+                <h2><?= htmlspecialchars($row["name"]) ?></h2>
+                <p><?= htmlspecialchars($row["description"]) ?></p>
+                </a>
+            </div>
+        
+        
+    
+    <?php }
+    ?>
     </div>
 </div>
 
