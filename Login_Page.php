@@ -60,5 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button class="signup"><a href="Customer_SignUp.php">Create new account</a></button>
 </div>
 
+<!-- Footer -->
+<?php include 'footer.php'; ?>
 </body>
 </html> 

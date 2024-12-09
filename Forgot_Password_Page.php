@@ -204,6 +204,8 @@ session_start(); // Start the session to check login status
         }
     ?>
 
+<!-- Footer -->
+<?php include 'footer.php'; ?>
     
 </body>
 </html>
