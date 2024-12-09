@@ -38,8 +38,19 @@
     color: black;
 }
 
-/* Logo styling */
-.top-navigation .logo img {
+/* Logo-specific styling */
+.logo a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Maintain original color */
+    pointer-events: auto; /* Ensure it remains clickable */
+}
+
+.logo a:hover {
+    background: none; /* Remove background hover effect */
+    color: inherit; /* Remove color change on hover */
+}
+
+.logo img {
     height: 80px;
     width: auto;
     object-fit: contain;
@@ -86,6 +97,12 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+/* Align account dropdown to the right */
+.menu-options-account {
+    right: 0;
+    left: auto;
 }
 
 /* Make dropdown content visible on hover */
@@ -147,5 +164,10 @@
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 10px;
+    }
+
+    .menu-options-account {
+        right: 0;
+        left: auto;
     }
 }
