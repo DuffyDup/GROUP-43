@@ -51,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="details-container">
             <h1>Our Details</h1>
-            <p>Email: [Enter Email]</p>
-            <p>Phone: [Enter Phone Number]</p>
-            <p>Address: [Enter Address]</p>
+            <p>Email: technova638@gmail.com</p>
+            <p>Phone: 447893929457</p>
+            <p>Address: Aston St, Birmingham B4 7ET</p>
         </div>
     </div>
 </body>
