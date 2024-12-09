@@ -113,5 +113,7 @@ foreach ($basket_items as $item) {
             <p>Phone: 12345678 </p>
         </div>
     </footer>
+    <!-- Footer -->
+<?php include 'footer.php'; ?>
 </body>
 </html>

@@ -56,5 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Address: Aston St, Birmingham B4 7ET</p>
         </div>
     </div>
+    <!-- Footer -->
+<?php include 'footer.php'; ?>
 </body>
 </html>
