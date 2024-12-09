@@ -1,7 +1,7 @@
 <?php
 session_start(); // Start the session to check login status
 require 'connectdb.php'; // Ensure this initializes a PDO connection in $db
-    $user_email = $_SESSION['email'];
+    //$user_email = $_SESSION['email'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
