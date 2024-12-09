@@ -1,7 +1,7 @@
 <?php
     session_start(); // Start the session to check login status
     require 'connectdb.php'; 
-    //$user_email = $_SESSION['email'];
+    $user_email = $_SESSION['email'];
  
     if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
