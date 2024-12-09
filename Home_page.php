@@ -53,7 +53,7 @@ session_start();
           <img src="Smart_watches_images/Applewatch9.png" alt="Product 1" class="product-image">
           <h1>Apple Watch</h1>
           <p>Series 9</p>
-          <p class="price">£299.99</p>
+          <p class="price">£249.99</p>
         </a>
       </div>
 
@@ -62,16 +62,16 @@ session_start();
           <img src="Audio_Devices_images/Alexa1.png" alt="Product 2" class="product-image">
           <h1>Amazon Echo Dot</h1>
           <p>5th Generation</p>
-          <p class="price">£24.99</p>
+          <p class="price">£39.99</p>
         </a>
       </div>
 
       <div class="card">
         <a href="laptops.php">
-          <img src="Laptops/samsung galaxybook4.png" alt="Product 3" class="product-image">
+          <img src="Laptops/samsunggalaxybook2.png" alt="Product 3" class="product-image">
           <h1>Samsung Galaxy Book</h1>
-          <p>4th Generation</p>
-          <p class="price">£699.99</p>
+          <p>2th Generation</p>
+          <p class="price">£349.99</p>
         </a>
       </div>
 
@@ -80,7 +80,7 @@ session_start();
           <img src="Phones/s23black.png" alt="Product 4" class="product-image">
           <h1>Samsung Galaxy</h1>
           <p>S23</p>
-          <p class="price">£749.00</p>
+          <p class="price">£699.99</p>
         </a>
       </div>
     </section>

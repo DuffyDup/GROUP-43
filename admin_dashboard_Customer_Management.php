@@ -147,5 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tbody>
         </table>
     </div>
+    <br><br>
+    <!-- Footer -->
+<?php include 'footer.php'; ?>
 </body>
 </html>
