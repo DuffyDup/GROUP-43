@@ -8,13 +8,13 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="nav-left">
         <!-- Logo -->
         <div class="logo">
-            <a href="Home_Page.php">
-                <img src="Tech_Nova.png" alt="Tech Nova Logo">
+            <a href="Home_page.php">
+                <img src="Tech_Nova_logo/Tech_Nova.png" alt="Tech Nova Logo">
             </a>
         </div>
 
         <!-- Navigation Links -->
-        <a href="Home_Page.php">Home</a>
+        <a href="Home_page.php">Home</a>
         <a href="About_us_page.php">About Us</a>
         <a href="Contact_Us.php">Contact Us</a>
 
