@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Port = 587;
 
         $mail->Username = "TechNova638@gmail.com";
-        $mail->Password = "kboxrgaqzjjymzlq";
+        $mail->Password = "lvzniwmsqkhqalxe";
 
         $mail->addAddress("TechNova638@gmail.com");
         $mail->AddReplyTo($_POST['email'], $_POST['name']);
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="contact-container">
             <h1>Contact Us</h1>
-            <form action="submit_form.php" method="POST">
+            <form action="Contact_Us.php" method="POST">
                 <div class="form-group">
                     <input type="text" name="name" placeholder=" " required>
                     <label>Your Name</label>
