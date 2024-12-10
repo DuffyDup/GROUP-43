@@ -76,7 +76,7 @@ session_start(); // Start the session to check login status
                         $mail->Port = 587;
 
                         $mail->Username = "TechNova638@gmail.com";
-                        $mail->Password = "kboxrgaqzjjymzlq";
+                        $mail->Password = "lvzniwmsqkhqalxe";
                 
                         $mail->setFrom('TechNova@gmail.com', 'TechNova');
                         $mail->addAddress($email);

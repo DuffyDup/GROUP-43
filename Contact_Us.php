@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Port = 587;
 
         $mail->Username = "TechNova638@gmail.com";
-        $mail->Password = "kboxrgaqzjjymzlq";
+        $mail->Password = "lvzniwmsqkhqalxe";
 
         $mail->addAddress("TechNova638@gmail.com");
         $mail->AddReplyTo($_POST['email'], $_POST['name']);
