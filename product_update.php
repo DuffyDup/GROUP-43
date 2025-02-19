@@ -21,6 +21,7 @@
                     <th>Product Name</th>
                     <th>Update Product Name</th>
                     <th>Product Description</th>
+                    <th>Price</th>
                     <th>Stock</th>
                     <th>Actions</th>
                 </tr>
@@ -31,6 +32,7 @@
                             <td></td>
                             <td><input type="text" name="product_name" required></td>
                             <td><input type="text" name="product_description" required></td>
+                            <td><input type="text" name="Price" required></td>
                             <td><input type="number" name="stock" required></td>
                             <td>
                                 <button type="submit" name="update_product" class="btn update-btn">Update</button>
@@ -49,6 +51,7 @@
                 <tr>
                     <th>Product Name</th>
                     <th>Product Description</th>
+                    <th>Price</th>
                     <th>Stock</th>
                     <th>Actions</th>
                 </tr>
@@ -58,6 +61,7 @@
                         <form method="POST">
                             <td><input type="text" name="product_name" required></td>
                             <td><input type="text" name="product_description" required></td>
+                            <td><input type="text" name="Price"></td>
                             <td><input type="number" name="stock" required></td>
                             <td>
                                 <button type="submit" name="add_product" class="btn update-btn">Add</button>
