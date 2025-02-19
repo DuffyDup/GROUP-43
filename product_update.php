@@ -44,7 +44,7 @@
 
         <!-- Add Product Table -->
         <h2>Add Product</h2>
-        < class="styled-table">
+        <table class="styled-table">
             <thead>
                 <tr>
                     <th>Product Name</th>
