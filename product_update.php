@@ -48,7 +48,6 @@
             <thead>
                 <tr>
                     <th>Product Name</th>
-                    <th>Update Product Name</th>
                     <th>Product Description</th>
                     <th>Stock</th>
                     <th>Actions</th>
@@ -57,7 +56,6 @@
             <tbody>
                     <tr>
                         <form method="POST">
-                            <td></td>
                             <td><input type="text" name="product_name" required></td>
                             <td><input type="text" name="product_description" required></td>
                             <td><input type="number" name="stock" required></td>
