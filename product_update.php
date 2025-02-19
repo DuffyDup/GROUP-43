@@ -22,7 +22,7 @@
                     <th>Update Product Name</th>
                     <th>Product Description</th>
                     <th>Stock</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,7 +51,7 @@
                     <th>Update Product Name</th>
                     <th>Product Description</th>
                     <th>Stock</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
