@@ -19,9 +19,9 @@
             <thead>
                 <tr>
                     <th>Product Name</th>
+                    <th>Update Product Name</th>
                     <th>Product Description</th>
                     <th>Stock</th>
-                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -48,9 +48,9 @@
             <thead>
                 <tr>
                     <th>Product Name</th>
+                    <th>Update Product Name</th>
                     <th>Product Description</th>
                     <th>Stock</th>
-                    <th></th>
                     <th></th>
                 </tr>
             </thead>
