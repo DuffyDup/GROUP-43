@@ -27,18 +27,36 @@ if (isset($_POST['signup'])) {
                     $stmt = $db->prepare("INSERT INTO users (email, full_name, password, phone_number, type) VALUES (?, ?, ?, ?, ?)");
                     $stmt->execute([$email, $name, $hashed_password, $number, "customer"]);
 
-                    header("Location: Login_Page.php");
-                    exit();
+                    
+                    $stmt = $db->prepare("SELECT email, full_name, phone_number, type FROM users WHERE email = ?");
+                    $stmt->execute([$email]);
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($user) {
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['full_name'] = $user['full_name'];
+                        $_SESSION['phone_number'] = $user['phone_number'];
+                        $_SESSION['type'] = $user['type'];
+                        
+
+                        echo "<script>
+                            alert('Sign up successful. Redirecting to home page');
+                            window.location.href = 'Home_page.php'; 
+                        </script>";
+                        exit();
+                    } else {
+                        echo "<p style='color:red'>An error occurred. Please try logging in manually.</p>";
+                    }
                 } catch (PDOException $ex) {
                     echo "Failed to connect to the database.<br>";
                     echo $ex->getMessage();
-                    exit;
+                    exit();
                 }
             }
         } catch (PDOException $ex) {
             echo "Failed to connect to the database.<br>";
             echo $ex->getMessage();
-            exit;
+            exit();
         }
     }
 }
