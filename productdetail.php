@@ -9,6 +9,10 @@
     $stmt = $db->prepare("SELECT * FROM products WHERE product_id = :product_id");
     $stmt->execute([':product_id' => $product_id]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $stmt = $db->prepare("SELECT stock FROM products WHERE product_id = :product_id");
+    $stmt->execute([':product_id' => $product_id]);
+    $stock = $stmt->fetch(PDO::FETCH_ASSOC);
    
     }
 
@@ -64,8 +68,14 @@
         
             <form action="productdetail.php" method="post" class="add-to-basket">
             
-    <input type="hidden" name="product_id" value="<?= ($product_id) ?>">
-    <button type="submit" class="add-to-basket-btn">Add To Basket</button>
+            <?php if ($product['stock'] > 0): ?>
+                <form action="productdetail.php" method="post">
+                    <input type="hidden" name="product_id" value="<?= htmlspecialchars($product_id) ?>">
+                    <button type="submit" class="add-to-basket-btn">Add To Basket</button>
+                </form>
+            <?php else: ?>
+                <button class="out-of-stock" disabled>Out of Stock</button>
+            <?php endif; ?>
 </form>
 
             </div>
