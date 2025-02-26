@@ -3,78 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Update</title>
+    <title>Admin - Manage Inventory</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="admin_dashboard.css">
+  <link rel="stylesheet" href="product_update.css">
 </head>
 <body>
-    <!-- Navigation -->
     <?php include 'Navbar.php'; ?>
-    
-    <!-- Body -->
     <div class="dashboard-container">
-        <!-- Products Table -->
         <h2>Manage Products</h2>
         <table class="styled-table">
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Product Name</th>
-                    <th>Update Product Name</th>
-                    <th>Product Description</th>
+                    <th>Description</th>
                     <th>Price</th>
                     <th>Stock</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                    <tr>
-                        <form method="POST">
-                            <td></td>
-                            <td><input type="text" name="product_name" required></td>
-                            <td><input type="text" name="product_description" required></td>
-                            <td><input type="text" name="Price" required></td>
-                            <td><input type="number" name="stock" required></td>
-                            <td>
-                                <button type="submit" name="update_product" class="btn update-btn">Update</button>
-                                <button type="submit" name="delete_product" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
-                                <!--<input type="" name="" value="">-->
-                            </td>
-                        </form>
-                    </tr>
-            </tbody>
         </table>
 
-        <!-- Add Product Table -->
         <h2>Add Product</h2>
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>Product Name</th>
-                    <th>Product Description</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <tr>
-                        <form method="POST">
-                            <td><input type="text" name="product_name" required></td>
-                            <td><input type="text" name="product_description" required></td>
-                            <td><input type="text" name="Price"></td>
-                            <td><input type="number" name="stock" required></td>
-                            <td>
-                                <button type="submit" name="add_product" class="btn update-btn">Add</button>
-                                <button type="submit" name="cancel_product" class="btn delete-btn" onclick="return confirm('Are you sure you want to cancel this update?');">Cancel</button>
-                                <!--<input type="hidden" name="email" value="">-->
-                            </td>
-                        </form>
-                    </tr>
-            </tbody>
-        </table>
-    </div>
-    <br><br>
+<form method="POST" enctype="multipart/form-data" class="inventory-form">
+    <input type="text" name="product_name" placeholder="Product Name" required>
+    <input type="text" name="product_description" placeholder="Description" required>
+    <input type="number" step="0.01" name="price" placeholder="Price" required>
+    <input type="number" name="stock" placeholder="Stock" required>
+    <input type="file" name="product_image">
+    <button type="submit" name="add_product">Add Product</button>
+</form>
 
-    <!-- Footer -->
+    </div>
     <?php include 'footer.php'; ?>
 </body>
+</html>

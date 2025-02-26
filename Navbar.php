@@ -47,7 +47,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <button class="menu-button">Admin Options</button>
                 <div class="menu-options">
                     <a href="admin_dashboard_Customer_Management.php">User Management</a>
-                    <a href="product_update.php">Product Update</a>
+                    <a href="product_update.php">Manage Inventory</a>
                 </div>
             </div>
         <?php endif; ?>
