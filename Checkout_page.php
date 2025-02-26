@@ -50,12 +50,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 INSERT INTO Purchased (email, product_id, quantity)
                 VALUES (:email, :product_id, :quantity)
             ";
+
             $insert_stmt = $db->prepare($insert_query);
             $insert_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
             $insert_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
             $insert_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
        
             $insert_stmt->execute();
+
+            $update_stock = "
+            UPDATE Products 
+            SET stock = stock - :quantity 
+            WHERE product_id = :product_id
+        ";
+        $update_stock_stmt = $db->prepare($update_stock);
+        $update_stock_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
+        $update_stock_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
+        $update_stock_stmt->execute();
         }
 
      
