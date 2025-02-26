@@ -17,11 +17,23 @@ if (isset($_GET['remove']) ) {
 }
 
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isset($_POST['quantity'])) {
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
 
+    $stmt = $db->prepare("SELECT stock FROM products WHERE product_id = :product_id");
+    $stmt->execute([':product_id' => $product_id]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    if ($product && $quantity > $product['stock']) {
+                        echo 
+       "<script>
+                            alert('Quantity exceeds stock. Please adjust quantity');
+                              window.location.href = 'basket.php'; 
+                        </script>";
+                         exit();
+    } else {
     if ($quantity > 0) {
         $stmt = $db->prepare("UPDATE basket SET quantity = :quantity WHERE email = :email AND product_id = :product_id");
         $stmt->execute([':quantity' => $quantity, ':email' => $user_email, ':product_id' => $product_id]);
@@ -34,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isse
     header('Location: basket.php');
     exit();
 }
-
+}
 
 $stmt = $db->prepare("
     SELECT 
@@ -107,3 +119,4 @@ foreach ($basket_items as $item) {
 <?php include 'footer.php'; ?>
 </body>
 </html>
+        
