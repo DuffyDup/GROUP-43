@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isse
     if ($product && $quantity > $product['stock']) {
                         echo 
        "<script>
-                            alert('Quantity exceeds stock. Please adjust quantity');
-                              window.location.href = 'basket.php'; 
-                        </script>";
+        alert('Max quantity is {$product['stock']}. Please adjust quantity.');
+        window.location.href = 'basket.php'; 
+    </script>";
                          exit();
     } else {
     if ($quantity > 0) {
