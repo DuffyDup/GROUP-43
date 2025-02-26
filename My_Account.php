@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Redirect to login page if the user is not logged in
+
 if (!isset($_SESSION['email'])) {
     header("Location: Login_Page.php");
     exit();
@@ -13,7 +13,7 @@ $email = $_SESSION['email'];
 $user = [];
 
 try {
-    // Fetch user details from the database
+   
     $stmt = $db->prepare("SELECT full_name, email, password, phone_number FROM users WHERE email = :email");
     $stmt->execute(['email' => $email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -22,7 +22,6 @@ try {
     exit();
 }
 
-// Handle form submission for updating account details
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
     $full_name = $_POST['full_name'];
     $new_email = $_POST['email'];
@@ -30,15 +29,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
     $confirm_password = $_POST['confirm_password'];
     $phone_number = $_POST['phone_number'];
 
-    // Validate form input
+   
     if ($password !== $confirm_password) {
         echo "<script>alert('Passwords do not match. Please try again.');</script>";
     } else {
         try {
-            // Hash the new password
+           
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            // Update user details in the database
+            
             $stmt = $db->prepare("UPDATE users SET full_name = :full_name, email = :new_email, password = :password, phone_number = :phone_number WHERE email = :current_email");
             $stmt->execute([
                 'full_name' => $full_name,
@@ -48,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
                 'current_email' => $email,
             ]);
 
-            // Update session email if the email was changed
             if ($new_email !== $email) {
                 $_SESSION['email'] = $new_email;
             }
@@ -99,8 +97,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
             <label for="phone-number">Phone Number</label>
         </div>
         <button type="submit" name="submit-changes" class="signup-btn">Confirm Changes</button>
+
     </form>
+    
 </div>
+
 
 <!-- Footer -->
 <?php include 'footer.php'; ?>
