@@ -57,6 +57,24 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+/* Updated styles for select to match input fields */
+.inventory-form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    appearance: none; /* Removes default browser styles */
+    width: 100%; /* Match input width */
+}
+
+/* Ensure the dropdown doesn't overflow */
+.inventory-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
 
 .inventory-form input, 
 .inventory-form button {
