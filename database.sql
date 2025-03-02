@@ -21,14 +21,16 @@ CREATE TABLE Products (
     price DECIMAL(10, 2) NOT NULL-- Product price with 2 decimal places
 );
 
--- Create the Purchased table
+-- Create the Purchased table with order_id as the primary key
 CREATE TABLE Purchased (
+    order_id INT AUTO_INCREMENT PRIMARY KEY, -- Unique ID for each purchase
     email VARCHAR(255), -- Foreign Key to Users
     product_id INT,  -- Foreign Key to Products
-    quantity INT NOT NULL,-- Quantity the user purchased
-    address VARCHAR(255) NOT NULL, -- address of where the order will be sent 
-    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE,-- Make the values in both tables the same
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE -- Make the values in both tables the same
+    quantity INT NOT NULL, -- Quantity the user purchased
+    address VARCHAR(255) NOT NULL, -- Address where the order will be sent 
+    postcode VARCHAR(20) NOT NULL, -- Postal code for delivery
+    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE, -- Ensure consistency between tables
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE -- Ensure consistency between tables
 );
 
 -- Create the Basket table
