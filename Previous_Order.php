@@ -15,6 +15,7 @@ $email = $_SESSION['email'];
 $query = "
     SELECT 
         p.email, 
+        p.order_id,
         p.product_id, 
         p.quantity, 
         pr.name AS product_name, 
@@ -58,6 +59,7 @@ try {
         <?php else: ?>
             <table border="1">
                 <tr>
+                    <th>Order ID</th>
                     <th>Product ID</th>
                     <th>Product Name</th>
                     <th>Price</th>
@@ -65,7 +67,8 @@ try {
                     <th>Total Price</th>
                 </tr>
                 <?php foreach ($orders as $order): ?>
-                    <tr>
+                    <tr>   
+                        <td><?php echo htmlspecialchars($order['order_id']); ?></td>
                         <td><?php echo htmlspecialchars($order['product_id']); ?></td>
                         <td><?php echo htmlspecialchars($order['product_name']); ?></td>
                         <td>£<?php echo number_format($order['product_price'], 2); ?></td>
