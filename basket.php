@@ -1,13 +1,12 @@
 <?php
 require_once 'connectdb.php';
-session_start(); 
-
-
+session_start();
 
 $user_email = $_SESSION['email'];
 
-if (isset($_GET['remove']) ) {
+if (isset($_GET['remove'])) {
     $product_id = $_GET['remove'];
+
 
     $stmt = $db->prepare("DELETE FROM basket WHERE email = :email AND product_id = :product_id");
     $stmt->execute([':email' => $user_email, ':product_id' => $product_id]);
@@ -16,42 +15,67 @@ if (isset($_GET['remove']) ) {
     exit();
 }
 
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isset($_POST['quantity'])) {
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
 
+   
     $stmt = $db->prepare("SELECT stock FROM products WHERE product_id = :product_id");
     $stmt->execute([':product_id' => $product_id]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($product && $quantity > $product['stock']) {
-                        echo 
-       "<script>
-        alert('Max quantity is {$product['stock']}. Please adjust quantity.');
-        window.location.href = 'basket.php'; 
-    </script>";
-                         exit();
+        echo "<script>
+                alert('Max quantity is {$product['stock']}. Please adjust quantity.');
+                window.location.href = 'basket.php'; 
+              </script>";
+        exit();
     } else {
-    if ($quantity > 0) {
-        $stmt = $db->prepare("UPDATE basket SET quantity = :quantity WHERE email = :email AND product_id = :product_id");
-        $stmt->execute([':quantity' => $quantity, ':email' => $user_email, ':product_id' => $product_id]);
-    } else {
+      
+        if ($quantity > 0) {
         
-        $stmt = $db->prepare("DELETE FROM basket WHERE email = :email AND product_id = :product_id");
-        $stmt->execute([':email' => $user_email, ':product_id' => $product_id]);
+            $stmt = $db->prepare("SELECT quantity FROM basket WHERE email = :email AND product_id = :product_id");
+            $stmt->execute([':email' => $user_email, ':product_id' => $product_id]);
+            $existingProduct = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($existingProduct) {
+           
+                $new_quantity = $existingProduct['quantity'] + $quantity;
+                $updateStmt = $db->prepare("UPDATE basket SET quantity = :quantity WHERE email = :email AND product_id = :product_id");
+                $updateStmt->execute([
+                    ':quantity' => $new_quantity,
+                    ':email' => $user_email,
+                    ':product_id' => $product_id
+                ]);
+            } else {
+         
+                $insertStmt = $db->prepare("INSERT INTO basket (email, product_id, quantity) VALUES (:email, :product_id, :quantity)");
+                $insertStmt->execute([
+                    ':email' => $user_email,
+                    ':product_id' => $product_id,
+                    ':quantity' => $quantity
+                ]);
+            }
+        } else {
+       
+            $stmt = $db->prepare("DELETE FROM basket WHERE email = :email AND product_id = :product_id");
+            $stmt->execute([':email' => $user_email, ':product_id' => $product_id]);
+        }
+
+        header('Location: basket.php');
+        exit();
     }
-
-    header('Location: basket.php');
-    exit();
-}
 }
 
+// Fetch basket items for the user
 $stmt = $db->prepare("
     SELECT 
         b.quantity, p.product_id, p.name, p.description, p.price, 
-         p.picture,p.stock FROM basket b JOIN products p ON b.product_id = p.product_id WHERE b.email = :email
+        p.picture, p.stock 
+    FROM basket b 
+    JOIN products p 
+    ON b.product_id = p.product_id 
+    WHERE b.email = :email
 ");
 $stmt->execute([':email' => $user_email]);
 $basket_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -70,11 +94,10 @@ foreach ($basket_items as $item) {
     <title>Basket</title>
     <link rel="stylesheet" href="basket.css">
     <link rel="stylesheet" href="main.css">
-    
 </head>
 <body>
     <!-- Include the Navigation -->
-  <?php include 'Navbar.php'; ?>
+    <?php include 'Navbar.php'; ?>
 
     <div class="container">
         <h1>Your Basket</h1>
@@ -107,16 +130,14 @@ foreach ($basket_items as $item) {
             </div>
 
             <button class="checkout">
-    <a href="Checkout_page.php">Proceed to Checkout</a>
-</button>
+                <a href="Checkout_page.php">Proceed to Checkout</a>
+            </button>
         <?php else: ?>
             <p>Your basket is empty.</p>
         <?php endif; ?>
     </div>
 
- 
     <!-- Footer -->
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
-        

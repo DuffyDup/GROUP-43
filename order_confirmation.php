@@ -29,13 +29,12 @@ $order_stmt->execute();
 $order_details = $order_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-// Check if the order exists
 if (!$order_details) {
     echo "<script>alert('Order not found.'); window.location.href='index.php';</script>";
     exit();
 }
 
-// Extract the address from the first item (all rows have the same address)
+
 $shipping_address = $order_details[0]['address'] . ', ' . $order_details[0]['postcode'];
 ?>
 
@@ -82,8 +81,8 @@ $shipping_address = $order_details[0]['address'] . ', ' . $order_details[0]['pos
             </tr>
         </table>
 
-        <p>Thank you for your purchase! You will receive a confirmation email shortly.</p>
-        <a href="index.php" class="back-home-btn">Return to Home</a>
+        <p>Thank you for your purchase!</p>
+      
     </div>
 
 </body>
