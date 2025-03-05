@@ -3,7 +3,7 @@ This div is for the outer box style of the login page.
 
 /* This section styles the main login area. */
 .loginuser, .sendtheOTP, .entertheOTP, .choosenewpassword{
-    background-color: #fff;
+    background-color: #c1d1cf;
     padding: 30px;
     border-radius: 10px; 
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -11,7 +11,7 @@ This div is for the outer box style of the login page.
     max-width: 400px;
     margin: 0 auto; 
     text-align: center;
-    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    /*background: linear-gradient(135deg, #ffffff, #f7f7f7);*/
     margin-top: 20px;
     color: black;
 }
@@ -29,8 +29,8 @@ This div is for the outer box style of the login page.
 }
 
 .entrybox input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #748b91;
+    box-shadow: 0 0 5px rgba(116, 139, 145, 0.5);
 }
 
 
@@ -42,7 +42,7 @@ This div is for the outer box style of the login page.
 }
 
 .loged, button{
-    background-color: #007bff;
+    background-color: #636467;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -53,11 +53,11 @@ This div is for the outer box style of the login page.
 }
 
 .loged:hover {
-    background-color: #0056b3;
+    background-color: #666b64;
 }
 
 .signup{
-    background-color: #007bff;
+    background-color: #636467;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -66,6 +66,10 @@ This div is for the outer box style of the login page.
     cursor: pointer;
     transition: background-color 0.3s ease;
 } 
+
+.signup:hover {
+    background-color: #666b64;
+}
 
 
 #forgetlink{
