@@ -48,6 +48,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="menu-options">
                     <a href="admin_dashboard_Customer_Management.php">User Management</a>
                     <a href="product_update.php">Product Update</a>
+                    <a href="reports.php">Product Update</a>
                 </div>
             </div>
         <?php endif; ?>
