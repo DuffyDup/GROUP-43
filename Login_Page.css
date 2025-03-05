@@ -11,7 +11,7 @@ This div is for the outer box style of the login page.
     max-width: 400px;
     margin: 0 auto; 
     text-align: center;
-    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    background: linear-gradient(135deg, #c1d1cf, #748b91);
     margin-top: 20px;
     color: black;
 }
@@ -29,7 +29,7 @@ This div is for the outer box style of the login page.
 }
 
 .entrybox input:focus {
-    border-color: #007bff;
+    border-color: #748b91;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
@@ -42,7 +42,7 @@ This div is for the outer box style of the login page.
 }
 
 .loged, button{
-    background-color: #007bff;
+    background-color: #748b91;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -53,11 +53,11 @@ This div is for the outer box style of the login page.
 }
 
 .loged:hover {
-    background-color: #0056b3;
+    background-color: #30393b;
 }
 
 .signup{
-    background-color: #007bff;
+    background-color: #748b91;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
