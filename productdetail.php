@@ -13,16 +13,24 @@ if (isset($_GET['product_id'])) {
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// Handle adding to basket
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'], $_POST['quantity'])) {
     if (!$user_email) {
-        echo "<script>alert('Please log in to continue.'); window.location.href='Login_Page.php';</script>";
+        echo "<script>alert('Please log in to shop with us.'); window.location.href='Login_Page.php';</script>";
         exit;
     }
 
     $product_id = $_POST['product_id'];
+    $quantity = max(1, intval($_POST['quantity']));
 
-    // Check if the product already exists in the basket
+    $stmt = $db->prepare("SELECT stock FROM products WHERE product_id = :product_id");
+    $stmt->execute([':product_id' => $product_id]);
+    $product_stock = $stmt->fetchColumn();
+
+    if ($quantity > $product_stock) {
+        echo "<script>alert('Max quantity available is $product_stock. Please adjust your quantity.'); window.location.href='productdetail.php?product_id=" . htmlspecialchars($product_id) . "';</script>";
+        exit;
+    }
+
     $stmt = $db->prepare("SELECT * FROM basket WHERE email = :email AND product_id = :product_id");
     $stmt->execute([
         ':email' => $user_email,
@@ -31,18 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     $existing_item = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($existing_item) {
-        // If the product already exists, update the quantity
-        $stmt = $db->prepare("UPDATE basket SET quantity = quantity + 1 WHERE email = :email AND product_id = :product_id");
+        $stmt = $db->prepare("UPDATE basket SET quantity = quantity + :quantity WHERE email = :email AND product_id = :product_id");
         $stmt->execute([
+            ':quantity' => $quantity,
             ':email' => $user_email,
             ':product_id' => $product_id,
         ]);
     } else {
-        // If the product doesn't exist, add a new item to the basket
-        $insertStmt = $db->prepare("INSERT INTO basket (email, product_id, quantity) VALUES (:email, :product_id, 1)");
+        $insertStmt = $db->prepare("INSERT INTO basket (email, product_id, quantity) VALUES (:email, :product_id, :quantity)");
         $insertStmt->execute([
             ':email' => $user_email,
             ':product_id' => $product_id,
+            ':quantity' => $quantity,
         ]);
     }
 
@@ -64,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <!-- Include Navigation -->
     <?php include 'Navbar.php'; ?>
 
     <section class="product">
@@ -79,21 +86,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
                 <p><?= htmlspecialchars($product['description']) ?></p>
             </div>
 
-            <!-- Single form for adding to basket -->
             <form action="productdetail.php" method="post" class="add-to-basket">
                 <input type="hidden" name="product_id" value="<?= htmlspecialchars($product_id) ?>">
                 
                 <?php if ($product['stock'] > 0): ?>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" min="1" max="<?= $product['stock'] ?>" value="1">
                     <button type="submit" class="add-to-basket-btn">Add To Basket</button>
                 <?php else: ?>
                     <button class="out-of-stock" disabled>Out of Stock</button>
                 <?php endif; ?>
             </form>
-
         </div>
     </section>
 
-    <!-- Footer -->
     <?php include 'footer.php'; ?>
 </body>
 </html>
