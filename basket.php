@@ -1,12 +1,10 @@
 <?php
 require_once 'connectdb.php';
-session_start(); 
-
-
+session_start();
 
 $user_email = $_SESSION['email'];
 
-if (isset($_GET['remove']) ) {
+if (isset($_GET['remove'])) {
     $product_id = $_GET['remove'];
 
     $stmt = $db->prepare("DELETE FROM basket WHERE email = :email AND product_id = :product_id");
@@ -15,8 +13,6 @@ if (isset($_GET['remove']) ) {
     header('Location: basket.php');
     exit();
 }
-
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isset($_POST['quantity'])) {
     $product_id = $_POST['product_id'];
@@ -27,31 +23,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id']) && isse
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($product && $quantity > $product['stock']) {
-                        echo 
-       "<script>
-        alert('Max quantity is {$product['stock']}. Please adjust quantity.');
-        window.location.href = 'basket.php'; 
-    </script>";
-                         exit();
+        echo "<script>
+                alert('Max quantity is {$product['stock']}. Please adjust quantity.');
+                window.location.href = 'basket.php'; 
+              </script>";
+        exit();
     } else {
-    if ($quantity > 0) {
-        $stmt = $db->prepare("UPDATE basket SET quantity = :quantity WHERE email = :email AND product_id = :product_id");
-        $stmt->execute([':quantity' => $quantity, ':email' => $user_email, ':product_id' => $product_id]);
-    } else {
-        
-        $stmt = $db->prepare("DELETE FROM basket WHERE email = :email AND product_id = :product_id");
-        $stmt->execute([':email' => $user_email, ':product_id' => $product_id]);
-    }
+        if ($quantity > 0) {
+            $stmt = $db->prepare("SELECT quantity FROM basket WHERE email = :email AND product_id = :product_id");
+            $stmt->execute([':email' => $user_email, ':product_id' => $product_id]);
+            $existingProduct = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    header('Location: basket.php');
-    exit();
-}
+            if ($existingProduct) {
+                $updateStmt = $db->prepare("UPDATE basket SET quantity = :quantity WHERE email = :email AND product_id = :product_id");
+                $updateStmt->execute([
+                    ':quantity' => $quantity,
+                    ':email' => $user_email,
+                    ':product_id' => $product_id
+                ]);
+            } else {
+                $insertStmt = $db->prepare("INSERT INTO basket (email, product_id, quantity) VALUES (:email, :product_id, :quantity)");
+                $insertStmt->execute([
+                    ':email' => $user_email,
+                    ':product_id' => $product_id,
+                    ':quantity' => $quantity
+                ]);
+            }
+        } else {
+            $stmt = $db->prepare("DELETE FROM basket WHERE email = :email AND product_id = :product_id");
+            $stmt->execute([':email' => $user_email, ':product_id' => $product_id]);
+        }
+    }
 }
 
 $stmt = $db->prepare("
     SELECT 
-        b.quantity, p.product_id, p.name, p.description, p.price, 
-         p.picture,p.stock FROM basket b JOIN products p ON b.product_id = p.product_id WHERE b.email = :email
+        b.quantity, p.product_id, p.name, p.price, 
+        p.picture, p.stock 
+    FROM basket b 
+    JOIN products p 
+    ON b.product_id = p.product_id 
+    WHERE b.email = :email
 ");
 $stmt->execute([':email' => $user_email]);
 $basket_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -70,15 +82,20 @@ foreach ($basket_items as $item) {
     <title>Basket</title>
     <link rel="stylesheet" href="basket.css">
     <link rel="stylesheet" href="main.css">
-    
+    <script>
+        function updateQuantity(productId, quantity) {
+            fetch('basket.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `product_id=${productId}&quantity=${quantity}`
+            }).then(() => location.reload());
+        }
+    </script>
 </head>
 <body>
-    <!-- Include the Navigation -->
-  <?php include 'Navbar.php'; ?>
-
+    <?php include 'Navbar.php'; ?>
     <div class="container">
         <h1>Your Basket</h1>
-
         <?php if ($basket_items): ?>
             <?php foreach ($basket_items as $item): ?>
                 <div class="cart-item">
@@ -87,36 +104,25 @@ foreach ($basket_items as $item) {
                     </div>
                     <div class="item-details">
                         <h3><?php echo ($item['name']); ?></h3>
-                        <p><?php echo ($item['description']); ?></p>
                         <p>Price: £<?php echo number_format($item['price'], 2); ?></p>
-                        <form method="POST" action="basket.php">
-                            <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
-                            <label for="quantity-<?php echo $item['product_id']; ?>">Quantity:</label>
-                            <input id="quantity-<?php echo $item['product_id']; ?>" type="number" name="quantity" value="<?php echo $item['quantity']; ?>" min="0">
-                            <button type="submit">Update</button>
-                        </form>
+                        <label for="quantity-<?php echo $item['product_id']; ?>">Quantity:</label>
+                        <input id="quantity-<?php echo $item['product_id']; ?>" type="number" name="quantity" min="0" max="<?php echo $item['stock']; ?>" value="<?php echo $item['quantity']; ?>" oninput="updateQuantity(<?php echo $item['product_id']; ?>, this.value)">
                         <a href="basket.php?remove=<?php echo $item['product_id']; ?>">
                             <button>Remove</button>
                         </a>
                     </div>
                 </div>
             <?php endforeach; ?>
-
             <div class="total-price">
                 <p>Total Price: £<?php echo number_format($total_price, 2); ?></p>
             </div>
-
             <button class="checkout">
-    <a href="Checkout_page.php">Proceed to Checkout</a>
-</button>
+                <a href="Checkout_page.php">Proceed to Checkout</a>
+            </button>
         <?php else: ?>
             <p>Your basket is empty.</p>
         <?php endif; ?>
     </div>
-
- 
-    <!-- Footer -->
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
-        
