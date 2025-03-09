@@ -3,45 +3,43 @@ session_start();
 require_once 'connectdb.php';
 
 if (!isset($_SESSION['email'])) {
-    echo "Please log in to view your order details.";
-    exit;
+    die("Please log in to view your order details.");
 }
 
 if (!isset($_GET['order_id'])) {
-    echo "Invalid order request.";
-    exit;
+    die("Invalid order request.");
 }
 
 $order_id = $_GET['order_id'];
 $email = $_SESSION['email'];
 
-$query = "
-    SELECT 
-        p.product_id, 
-        p.quantity, 
-        pr.name AS product_name, 
-        pr.price AS product_price, 
-        (p.quantity * pr.price) AS total_price
-    FROM Purchased p
-    JOIN Products pr ON p.product_id = pr.product_id
-    WHERE p.order_id = :order_id AND p.email = :email
-";
-
 try {
-    $stmt = $db->prepare($query);
-    $stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->execute();
+    $stmt = $db->prepare("
+        SELECT p.product_id, p.quantity, p.address, p.postcode, 
+               pr.name AS product_name, pr.price AS product_price, 
+               (p.quantity * pr.price) AS total_price
+        FROM Purchased p
+        JOIN Products pr ON p.product_id = pr.product_id
+        WHERE p.order_id = :order_id AND p.email = :email
+    ");
+    $stmt->execute(['order_id' => $order_id, 'email' => $email]);
     $order_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($order_details) {
+        $address = $order_details[0]['address'];
+        $postcode = $order_details[0]['postcode'];
+    } else {
+        $address = $postcode = "Unknown";
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $delete_stmt = $db->prepare("DELETE FROM Purchased WHERE order_id = :order_id AND email = :email");
+        $delete_stmt->execute(['order_id' => $order_id, 'email' => $email]);
+        echo "<script>alert('Order cancelled successfully.'); window.location.href='Previous_Order.php';</script>";
+        exit;
+    }
 } catch (PDOException $e) {
-    die("Error fetching order details: " . $e->getMessage());
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $delete_stmt = $db->prepare("DELETE FROM Purchased WHERE order_id = :order_id AND email = :email");
-    $delete_stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
-    $delete_stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $delete_stmt->execute();
-    echo "<script>alert('Order successfully cancelled , redirecting to previous orders page! '); window.location.href='Previous_Order.php';</script>";
+    die("Error: " . $e->getMessage());
 }
 ?>
 
@@ -50,18 +48,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Details - <?php echo htmlspecialchars($order_id); ?></title>
+    <title>Order Details</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <?php include 'Navbar.php'; ?>
 
     <div class="order-details">
-        <h2>Order Details (Order ID: <?php echo htmlspecialchars($order_id); ?>)</h2>
-
-        <?php if (empty($order_details)): ?>
+        <h2>Order Details (Order ID: <?= htmlspecialchars($order_id); ?>)</h2>
+        
+        <?php if (!$order_details): ?>
             <p>No details found for this order.</p>
         <?php else: ?>
+            <p>Delivery Address: <?= htmlspecialchars($address) . ", " . htmlspecialchars($postcode); ?></p>
             <table border="1">
                 <tr>
                     <th>Product ID</th>
@@ -72,14 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
                 <?php foreach ($order_details as $detail): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($detail['product_id']); ?></td>
-                        <td><?php echo htmlspecialchars($detail['product_name']); ?></td>
-                        <td>£<?php echo number_format($detail['product_price'], 2); ?></td>
-                        <td><?php echo htmlspecialchars($detail['quantity']); ?></td>
-                        <td>£<?php echo number_format($detail['total_price'], 2); ?></td>
+                        <td><?= htmlspecialchars($detail['product_id']); ?></td>
+                        <td><?= htmlspecialchars($detail['product_name']); ?></td>
+                        <td>£<?= number_format($detail['product_price'], 2); ?></td>
+                        <td><?= htmlspecialchars($detail['quantity']); ?></td>
+                        <td>£<?= number_format($detail['total_price'], 2); ?></td>
                     </tr>
-
-
                 <?php endforeach; ?>
             </table>
         <?php endif; ?>
@@ -87,11 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br>
         <a href="Previous_Order.php">Back to Orders</a>
 
+        <?php if ($order_details): ?>
+            <form method="POST" onsubmit="return confirm('Confirmation of order cancellation?');">
+                <button type="submit" class="cancel-order-btn">Cancel Order</button>
+            </form>
+        <?php endif; ?>
     </div>
-    <form method="POST">
-    <input type="hidden" name="cancel_order" value="1">
-    <button type="submit" class="cancel-order-btn">Cancel Order</button>
-</form>
-<?php include 'footer.php'; ?>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>

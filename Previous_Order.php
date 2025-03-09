@@ -14,7 +14,8 @@ $query = "
         p.email,          
         p.order_id,         
         p.product_id,          
-        p.quantity,          
+        p.quantity,
+        p.time_of_order,          
         pr.name AS product_name,          
         pr.price AS product_price,          
         (p.quantity * pr.price) AS total_price     
@@ -53,7 +54,8 @@ try {
             <table border="1">                 
                 <tr>                     
                     <th>Order ID</th>                                    
-                    <th>Total Price</th>                 
+                    <th>Total Price</th>             
+                    <th>Time of order</th>    
                 </tr>                 
                 <?php foreach ($orders as $order): ?>                     
                     <tr>                            
@@ -62,7 +64,8 @@ try {
                                 <?php echo htmlspecialchars($order['order_id']); ?>
                             </a>
                         </td>                                               
-                        <td>£<?php echo number_format($order['total_price'], 2); ?></td>                      
+                        <td>£<?php echo number_format($order['total_price'], 2); ?></td>    
+                        <td> <?php echo htmlspecialchars($order['time_of_order']); ?> </td>                 
                     </tr>                 
                 <?php endforeach; ?>             
             </table>         

@@ -44,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $db->beginTransaction();
 
-        // Generate unique order ID
         do {
             $order_id = rand(100000, 999999);
             $check_query = "SELECT COUNT(*) FROM Purchased WHERE order_id = :order_id";
@@ -54,13 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $exists = $check_stmt->fetchColumn();
         } while ($exists > 0);
 
-        // Insert each item from the basket into the Purchased table
         foreach ($basket_result as $row) {
-            // Insert order details into the Purchased table
+           
             $insert_stmt = $db->prepare("
-                INSERT INTO Purchased (order_id, email, product_id, quantity, address, postcode)
-                VALUES (:order_id, :email, :product_id, :quantity, :address, :postcode)
-            ");
+            INSERT INTO Purchased (order_id, email, product_id, quantity, address, postcode, time_of_order)
+            VALUES (:order_id, :email, :product_id, :quantity, :address, :postcode, NOW())
+        ");
+        
             $insert_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
             $insert_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
             $insert_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
@@ -68,8 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insert_stmt->bindValue(':address', $address, PDO::PARAM_STR);
             $insert_stmt->bindValue(':postcode', $postcode, PDO::PARAM_STR);
             $insert_stmt->execute();
-    
-            // Update product stock
+
             $update_stock = "
                 UPDATE Products 
                 SET stock = stock - :quantity 
@@ -80,8 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $update_stock_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
             $update_stock_stmt->execute();
         }
-    
-        // Clear the user's basket after successful purchase
+  
         $clear_basket_query = "DELETE FROM Basket WHERE email = :email";
         $clear_basket_stmt = $db->prepare($clear_basket_query);
         $clear_basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
