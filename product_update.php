@@ -2,6 +2,11 @@
 session_start(); // Start the session to check login status
 require 'connectdb.php'; // Ensure this initializes a PDO connection in $db
 
+// Import PHPMailer - for email notification feature
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+require "vendor/autoload.php";
+
 // Check if the user is logged in and is an admin
 if (!isset($_SESSION['email']) || $_SESSION['type'] !== 'admin') {
     header('Location: Login_Page.php');
@@ -97,6 +102,41 @@ if (isset($_POST['add_product'])) {
                     $addstmt->execute([$product_name2, $destination, $product_description2, $stock2, $category2, $price2]);
 
                     echo "<script>alert('Product added successfully.');</script>";
+                    
+                    // Notifying users by email that a new product is added
+                    if ($addstmt->rowCount() > 0) { // If a product is added
+                        try {
+                            // Fetch all user emails from the database
+                            $stmt = $db->query("SELECT email FROM users");
+                            $users = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+                            // Configure PHPMailer
+                            $mail = new PHPMailer(true);
+                            $mail->isSMTP();
+                            $mail->SMTPAuth = true;
+                            $mail->Host = "smtp.gmail.com";
+                            $mail->SMTPSecure = 'tls';
+                            $mail->Port = 587;
+                            
+                            // Set up technova email
+                            $mail->Username = "TechNova638@gmail.com";
+                            $mail->Password = "lvzniwmsqkhqalxe";
+
+                            // Email content
+                            $mail->Subject = "NEW STOCK ALERT: $product_name2";
+                            $mail->Body = "$product_name2 is now in stock! \n\nDescription: $product_description2\nCheck it out on the TechNova website!";
+
+                            foreach ($users as $user_email) {
+                                $mail->addAddress($user_email); 
+                                $mail->send(); // Send to users
+                                $mail->clearAddresses(); // Reset for next email
+                            }
+
+                        } catch (Exception $e) {
+                            echo "<p style='color:red'>Mailer Error: " . $mail->ErrorInfo . "</p>"; // mail error for debugging info
+                        }
+                    }
+                    
                     header("Refresh:0");
                 }
             } catch (PDOException $e) {
