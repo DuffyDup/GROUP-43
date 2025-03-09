@@ -157,7 +157,7 @@ if (isset($_POST['add_product'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intevory Management</title>
+    <title>Inventory Management</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="product_update.css">
 </head>
