@@ -36,6 +36,13 @@ try {
 } catch (PDOException $e) {
     die("Error fetching order details: " . $e->getMessage());
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $delete_stmt = $db->prepare("DELETE FROM Purchased WHERE order_id = :order_id AND email = :email");
+    $delete_stmt->bindParam(':order_id', $order_id, PDO::PARAM_INT);
+    $delete_stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $delete_stmt->execute();
+    echo "<script>alert('Order successfully cancelled , redirecting to previous orders page! '); window.location.href='Previous_Order.php';</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -71,14 +78,20 @@ try {
                         <td><?php echo htmlspecialchars($detail['quantity']); ?></td>
                         <td>£<?php echo number_format($detail['total_price'], 2); ?></td>
                     </tr>
+
+
                 <?php endforeach; ?>
             </table>
         <?php endif; ?>
 
         <br>
         <a href="Previous_Order.php">Back to Orders</a>
-    </div>
 
+    </div>
+    <form method="POST">
+    <input type="hidden" name="cancel_order" value="1">
+    <button type="submit" class="cancel-order-btn">Cancel Order</button>
+</form>
 <?php include 'footer.php'; ?>
 </body>
 </html>
