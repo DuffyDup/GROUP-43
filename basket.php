@@ -82,6 +82,8 @@ foreach ($basket_items as $item) {
     <title>Basket</title>
     <link rel="stylesheet" href="basket.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
     <script>
         function updateQuantity(productId, quantity) {
             fetch('basket.php', {

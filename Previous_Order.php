@@ -22,7 +22,7 @@ $query = "
     FROM Purchased p     
     JOIN Products pr ON p.product_id = pr.product_id     
     WHERE p.email = :email     
-    ORDER BY p.product_id DESC 
+    order by time_of_order DESC
 ";  
 
 try {        
@@ -42,6 +42,8 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">     
     <title>Your Previous Orders</title>     
     <link rel="stylesheet" href="main.css"> 
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head> 
 <body>     
     <?php include 'Navbar.php'; ?>      

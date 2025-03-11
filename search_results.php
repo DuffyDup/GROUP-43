@@ -40,6 +40,8 @@ if (isset($_GET['query'])) {
     <title>Homepage</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="phone.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <!-- include navigation bar -->
