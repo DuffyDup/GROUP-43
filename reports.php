@@ -12,6 +12,8 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
     <title>Reports & Analytics</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="reports.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <?php include 'Navbar.php'; ?>

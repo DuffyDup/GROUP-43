@@ -20,7 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <!-- Dropdown for Products -->
         <div class="menu-dropdown">
-            <button class="menu-button">Products</button>
+        <button class="menu-button">Products</a></button>
             <div class="menu-options">
                 <a href="Phone.php">Phone</a>
                 <a href="tablets.php">Tablets</a>
@@ -32,14 +32,13 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <!-- Conditional Dropdown for Basket (Visible for customers only) -->
         <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'customer'): ?>
-            <div class="cart-dropdown">
-                <button class="cart-button">Basket</button>
-                <div class="cart-options">
-                    <a href="basket.php">Basket</a>
-                    <a href="Previous_Order.php">Previous Order</a>
-                </div>
-            </div>
-        <?php endif; ?>
+    <a href="basket.php" style="text-decoration: none;">
+        <button class="cart-button" style="border: none; background: none; cursor: pointer; font-size: 16px;">
+            Basket
+        </button>
+    </a>
+<?php endif; ?>
+
 
         <!-- Admin Options Dropdown (Visible for admins only) -->
         <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'admin'): ?>
@@ -47,8 +46,8 @@ if (session_status() === PHP_SESSION_NONE) {
                 <button class="menu-button">Admin Options</button>
                 <div class="menu-options">
                     <a href="admin_dashboard_Customer_Management.php">User Management</a>
-                    <a href="product_update.php">Product Update</a>
-                    <a href="reports.php">Product Update</a>
+                    <a href="product_update.php">Manage Inventory</a>
+                    <a href="reports.php">Report & Analysis</a>
                 </div>
             </div>
         <?php endif; ?>
@@ -76,7 +75,9 @@ if (session_status() === PHP_SESSION_NONE) {
                 </button>
                 <div class="menu-options menu-options-account">
                     <a href="My_Account.php">My Account</a>
+                    <a href ="Previous_Order.php">My orders</a>
                     <a href="logout.php">Logout</a>
+                  
                 </div>
             </div>
         <?php else: ?>

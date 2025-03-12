@@ -1,7 +1,7 @@
 
 /* Container for the signup form */
 .signup-container {
-    background-color: #fff;
+    background-color: #c1d1cf;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -9,7 +9,7 @@
     max-width: 400px;
     margin: 0 auto; 
     text-align: center;
-    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    /*background: linear-gradient(135deg, #ffffff, #f7f7f7);*/
     margin-top: 20px;
 
 }
@@ -32,7 +32,7 @@
     width: 100%;
     padding: 10px 10px 10px 10px;
     font-size: 16px;
-    border: 2px solid #ccc;
+    border: 2px solid #848484;
     border-radius: 5px;
     outline: none;
     background: transparent;
@@ -46,8 +46,8 @@
     left: 10px;
     transform: translateY(-50%);
     font-size: 16px;
-    color: #888;
-    background: #fff;
+    color: #424242;
+    background: #c1d1cf;
     padding: 0 5px;
     transition: 0.3s ease;
     pointer-events: none;
@@ -59,18 +59,18 @@
     top: -10px;
     left: 10px;
     font-size: 12px;
-    color: #007bff;
+    color: #000000;
 }
 
 /* Input focus effects */
 .form-group input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #748b91;
+    box-shadow: 0 0 5px rgba(116, 139, 145, 0.5);
 }
 
 /* Button styling */
 .signup-btn {
-    background-color: #007bff;
+    background-color: #636467;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -82,7 +82,7 @@
 
 /* Hover over effect for signup button */
 .signup-btn:hover {
-    background-color: #0056b3;
+    background-color: #666b64;
 }
 
 /* Responsive design */

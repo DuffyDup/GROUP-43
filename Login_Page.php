@@ -39,6 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login</title>
     <link rel="stylesheet" href="Login_Page.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
 
@@ -52,15 +54,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="forgetpasswordlabel"><a href="Forgot_Password_Page.php">Forgot password?</a></label><br>
         <label for="keeplogedinlabel">Keep me Logged in</label>
         <input type="checkbox" id="keeplogedin"><br><br>
-        <button type="submit" class="loged">Login</button>
+        
+        <!-- Login Button -->
+        <button type="submit" class="loged">Login</button><br><br>
+        
+        <!-- Create New Account Button -->
+        <button type="button" class="signup"><a href="Customer_SignUp.php" style="color:white; text-decoration:none;">Create new account</a></button>
     </form>
 </div>
-
-<div class="signupbutton">
-    <button class="signup"><a href="Customer_SignUp.php">Create new account</a></button>
-</div>
-
+<br>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
+
 </body>
-</html> 
+</html>
