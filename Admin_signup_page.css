@@ -23,7 +23,7 @@
     width: 100%;
     padding: 10px 10px 10px 10px;
     font-size: 16px;
-    border: 2px solid #ccc;
+    border: 2px solid #848484;
     border-radius: 5px;
     outline: none;
     box-sizing: border-box;
@@ -39,7 +39,7 @@
     background: #c1d1cf;
     padding: 0 5px;
     font-size: 16px;
-    color: #888;
+    color: #424242;
     pointer-events: none;
     transition: 0.3s ease;
 }

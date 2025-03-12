@@ -30,7 +30,8 @@ CREATE TABLE Purchased (
     address VARCHAR(255) NOT NULL, -- Address where the order will be sent 
     postcode VARCHAR(20) NOT NULL, -- Postal code for delivery
     FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE, -- Ensure consistency between tables
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE -- Ensure consistency between tables
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+      `time_of_order` datetime NOT NULL DEFAULT current_timestamp() -- Ensure consistency between tables
 );
 
 -- Create the Basket table
