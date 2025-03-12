@@ -3,7 +3,6 @@ body{
     background-color: #748b91;
     
     }
-
 .signup-container {
     background-color: #c1d1cf;
     padding: 30px;
@@ -60,7 +59,11 @@ body{
 
 /* Focus effect for input fields */
 .form-group input:focus {
+<<<<<<< HEAD
     border-color: #748b91;
+=======
+    border-color: #007bff;
+>>>>>>> 64820047f9cbb9771650514ec16933bb36c0c65e
     box-shadow: 0 0 5px rgba(116, 139, 145, 0.5);
 }
 
