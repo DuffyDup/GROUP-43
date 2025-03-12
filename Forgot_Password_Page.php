@@ -7,7 +7,7 @@ session_start(); // Start the session to check login status
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forgot Password</title>
     <link rel="website icon" type="jpeg" href="Tech_Nova.png"> <!--Set up the company logo as the website icon-->
     <link rel="stylesheet" href="Login_Page.css">
     <link rel="stylesheet" href="main.css">

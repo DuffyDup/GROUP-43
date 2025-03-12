@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Signup Page</title>
+  <title>Admin Signup</title>
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="Admin_signup_page.css">
   <link rel="icon" type="image/png" href="Tech_Nova.png">

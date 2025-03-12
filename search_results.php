@@ -37,7 +37,7 @@ if (isset($_GET['query'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>TechNova</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="phone.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
