@@ -1,3 +1,8 @@
+body{
+    background-color: #748b91;
+    
+    }
+
 /*
 This div is for the outer box style of the login page.
 
@@ -42,7 +47,7 @@ This div is for the outer box style of the login page.
 }
 
 .loged, button{
-    background-color: #636467;
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -53,11 +58,11 @@ This div is for the outer box style of the login page.
 }
 
 .loged:hover {
-    background-color: #666b64;
+    background-color: #0056b3;
 }
 
 .signup{
-    background-color: #636467;
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -68,7 +73,7 @@ This div is for the outer box style of the login page.
 } 
 
 .signup:hover {
-    background-color: #666b64;
+    background-color: #0056b3;
 }
 
 
