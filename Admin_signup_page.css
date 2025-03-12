@@ -1,4 +1,9 @@
 /* Container for the signup form */
+body{
+    background-color: #748b91;
+    
+    }
+
 .signup-container {
     background-color: #fff;
     padding: 30px;
