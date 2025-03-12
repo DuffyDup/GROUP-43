@@ -76,7 +76,8 @@ try {
         <?php if (!$order_details): ?>
             <p>No details found for this order.</p>
         <?php else: ?>
-            <p>Delivery Address: <?= htmlspecialchars($address) . ", " . htmlspecialchars($postcode); ?></p>
+            <p>Delivery Address: <?= htmlspecialchars($address) ?></p>
+            <p>Post code: <?= htmlspecialchars($postcode); ?></p>
             <table border="1">
                 <tr>
                     <th>Product ID</th>
