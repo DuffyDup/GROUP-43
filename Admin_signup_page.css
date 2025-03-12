@@ -54,22 +54,18 @@ body{
     top: -8px;
     left: 10px;
     font-size: 12px;
-    color: black;
+    color: #007bff;
 }
 
 /* Focus effect for input fields */
 .form-group input:focus {
-<<<<<<< HEAD
-    border-color: #748b91;
-=======
     border-color: #007bff;
->>>>>>> 64820047f9cbb9771650514ec16933bb36c0c65e
     box-shadow: 0 0 5px rgba(116, 139, 145, 0.5);
 }
 
 /* Button styling */
 .signup-btn {
-    background-color: #636467;
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -80,7 +76,7 @@ body{
 }
 /* Hover over effect for signup button */
 .signup-btn:hover {
-    background-color: #666b64;
+    background-color: #0056b3;
 }
 
 /* Responsive designs */
