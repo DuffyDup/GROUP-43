@@ -11,6 +11,8 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
     <title>Smart Watches</title>
     <link rel="stylesheet" href="smartwatches.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
 

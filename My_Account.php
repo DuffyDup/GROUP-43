@@ -67,6 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
     <title>My Account</title>
     <link rel="stylesheet" href="Customer_SignUp.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
 

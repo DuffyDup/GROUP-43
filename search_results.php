@@ -4,13 +4,25 @@ require 'connectdb.php';
 
 // Handle search form submission
 if (isset($_GET['query'])) {
-    $search = $_GET['query'];
+    $search = strtolower($_GET['query']); // get the user's search query
+
+    // If "tablet" is searched, change it to "ipad" - since the database catgeory for tablets is set to 'ipad'
+    if ($search === 'tablet' || $search === 'tablets') {
+        $searchCategory = 'ipad';
+    } elseif ($search === 'audio device' || $search === 'audio devices') {
+        $searchCategory = 'headphone';
+    }
+    else {
+        $searchCategory = $search; // Default behavior
+    }
+
     // Construct the SQL query
-    $query = "SELECT * FROM products WHERE name LIKE :search";
+    $query = "SELECT * FROM products WHERE name LIKE :search_name OR category LIKE :search_category";
     // Prepare and execute the SQL query
     $statement = $db->prepare($query);
     $statement->execute(array(
-        ':search' => '%' . $search . '%'
+        ':search_name' => '%' . $search . '%',
+        ':search_category' => $searchCategory . '%'
     ));
     // Fetch results - the matching products
     $products = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -28,6 +40,8 @@ if (isset($_GET['query'])) {
     <title>Homepage</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="phone.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <!-- include navigation bar -->

@@ -4,7 +4,6 @@ require 'connectdb.php';
 
 $user_email = $_SESSION['email'];
 
-
 $user_query = "SELECT full_name, email FROM Users WHERE email = :email";
 $user_stmt = $db->prepare($user_query);
 $user_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
@@ -55,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } while ($exists > 0);
 
         foreach ($basket_result as $row) {
-            $insert_query = "
-                INSERT INTO Purchased (order_id, email, product_id, quantity, address, postcode)
-                VALUES (:order_id, :email, :product_id, :quantity, :address, :postcode)
-            ";
-            
-            $insert_stmt = $db->prepare($insert_query);
+           
+            $insert_stmt = $db->prepare("
+            INSERT INTO Purchased (order_id, email, product_id, quantity, address, postcode, time_of_order)
+            VALUES (:order_id, :email, :product_id, :quantity, :address, :postcode, NOW())
+        ");
+        
             $insert_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
             $insert_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
             $insert_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
@@ -68,8 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insert_stmt->bindValue(':address', $address, PDO::PARAM_STR);
             $insert_stmt->bindValue(':postcode', $postcode, PDO::PARAM_STR);
             $insert_stmt->execute();
-    
-            // Update product stock
+
             $update_stock = "
                 UPDATE Products 
                 SET stock = stock - :quantity 
@@ -80,8 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $update_stock_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
             $update_stock_stmt->execute();
         }
-    
-        // Clear the user's basket
+  
         $clear_basket_query = "DELETE FROM Basket WHERE email = :email";
         $clear_basket_stmt = $db->prepare($clear_basket_query);
         $clear_basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
@@ -107,6 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Checkout</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="Checkout_Page.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <?php include 'Navbar.php';?>

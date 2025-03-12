@@ -9,6 +9,8 @@ session_start(); // Start the session to check login status
     <title>About Us</title>
     <link rel="stylesheet" href="main.css"> <!-- Main CSS for logo and navigation -->
     <link rel="stylesheet" href="About_us_page.css"> <!-- About Us-specific CSS -->
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <!-- Top Navigation -->

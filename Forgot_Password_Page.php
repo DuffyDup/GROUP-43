@@ -11,6 +11,8 @@ session_start(); // Start the session to check login status
     <link rel="website icon" type="jpeg" href="Tech_Nova.png"> <!--Set up the company logo as the website icon-->
     <link rel="stylesheet" href="Login_Page.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <!--The Navigation (Start)-->
