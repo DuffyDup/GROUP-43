@@ -104,6 +104,7 @@ if (isset($_POST['signup'])) {
         <button type="submit" name="signup" class="signup-btn">Sign Up</button>
     </form>
 </div>
+<br><br>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 </body>
