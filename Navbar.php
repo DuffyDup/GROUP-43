@@ -36,7 +36,6 @@ if (session_status() === PHP_SESSION_NONE) {
         <!-- Conditional Dropdown for Basket (Visible for customers only) -->
         <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'customer'): ?>
             <a href="basket.php">
-    <button class="cart-button">
         <img src="search_bar_logo/basket-icon.png" alt="Basket" style="width: 24px; height: 24px;">
     </button>
 </a>
