@@ -1,5 +1,5 @@
 /* Main container for the checkout page */
- .checkout-container {
+.checkout-container {
     display: flex;
     justify-content: space-between;
     margin: 20px auto;
@@ -10,6 +10,11 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark mode background */
+body.dark-mode .checkout-container {
+    background: linear-gradient(135deg, #121212, #333333); /* Dark gradient */
+}
+
 /* Customer detail (left) */
 .customer-details {
     flex: 1;
@@ -18,11 +23,22 @@
     border-right: 2px solid #ccc;
 }
 
+/* Dark mode styles for customer details */
+body.dark-mode .customer-details {
+    border-right: 2px solid #444; /* Lighter border in dark mode */
+    color: white;
+}
+
 /* Right-side: Payment info */
 .payment-summary {
     flex: 1;
     padding: 20px;
     margin-left: 10px;
+}
+
+/* Dark mode styles for payment summary */
+body.dark-mode .payment-summary {
+    color: white;
 }
 
 /* General form input styling */
@@ -37,10 +53,26 @@
     outline: none;
 }
 
+/* Dark mode for input fields */
+body.dark-mode .customer-details input,
+body.dark-mode .payment-summary input {
+    background-color: #444; /* Dark background for inputs */
+    color: white; /* White text in inputs */
+    border-color: #555; /* Lighter border */
+}
+
+/* Focused input field */
 .customer-details input:focus,
 .payment-summary input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Dark mode focused input field */
+body.dark-mode .customer-details input:focus,
+body.dark-mode .payment-summary input:focus {
+    border-color: #3399ff;
+    box-shadow: 0 0 5px rgba(51, 153, 255, 0.5);
 }
 
 /* Returning customer link for redirection */
@@ -50,8 +82,14 @@
     font-weight: bold;
 }
 
+/* Hover effect for login link */
 .customer-details a.login-link:hover {
     text-decoration: underline;
+}
+
+/* Dark mode link */
+body.dark-mode .customer-details a.login-link {
+    color: #66b3ff; /* Lighter blue in dark mode */
 }
 
 /* Subtotal amount box */
@@ -59,6 +97,11 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+/* Dark mode for subtotal box */
+body.dark-mode .subtotal-box {
+    color: white;
 }
 
 /* Place Order Button */
@@ -74,8 +117,14 @@
     transition: background-color 0.3s ease;
 }
 
+/* Hover effect for Place Order Button */
 .place-order-btn:hover {
     background-color: #0056b3;
+}
+
+/* Dark mode Place Order Button */
+body.dark-mode .place-order-btn {
+    background-color: #3399ff; /* Lighter button in dark mode */
 }
 
 /* Responsive Design */
@@ -90,4 +139,9 @@
         padding: 10px;
         border: none;
     }
+}
+
+/* Dark mode for mobile views */
+body.dark-mode .checkout-container {
+    background: linear-gradient(135deg, #121212, #333333);
 }

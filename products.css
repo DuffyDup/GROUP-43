@@ -1,0 +1,214 @@
+/* Main container for the product page */
+.product-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    margin-top: 20px;
+}
+
+/* Dark mode styles for product container */
+body.dark-mode .product-container {
+    background: linear-gradient(135deg, #121212, #333333); /* Dark gradient */
+    color: white;
+    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1); /* Lighter shadow in dark mode */
+}
+
+/* Heading styles for product container */
+.product-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Dark mode heading */
+body.dark-mode .product-container h1 {
+    color: #ffffff; /* Light color for headings in dark mode */
+}
+
+/* Product grid layout */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Dark mode grid adjustments */
+body.dark-mode .product-grid {
+    color: white;
+}
+
+/* Product card link styles */
+.product-card a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits the text color from its parent */
+    display: block; /* Makes the anchor tag block-level */
+}
+
+/* Product card styles */
+.product-card {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode for product cards */
+body.dark-mode .product-card {
+    background-color: #444; /* Darker background for cards */
+    border-color: #555; /* Lighter border for dark mode */
+}
+
+/* Hover effect for product card */
+.product-card:hover {
+    border-color: #007bff;
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Dark mode hover effect */
+body.dark-mode .product-card:hover {
+    border-color: #3399ff;
+    box-shadow: 0px 4px 10px rgba(51, 153, 255, 0.5);
+}
+
+/* Product card image styles */
+.product-card img {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Dark mode product image styles */
+body.dark-mode .product-card img {
+    border-radius: 5px;
+    filter: brightness(80%); /* Darker images in dark mode */
+}
+
+/* Product card title */
+.product-card h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Dark mode product card title */
+body.dark-mode .product-card h2 {
+    color: white; /* Light color for titles */
+}
+
+/* Product card description */
+.product-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Dark mode product card description */
+body.dark-mode .product-card p {
+    color: #bbb; /* Light color for description text */
+}
+
+/* Responsive Design - Medium Screen */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsive Design - Small Screen */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-container {
+        padding: 20px;
+    }
+}
+product-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    margin-top: 20px;
+}
+
+.product-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-card a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits the text color from its parent */
+    display: block; /* Makes the anchor tag block-level */
+}
+
+.product-card {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    border-color: #007bff;
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.product-card img {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.product-card h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-container {
+        padding: 20px;
+    }
+}

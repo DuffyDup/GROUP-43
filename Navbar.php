@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 <header>
-<link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css">
 </header>
 <div class="top-navigation">
     <!-- Left Section -->
@@ -23,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <!-- Dropdown for Products -->
         <div class="menu-dropdown">
-        <button class="menu-button">Products</a></button>
+            <button class="menu-button">Products</button>
             <div class="menu-options">
                 <a href="Phone.php">Phone</a>
                 <a href="tablets.php">Tablets</a>
@@ -36,12 +36,9 @@ if (session_status() === PHP_SESSION_NONE) {
         <!-- Conditional Dropdown for Basket (Visible for customers only) -->
         <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'customer'): ?>
             <a href="basket.php">
-        <img src="search_bar_logo/basket-icon.png" alt="Basket" style="width: 24px; height: 24px;">
-    </button>
-</a>
-
-<?php endif; ?>
-
+                <img src="search_bar_logo/basket-icon.png" alt="Basket" style="width: 24px; height: 24px;">
+            </a>
+        <?php endif; ?>
 
         <!-- Admin Options Dropdown (Visible for admins only) -->
         <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'admin'): ?>
@@ -68,7 +65,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </form>
         </div>
 
-        <!-- Conditional Dropdown for Logged-in User -->
+      
         <?php if (isset($_SESSION['email'])): ?>
             <div class="menu-dropdown">
                 <button class="menu-button">
@@ -78,13 +75,17 @@ if (session_status() === PHP_SESSION_NONE) {
                 </button>
                 <div class="menu-options menu-options-account">
                     <a href="My_Account.php">My Account</a>
-                    <a href ="Previous_Order.php">My orders</a>
+                    <a href="Previous_Order.php">My Orders</a>
                     <a href="logout.php">Logout</a>
-                  
                 </div>
             </div>
         <?php else: ?>
             <a href="Login_Page.php" class="login-link">Login</a>
         <?php endif; ?>
+
+        <button id="dark-mode-toggle" class="dark-mode-button"></button>
     </div>
 </div>
+
+
+<script src="theme.js" defer></script>
