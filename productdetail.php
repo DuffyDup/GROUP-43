@@ -1,12 +1,15 @@
 <?php
 session_start();
-require 'connectdb.php'; 
+require 'connectdb.php';
 
 $user_email = $_SESSION['email'] ?? null;
 $product = null;
 
 if (isset($_GET['product_id'])) {
-    $product_id = $_GET['product_id'];
+    $product_id = filter_var($_GET['product_id'], FILTER_VALIDATE_INT);
+    if (!$product_id) {
+        die("Invalid product ID.");
+    }
 
     $stmt = $db->prepare("SELECT * FROM products WHERE product_id = :product_id");
     $stmt->execute([':product_id' => $product_id]);
@@ -19,48 +22,67 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'], $_POST[
         exit;
     }
 
-    $product_id = $_POST['product_id'];
+    $product_id = filter_var($_POST['product_id'], FILTER_VALIDATE_INT);
     $quantity = max(1, intval($_POST['quantity']));
+
+
+    if ($quantity > 2) {
+        echo "<script>alert('You can only purchase a maximum of 2 of each product.'); window.location.href='productdetail.php?product_id=" . htmlspecialchars($product_id) . "';</script>";
+        exit;
+    }
+
 
     $stmt = $db->prepare("SELECT stock FROM products WHERE product_id = :product_id");
     $stmt->execute([':product_id' => $product_id]);
     $product_stock = $stmt->fetchColumn();
+
+    if ($product_stock === false) {
+        echo "<script>alert('Product not found.'); window.location.href='shop.php';</script>";
+        exit;
+    }
 
     if ($quantity > $product_stock) {
         echo "<script>alert('Max quantity available is $product_stock. Please adjust your quantity.'); window.location.href='productdetail.php?product_id=" . htmlspecialchars($product_id) . "';</script>";
         exit;
     }
 
-    $stmt = $db->prepare("SELECT * FROM basket WHERE email = :email AND product_id = :product_id");
+    
+    $stmt = $db->prepare("SELECT quantity FROM basket WHERE email = :email AND product_id = :product_id");
     $stmt->execute([
         ':email' => $user_email,
-        ':product_id' => $product_id,
+        ':product_id' => $product_id
     ]);
-    $existing_item = $stmt->fetch(PDO::FETCH_ASSOC);
+    $existing_quantity = $stmt->fetchColumn();
 
-    if ($existing_item) {
+    if ($existing_quantity !== false) {
+
+        if ($existing_quantity + $quantity > 2) {
+            echo "<script>alert('Max product limit is 2.'); window.location.href='productdetail.php?product_id=" . htmlspecialchars($product_id) . "';</script>";
+            exit;
+        }
+
+
         $stmt = $db->prepare("UPDATE basket SET quantity = quantity + :quantity WHERE email = :email AND product_id = :product_id");
         $stmt->execute([
             ':quantity' => $quantity,
             ':email' => $user_email,
-            ':product_id' => $product_id,
+            ':product_id' => $product_id
         ]);
     } else {
-        $insertStmt = $db->prepare("INSERT INTO basket (email, product_id, quantity) VALUES (:email, :product_id, :quantity)");
-        $insertStmt->execute([
+
+        $stmt = $db->prepare("INSERT INTO basket (email, product_id, quantity) VALUES (:email, :product_id, :quantity)");
+        $stmt->execute([
             ':email' => $user_email,
             ':product_id' => $product_id,
-            ':quantity' => $quantity,
+            ':quantity' => $quantity
         ]);
     }
 
-    echo "<script>
-        alert('Successfully added to basket');
-        window.location.href = 'productdetail.php?product_id=" . htmlspecialchars($product_id) . "';
-    </script>";
+    echo "<script>alert('Successfully added to basket'); window.location.href='productdetail.php?product_id=" . htmlspecialchars($product_id) . "';</script>";
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

@@ -108,7 +108,11 @@ foreach ($basket_items as $item) {
                         <h3><?php echo ($item['name']); ?></h3>
                         <p>Price: £<?php echo number_format($item['price'], 2); ?></p>
                         <label for="quantity-<?php echo $item['product_id']; ?>">Quantity:</label>
-                        <input id="quantity-<?php echo $item['product_id']; ?>" type="number" name="quantity" min="0" max="<?php echo $item['stock']; ?>" value="<?php echo $item['quantity']; ?>" oninput="updateQuantity(<?php echo $item['product_id']; ?>, this.value)">
+                        <input id="quantity-<?php echo $item['product_id']; ?>" 
+       type="number" name="quantity" 
+       min="0" max="2" 
+       value="<?php echo min($item['quantity'], 2); ?>" 
+       oninput="updateQuantity(<?php echo $item['product_id']; ?>, this.value)">
                         <a href="basket.php?remove=<?php echo $item['product_id']; ?>">
                             <button>Remove</button>
                         </a>
