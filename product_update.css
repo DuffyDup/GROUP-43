@@ -84,16 +84,39 @@ h2 {
     border-radius: 5px;
 }
 
-
-
-
-button {
-    background-color: #007bff;
-    color: white;
+.btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.1s;
+    width: 100px; 
+    margin-right: 5px;
 }
 
-button:hover {
-    background-color: #0056b3;
+
+.update-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.update-btn:hover {
+    background-color: #218838;
+}
+
+
+.delete-btn {
+    background-color: #dc3545; 
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+td form {
+    display: flex;
+    gap: 10px; 
+    justify-content: center;
 }
