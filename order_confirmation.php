@@ -45,6 +45,7 @@ $shipping_address = $order_details[0]['address'] . ', ' . $order_details[0]['pos
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmation</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="order_confirmation.css"> 
     <link rel="icon" type="image/png" href="Tech_Nova.png">
     <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
