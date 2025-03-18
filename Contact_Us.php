@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="Contact_Us.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
     <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
+    <title>Contact Us</title>
 
 </head>
 <body>
