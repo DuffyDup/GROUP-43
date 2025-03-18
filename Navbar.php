@@ -48,6 +48,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a href="admin_dashboard_Customer_Management.php">User Management</a>
                     <a href="product_update.php">Manage Inventory</a>
                     <a href="reports.php">Report & Analysis</a>
+                    <a href= "ProcessOrder.html"> Process Order</a>
                 </div>
             </div>
         <?php endif; ?>
