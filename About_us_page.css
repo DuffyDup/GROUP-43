@@ -1,7 +1,6 @@
 /*  This is the general container for About Us page */
 .about-us-container {
     padding: 40px;
-    background-color: #f9f9f9; /* Light gray contrst */
     font-family: Arial, sans-serif;
     color: #333;
     max-width: 1200px;
