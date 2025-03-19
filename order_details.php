@@ -2,12 +2,19 @@
 session_start();
 require_once 'connectdb.php';
 
+if (!isset($_SESSION['email'])) {
+    die("Please log in to view your order details.");
+}
+
+if (!isset($_GET['order_id'])) {
+    die("Invalid order request.");
+}
 
 $order_id = $_GET['order_id'];
 $email = $_SESSION['email'];
 
 try {
-    
+    // Fetch order details
     $stmt = $db->prepare("
         SELECT p.product_id, p.quantity, p.address, p.postcode, 
                pr.name AS product_name, pr.price AS product_price, 
@@ -55,7 +62,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
-    <link rel="stylesheet" href="order_details.php">
+    <link rel="stylesheet" href="order_details.css">
     <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
     <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
@@ -120,7 +127,7 @@ try {
             <br><br>
             <button type="submit" name="update_address">Update Address</button>
         </form>
-    </div><br>
+    </div>
 
 
     <?php include 'footer.php'; ?>
