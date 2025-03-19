@@ -189,8 +189,8 @@ if (isset($_POST['add_product'])) {
                             <td><?= htmlspecialchars($products['product_id']) ?></td>
                             <td><img class=product-image src="<?= htmlspecialchars($products["picture"]) ?>" alt="<?= htmlspecialchars($products["name"]) ?>"style="width: 150px; height: 150px;"></td>
                             <td><?= htmlspecialchars($products['name']) ?></td>
-                            <td><input type="number" step="0.01" name="price" value="<?= htmlspecialchars($products['price']) ?>" required></td>
-                            <td><input type="number" name="stock" value="<?= htmlspecialchars($products['stock']) ?>" required></td>
+                            <td><input type="number" step="0.01" name="price" value="<?= htmlspecialchars($products['price']) ?>" min="0" required></td>
+                            <td><input type="number" name="stock" value="<?= htmlspecialchars($products['stock']) ?>" min="0" required></td>
                             <td><?= htmlspecialchars($products['category']) ?></td>
 
                             <td>
