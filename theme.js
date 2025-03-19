@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Check local storage for theme preference
+    
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme === "dark") {
         document.body.classList.add("dark-mode");
-        darkModeToggle.textContent = "Switch to: Light Mode"; // Text for light mode
+        darkModeToggle.textContent = "Switch to: Light Mode"; 
     } else {
-        darkModeToggle.textContent = " Switch to: Dark Mode"; // Text for dark mode
+        darkModeToggle.textContent = " Switch to: Dark Mode"; 
     }
 
     darkModeToggle.addEventListener("click", function () {
@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (document.body.classList.contains("dark-mode")) {
             localStorage.setItem("theme", "dark");
-            darkModeToggle.textContent = "Switch to: Light Mode"; // Text for light mode
+            darkModeToggle.textContent = "Switch to: Light Mode"; 
         } else {
             localStorage.setItem("theme", "light");
-            darkModeToggle.textContent = "Switch to: Dark Mode"; // Text for dark mode
+            darkModeToggle.textContent = "Switch to: Dark Mode"; 
         }
     });
 });

@@ -2,19 +2,12 @@
 session_start();
 require_once 'connectdb.php';
 
-if (!isset($_SESSION['email'])) {
-    die("Please log in to view your order details.");
-}
-
-if (!isset($_GET['order_id'])) {
-    die("Invalid order request.");
-}
 
 $order_id = $_GET['order_id'];
 $email = $_SESSION['email'];
 
 try {
-    // Fetch order details
+    
     $stmt = $db->prepare("
         SELECT p.product_id, p.quantity, p.address, p.postcode, 
                pr.name AS product_name, pr.price AS product_price, 
@@ -85,6 +78,7 @@ try {
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total Price</th>
+                    <th>Review Product</th>
                 </tr>
                 <?php foreach ($order_details as $detail): ?>
                     <tr>
@@ -93,6 +87,8 @@ try {
                         <td>£<?= number_format($detail['product_price'], 2); ?></td>
                         <td><?= htmlspecialchars($detail['quantity']); ?></td>
                         <td>£<?= number_format($detail['total_price'], 2); ?></td>
+                        <td><a href="Reviews_Page.php?product_id=<?= htmlspecialchars($detail['product_id']); ?>">Review product</a></td>
+
                     </tr>
                 <?php endforeach; ?>
             </table>
