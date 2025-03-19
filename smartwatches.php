@@ -44,7 +44,7 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
     <?php }
     ?>
     </div>
-</div>
+</div><br>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 

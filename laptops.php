@@ -45,7 +45,7 @@
     <?php }
     ?>
     </div>
-</div>
+</div><br>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 </body>
