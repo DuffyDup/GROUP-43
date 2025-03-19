@@ -59,7 +59,7 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Back to Orders Link */
+/* Review Product Link */
 .order-details a {
     display: inline-block;
     margin-top: 15px;
@@ -88,17 +88,25 @@ body {
     background-color: #c82333;
 }
 
-/* Address Update Section */
-.order-details form {
-    margin-top: 20px;
-    background: #f8f9fa;
-    padding: 15px;
+/* Change Delivery Address Form */
+.update-address-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.order-details label {
+.update-address-container h2 {
+    text-align: center;
+    color: #2d3e43;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* Labels */
+.update-address-container label {
     font-size: 14px;
     font-weight: bold;
     display: block;
@@ -106,8 +114,9 @@ body {
     color: #333;
 }
 
-.order-details input {
-    width: calc(100% - 20px);
+/* Input Fields */
+.update-address-container input[type="text"] {
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -115,26 +124,27 @@ body {
     font-size: 14px;
 }
 
-.order-details button[type="submit"] {
+/* Submit Button */
+.update-address-container button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    display: block;
     width: 100%;
-    text-align: center;
+    transition: background 0.3s ease-in-out;
 }
 
-.order-details button[type="submit"]:hover {
+.update-address-container button:hover {
     background-color: #0056b3;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .order-details {
+    .order-details,
+    .update-address-container {
         width: 90%;
         padding: 15px;
     }
@@ -148,7 +158,7 @@ body {
         padding: 8px;
     }
 
-    .order-details button[type="submit"] {
+    .update-address-container button {
         width: auto;
     }
 }

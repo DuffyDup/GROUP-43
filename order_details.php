@@ -33,14 +33,16 @@ try {
         $address = $postcode = "Unknown";
     }
 
-
+    // Handle order cancellation
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_order'])) {
         $delete_stmt = $db->prepare("DELETE FROM Purchased WHERE order_id = :order_id AND email = :email");
         $delete_stmt->execute(['order_id' => $order_id, 'email' => $email]);
+
         echo "<script>alert('Order cancelled successfully.'); window.location.href='Previous_Order.php';</script>";
         exit;
     }
 
+    // Handle address update
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_address'])) {
         $new_address = htmlspecialchars($_POST['new_address']);
         $new_postcode = htmlspecialchars($_POST['new_postcode']);
@@ -65,21 +67,20 @@ try {
     <link rel="stylesheet" href="order_details.css">
     <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
-    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
-    
 </head>
 <body>
     <?php include 'Navbar.php'; ?>
 
     <div class="order-details">
         <h2>Order Details (Order ID: <?= htmlspecialchars($order_id); ?>)</h2>
-        
+
         <?php if (!$order_details): ?>
             <p>No details found for this order.</p>
         <?php else: ?>
-            <p>Delivery Address: <?= htmlspecialchars($address) ?></p>
-            <p>Post code: <?= htmlspecialchars($postcode); ?></p>
-            <table border="1">
+            <p><strong>Delivery Address:</strong> <?= htmlspecialchars($address) ?></p>
+            <p><strong>Post Code:</strong> <?= htmlspecialchars($postcode); ?></p>
+            
+            <table>
                 <tr>
                     <th>Product ID</th>
                     <th>Product Name</th>
@@ -95,40 +96,37 @@ try {
                         <td>£<?= number_format($detail['product_price'], 2); ?></td>
                         <td><?= htmlspecialchars($detail['quantity']); ?></td>
                         <td>£<?= number_format($detail['total_price'], 2); ?></td>
-                        <td><a href="Reviews_Page.php?product_id=<?= htmlspecialchars($detail['product_id']); ?>">Review product</a></td>
-
+                        <td><a href="Reviews_Page.php?product_id=<?= htmlspecialchars($detail['product_id']); ?>">Review Product</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
         <?php endif; ?>
 
         <br>
-        <a href="Previous_Order.php">Back to Orders</a>
+        <a href="Previous_Order.php" class="back-link">Back to Orders</a>
 
         <?php if ($order_details): ?>
-            <form method="POST" onsubmit="return confirm('Confirmation of order cancellation?');">
+            <form method="POST" onsubmit="return confirm('Are you sure you want to cancel this order?');">
                 <button type="submit" name="cancel_order" class="cancel-order-btn">Cancel Order</button>
             </form>
-           
         <?php endif; ?>
     </div>
 
-    
-
-
+    <!-- Change Delivery Address Form -->
+    <div class="update-address-container">
         <h2>Change Delivery Address</h2>
         <form method="POST">
             <input type="hidden" name="order_id" value="<?= htmlspecialchars($order_id); ?>">
-            <label>New Address:</label>
-            <input type="text" name="new_address" required>
-            <br><br>
-            <label>New Postcode:</label>
-            <input type="text" name="new_postcode" required>
-            <br><br>
+            
+            <label for="new_address">New Address:</label>
+            <input type="text" id="new_address" name="new_address" required>
+            
+            <label for="new_postcode">New Postcode:</label>
+            <input type="text" id="new_postcode" name="new_postcode" required>
+            
             <button type="submit" name="update_address">Update Address</button>
         </form>
     </div>
-
 
     <?php include 'footer.php'; ?>
 </body>
