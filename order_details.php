@@ -55,7 +55,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
-    <link rel="stylesheet" href="orderdetail.css">
+    <link rel="stylesheet" href="order_details.php">
     <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
     <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
@@ -120,7 +120,7 @@ try {
             <br><br>
             <button type="submit" name="update_address">Update Address</button>
         </form>
-    </div>
+    </div><br>
 
 
     <?php include 'footer.php'; ?>
