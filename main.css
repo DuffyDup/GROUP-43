@@ -1,4 +1,8 @@
 /* General navigation bar container */
+body{
+    background-color: #748b91;
+}
+
 .top-navigation {
     display: flex;
     align-items: center;
