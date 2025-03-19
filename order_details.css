@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Styling */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -21,16 +21,18 @@ body {
 .order-details h2 {
     color: #007bff;
     margin-bottom: 15px;
+    font-size: 26px;
 }
 
-/* Address Details */
+/* Order Information */
 .order-details p {
     font-size: 16px;
-    margin: 5px 0;
+    margin-bottom: 10px;
+    color: #555;
 }
 
 /* Table Styling */
-table {
+.order-details table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
@@ -40,33 +42,33 @@ table {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+.order-details th,
+.order-details td {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
-th {
+.order-details th {
     background-color: #007bff;
     color: white;
     font-weight: bold;
 }
 
-td {
+.order-details td {
     background-color: #f9f9f9;
 }
 
 /* Back to Orders Link */
-a {
+.order-details a {
     display: inline-block;
     margin-top: 15px;
     text-decoration: none;
     color: #007bff;
     font-weight: bold;
-    font-size: 16px;
 }
 
-a:hover {
+.order-details a:hover {
     text-decoration: underline;
 }
 
@@ -74,53 +76,60 @@ a:hover {
 .cancel-order-btn {
     background-color: #dc3545;
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12px 20px;
     font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
     margin-top: 15px;
-    transition: background 0.3s ease-in-out;
 }
 
 .cancel-order-btn:hover {
     background-color: #c82333;
 }
 
-/* Form Styling */
-form {
+/* Address Update Section */
+.order-details form {
     margin-top: 20px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
 
-label {
-    font-size: 16px;
+.order-details label {
+    font-size: 14px;
     font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
 }
 
-input[type="text"] {
+.order-details input {
     width: calc(100% - 20px);
     padding: 10px;
-    margin-top: 5px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
-button[name="update_address"] {
-    background-color: #28a745;
+.order-details button[type="submit"] {
+    background-color: #007bff;
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 10px 20px;
     font-size: 16px;
-    margin-top: 10px;
-    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    text-align: center;
 }
 
-button[name="update_address"]:hover {
-    background-color: #218838;
+.order-details button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 /* Responsive Design */
@@ -130,15 +139,16 @@ button[name="update_address"]:hover {
         padding: 15px;
     }
 
-    table {
+    .order-details table {
         font-size: 14px;
     }
 
-    th, td {
+    .order-details th,
+    .order-details td {
         padding: 8px;
     }
 
-    input[type="text"] {
-        width: 100%;
+    .order-details button[type="submit"] {
+        width: auto;
     }
 }
