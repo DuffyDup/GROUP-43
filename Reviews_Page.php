@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'], $_POST['rat
         ':review' => $comment
     ]);
 
-    echo "<script>alert('Review submitted successfully.'); window.location.href='Reviews_Page.php?product_id=" . htmlspecialchars($product_id) . "';</script>";
+    echo "<script>alert('Review submitted successfully.'); window.location.href='Previous_Order.php?product_id=" . htmlspecialchars($product_id) . "';</script>";
     exit;
 }
 ?>

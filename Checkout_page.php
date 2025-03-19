@@ -4,11 +4,13 @@ require 'connectdb.php';
 
 $user_email = $_SESSION['email'];
 
+
 $user_query = "SELECT full_name, email FROM Users WHERE email = :email";
 $user_stmt = $db->prepare($user_query);
 $user_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
 $user_stmt->execute();
 $user_data = $user_stmt->fetch(PDO::FETCH_ASSOC);
+
 
 $basket_query = "
     SELECT 
@@ -44,57 +46,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $db->beginTransaction();
 
-        do {
-            $order_id = rand(100000, 999999);
-            $check_query = "SELECT COUNT(*) FROM Purchased WHERE order_id = :order_id";
-            $check_stmt = $db->prepare($check_query);
-            $check_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
-            $check_stmt->execute();
-            $exists = $check_stmt->fetchColumn();
-        } while ($exists > 0);
-
         foreach ($basket_result as $row) {
-           
+   
             $insert_stmt = $db->prepare("
-            INSERT INTO Purchased (order_id, email, product_id, quantity, address, postcode, time_of_order)
-            VALUES (:order_id, :email, :product_id, :quantity, :address, :postcode, NOW())
-        ");
-        
-            $insert_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
+                INSERT INTO Purchased (email, product_id, quantity, address, postcode, time_of_order)
+                VALUES (:email, :product_id, :quantity, :address, :postcode, NOW())
+            ");
             $insert_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
             $insert_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
             $insert_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
             $insert_stmt->bindValue(':address', $address, PDO::PARAM_STR);
             $insert_stmt->bindValue(':postcode', $postcode, PDO::PARAM_STR);
             $insert_stmt->execute();
+        }
 
-            $update_stock = "
+        $order_id = $db->lastInsertId();
+        $_SESSION['order_id'] = $order_id;
+
+ 
+        foreach ($basket_result as $row) {
+            $update_stock_stmt = $db->prepare("
                 UPDATE Products 
                 SET stock = stock - :quantity 
                 WHERE product_id = :product_id
-            ";
-            $update_stock_stmt = $db->prepare($update_stock);
+            ");
             $update_stock_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
             $update_stock_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
             $update_stock_stmt->execute();
         }
-  
-        $clear_basket_query = "DELETE FROM Basket WHERE email = :email";
-        $clear_basket_stmt = $db->prepare($clear_basket_query);
+
+        $clear_basket_stmt = $db->prepare("DELETE FROM Basket WHERE email = :email");
         $clear_basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
         $clear_basket_stmt->execute();
-    
+
         $db->commit();
-    
-        $_SESSION['order_id'] = $order_id; 
+
         echo "<script>alert('Order placed successfully! Order ID: $order_id'); window.location.href='order_confirmation.php';</script>";
-        
+
     } catch (Exception $e) {
         $db->rollBack();
         echo "<script>alert('Failed to place order: " . htmlspecialchars($e->getMessage()) . "');</script>";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="Checkout_Page.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
-    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <?php include 'Navbar.php';?>
@@ -115,10 +107,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2>Your Details</h2>
             <form action="Checkout_page.php" method="post" class="customer-form">
                 <div class="form-group">
-                    <input type="text" id="full-name" name="full_name" value="<?php echo ($user_data['full_name']); ?>" placeholder="Full Name" required disabled>
+                    <input type="text" id="full-name" name="full_name" value="<?php echo htmlspecialchars($user_data['full_name']); ?>" placeholder="Full Name" required disabled>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" value="<?php echo ($user_data['email']); ?>" placeholder="Email" required disabled>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_data['email']); ?>" placeholder="Email" required disabled>
                 </div>
                 <div class="form-group">
                     <input type="text" id="country" name="country" placeholder="Country/Region" required>
@@ -171,7 +163,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
-    <!-- Footer -->
-
 </body>
 </html>
