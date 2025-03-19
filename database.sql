@@ -84,4 +84,4 @@ INSERT INTO Products (name, picture, description, stock, category, price) VALUES
 ('Sony SRS-XB100 Wireless Speaker', './Audio_Devices_images/sonyspeaker.png', 'High Quality Wireless Speaker', 5, 'headphone', 29.99),
 ('Apple Watch Series 9', './Smart_watches_images/applewatch9.png', 'Sleek and powerful smartwatch with advanced health tracking.', 10, 'watch', 249.99),
 ('Apple Watch Series 10', './Smart_watches_images/applewatch10.png', 'Sleek and powerful smartwatch with advanced health tracking.', 10, 'watch', 299.99),
-('Black Apple Watch Series 10', './Smart_watches_images/Applewatch10_black.png', 'Sleek and powerful smartwatch with advanced health tracking.', 10, 'watch', 299.99);
+('Black Apple Watch Series 10', './Smart_watches_images/Applewatch10jetblack.png', 'Sleek and powerful smartwatch with advanced health tracking.', 10, 'watch', 299.99);
