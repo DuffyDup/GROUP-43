@@ -10,7 +10,7 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Products</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="phone.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
     <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
@@ -44,7 +44,7 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
     <?php }
     ?>
     </div>
-</div><br>
+</div>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 </body>

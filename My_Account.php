@@ -102,9 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
 
     </form>
     
-</div><br>
+</div>
 
-<br><br>
+
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 </body>
