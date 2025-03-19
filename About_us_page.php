@@ -19,7 +19,7 @@ session_start(); // Start the session to check login status
     <!-- About Us Content -->
     <div class="about-us-container">
         <!-- Big Text Section -->
-        <div class="big-text">
+        <div class="sub-text">
             <h1>Welcome to Tech Nova!</h1>
             <p>
             At Tech Nova, we focus on delivering top-notch, pre-owned electronics, 
@@ -28,7 +28,7 @@ session_start(); // Start the session to check login status
             those mindful of their spending. Whether you're in school, at work, or 
             simply seeking a great bargain, we have everything you need.
             </p>
-        </div>
+        </div><br>
 
         <!-- 4 Smaller Text Sections -->
         <div class="sub-text-sections">
