@@ -84,7 +84,10 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="Login_Page.php" class="login-link">Login</a>
         <?php endif; ?>
 
-        <button id="dark-mode-toggle" class="dark-mode-button"></button>
+        <button id="dark-mode-toggle">
+    <img src="account_logo/night-mode.png" alt="Toggle Dark Mode" width="30">
+</button>
+
     </div>
 </div>
 

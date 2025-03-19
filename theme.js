@@ -6,25 +6,20 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    
+    // Set initial theme based on localStorage
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme === "dark") {
         document.body.classList.add("dark-mode");
-        darkModeToggle.textContent = "Switch to: Light Mode"; 
-    } else {
-        darkModeToggle.textContent = " Switch to: Dark Mode"; 
     }
 
+    // Toggle dark mode on click
     darkModeToggle.addEventListener("click", function () {
         document.body.classList.toggle("dark-mode");
 
         if (document.body.classList.contains("dark-mode")) {
             localStorage.setItem("theme", "dark");
-            darkModeToggle.textContent = "Switch to: Light Mode"; 
         } else {
             localStorage.setItem("theme", "light");
-            darkModeToggle.textContent = "Switch to: Dark Mode"; 
         }
     });
 });
-
