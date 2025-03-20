@@ -32,13 +32,14 @@
         foreach ($products as $row) {
     ?>
         
-            <div class="product-card">
+        <div class="product-card">
                 <a href="productdetail.php?product_id=<?= urlencode($row["product_id"]) ?>">
                 <img src="<?= htmlspecialchars($row["picture"]) ?>" alt="<?= htmlspecialchars($row["name"]) ?>">
                 <h2><?= htmlspecialchars($row["name"]) ?></h2>
                 <p>£<?= htmlspecialchars($row["price"]) ?></p>
                 </a>
             </div>
+        
         
         
     
