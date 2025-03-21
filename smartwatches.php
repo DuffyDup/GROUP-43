@@ -16,36 +16,10 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 </head>
 <body>
 
-<!-- Include Navigation -->
+<!-- Include Navigation and filter bar-->
 <?php include 'Navbar.php'; ?>
+<?php include 'filterbar.php'; ?>
 
-<div class="product-container">
-    <div class="product-grid">
-    <?php
-        $stmt = $db->prepare("SELECT * FROM Products WHERE category = 'watch'");
-        $stmt->execute();
-        $products = $stmt ->fetchAll(PDO::FETCH_ASSOC);
-        if (!$products) {
-            echo "No results found.";
-        }
-        foreach ($products as $row) {
-    ?>
-        
-                 <div class="product-card">
-                <a href="productdetail.php?product_id=<?= urlencode($row["product_id"]) ?>">
-                <img src="<?= htmlspecialchars($row["picture"]) ?>" alt="<?= htmlspecialchars($row["name"]) ?>">
-                <h2><?= htmlspecialchars($row["name"]) ?></h2>
-                <p>£<?= htmlspecialchars($row["price"]) ?></p>
-                </a>
-            </div>
-        
-        
-        
-    
-    <?php }
-    ?>
-    </div>
-</div><br>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 
