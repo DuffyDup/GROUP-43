@@ -20,7 +20,7 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 <?php include 'Navbar.php';?>
 <?php include 'filterbar.php'; ?>
 
-
+<br>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 

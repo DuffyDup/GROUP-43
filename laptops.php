@@ -20,7 +20,7 @@
 <?php include 'Navbar.php';?>
 <?php include 'filterbar.php'; ?>
 
-
+<br>
 <!-- Footer -->
 <?php include 'footer.php'; ?>
 </body>
