@@ -11,7 +11,7 @@
 
 .contact-container,
 .details-container {
-    background-color: #fff;
+    background-image: linear-gradient(to right, #666b6484 , #74889184, #63646784);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -65,17 +65,17 @@
     top: -10px;
     left: 10px;
     font-size: 12px;
-    color: #007bff;
+    color: #171f22;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #007bff;
+    border-color: #748b91;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .contact-btn {
-    background-color: #007bff;
+    background-color: #171f22;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -86,7 +86,7 @@
 }
 
 .contact-btn:hover {
-    background-color: #0056b3;
+    background-color: #748b91;
 }
 
 .details-container p {
