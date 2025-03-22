@@ -130,7 +130,6 @@ foreach ($basket_items as $item) {
         <?php endif; ?>
     </div>
     <?php include 'footer.php'; ?>
-    <script src="theme.js" defer></script>
 
 </body>
 </html>

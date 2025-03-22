@@ -127,7 +127,6 @@ try {
     </div>
 
     <?php include 'footer.php'; ?>
-    <script src="theme.js" defer></script>
 
 </body>
 </html>

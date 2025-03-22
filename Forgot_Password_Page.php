@@ -208,7 +208,6 @@ session_start(); // Start the session to check login status
 
 <!-- Footer -->
 <?php include 'footer.php'; ?>
-<script src="theme.js" defer></script>
 
 </body>
 </html>

@@ -5,4 +5,3 @@ session_destroy(); // Destroy the session
 header('Location: Login_Page.php'); // Redirect to login
 exit();
 ?>
-<script src="theme.js" defer></script>

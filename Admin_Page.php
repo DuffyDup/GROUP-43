@@ -81,7 +81,6 @@
         <input type="submit" name="submit" value="Add Project"><br> 
     </form>
 </section>
-<script src="theme.js" defer></script>
 
 </body>
 </html>

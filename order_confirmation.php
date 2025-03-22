@@ -87,7 +87,6 @@ $shipping_address = htmlspecialchars($order_details[0]['address']) . ', ' . html
         <p>Thank you for your purchase!</p>
       
     </div>
-    <script src="theme.js" defer></script>
 
 </body>
 </html>

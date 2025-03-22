@@ -228,7 +228,6 @@ if (isset($_POST['add_product'])) {
 
 <!-- Footer -->
 <?php include 'footer.php'; ?>
-<script src="theme.js" defer></script>
 
 </body>
 </html>
