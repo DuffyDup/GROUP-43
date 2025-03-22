@@ -19,7 +19,7 @@ session_start(); // Start the session to check login status
     <!-- About Us Content -->
     <div class="about-us-container">
         <!-- Big Text Section -->
-        <div class="sub-text">
+        <div class="sub-text" style="background-color: #c1d1cf;">
             <h1>Welcome to Tech Nova!</h1>
             <p>
             At Tech Nova, we focus on delivering top-notch, pre-owned electronics, 
@@ -32,19 +32,19 @@ session_start(); // Start the session to check login status
 
         <!-- 4 Smaller Text Sections -->
         <div class="sub-text-sections">
-            <div class="sub-text">
+            <div class="sub-text" style="background-color: #666B64;">
                 <h2>Our Products</h2>
                 <p>We meticulously examine and restore each device to guarantee it adheres to the utmost standards of quality and dependability.</p>
             </div>
-            <div class="sub-text">
+            <div class="sub-text" style="background-color: #748891;">
                 <h2>Why Choose Us?</h2>
                 <p>We emphasize cost-effectiveness while maintaining high standards. Our offerings are ideal for students seeking reliable devices at unmatched prices.</p>
             </div>
-            <div class="sub-text">
+            <div class="sub-text" style="background-color: #636467;">
                 <h2>Sustainability</h2>
                 <p>Purchasing pre-owned electronics allows you to save money while also contributing to the reduction of electronic waste and safeguarding the environment.</p>
             </div>
-            <div class="sub-text">
+            <div class="sub-text" style="background-image: linear-gradient(to right, #666b64 , #748891, #636467);">
                 <h2>Customer Commitment</h2>
                 <p>We are committed to delivering outstanding customer support and ensuring that your experience with us is seamless and trouble-free.</p>
             </div>
