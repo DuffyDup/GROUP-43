@@ -1,100 +1,183 @@
+/* Default (Light Mode) Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #748b91;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #748b91; /* Light background color */
     margin: 0;
     padding: 0;
+    color: #333; /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
+/* Dashboard Container */
 .dashboard-container {
-    width: 80%;
-    margin: 20px auto;
-    background: #c1d1cf;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 85%;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease; /* Smooth background color change */
 }
 
-
+/* Dashboard Header */
 .dashboard-container h1 {
     margin-bottom: 20px;
     font-size: 2.5rem;
-    color: #333;
+    color: #2c3e50; /* Professional dark header color */
+    font-weight: 600;
 }
 
 .dashboard-container h2 {
     margin-top: 30px;
     margin-bottom: 20px;
     font-size: 1.8rem;
-    color: black;
+    color: #34495e; /* Softer color for subheadings */
+    font-weight: 500;
 }
 
-/* Styled table */
+/* Styled Table */
 .styled-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 1rem;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    border-radius: 8px; /* Smooth table border radius */
+    overflow: hidden; /* Ensure smooth edges for table */
 }
 
+/* Table Headers */
 .styled-table th, .styled-table td {
     padding: 15px;
     text-align: center;
     border: 1px solid #ddd;
 }
 
+/* Table Header Styles */
 .styled-table th {
-    background-color: #007bff;
-    color: #fff;
-    font-weight: bold;
+    background-color: #2980b9; /* Lively blue for headers */
+    color: white;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
+/* Table Row Styles */
 .styled-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f4f4f4; /* Light gray for even rows */
 }
 
 .styled-table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #ecf0f1; /* Subtle hover effect for rows */
 }
 
-/* Buttons */
+/* Button Styling */
 .btn {
-    padding: 8px 16px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
     font-size: 0.9rem;
+    font-weight: 600; /* Bold text */
 }
 
+/* Update Button */
 .update-btn {
-    background-color: #28a745;
+    background-color: #28a745; /* Green for update */
     color: #fff;
 }
 
 .update-btn:hover {
     background-color: #218838;
+    transform: scale(1.05); /* Slight scale effect for hover */
 }
 
+/* Delete Button */
 .delete-btn {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Red for delete */
     color: #fff;
 }
 
 .delete-btn:hover {
     background-color: #c82333;
+    transform: scale(1.05); /* Slight scale effect for hover */
 }
 
-/* Responsive design */
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: white; /* White text color */
+}
+
+/* Dark Mode Dashboard Container */
+body.dark-mode .dashboard-container {
+    background-color: #1e1e1e; /* Darker background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow in dark mode */
+}
+
+/* Dark Mode Headings */
+body.dark-mode .dashboard-container h1,
+body.dark-mode .dashboard-container h2 {
+    color: #ecf0f1; /* Lighter text color for dark mode */
+}
+
+/* Dark Mode Styled Table */
+body.dark-mode .styled-table {
+    color: white;
+}
+
+body.dark-mode .styled-table th {
+    background-color: #2980b9; /* Maintain blue for headers */
+}
+
+body.dark-mode .styled-table tr:nth-child(even) {
+    background-color: #333; /* Darker rows for dark mode */
+}
+
+body.dark-mode .styled-table tr:hover {
+    background-color: #444; /* Darker hover effect */
+}
+
+/* Dark Mode Button Styling */
+body.dark-mode .btn {
+    color: white;
+}
+
+body.dark-mode .update-btn {
+    background-color: #28a745;
+}
+
+body.dark-mode .update-btn:hover {
+    background-color: #218838;
+}
+
+body.dark-mode .delete-btn {
+    background-color: #dc3545;
+}
+
+body.dark-mode .delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Smooth transition for table */
+.styled-table th, .styled-table td, .btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .styled-table th, .styled-table td {
-        font-size: 0.9rem;
-        padding: 10px;
+    .dashboard-container {
+        width: 95%; /* Container takes more space on smaller screens */
     }
 
-    .dashboard-container h1, .dashboard-container h2 {
-        font-size: 1.5rem;
+    .dashboard-container h1,
+    .dashboard-container h2 {
+        font-size: 1.8rem; /* Smaller font for smaller screens */
+    }
+
+    .styled-table th, .styled-table td {
+        font-size: 0.9rem;
+        padding: 10px; /* Smaller padding on smaller screens */
     }
 }

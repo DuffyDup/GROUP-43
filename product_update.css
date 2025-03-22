@@ -1,138 +1,272 @@
 /* Main Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #748b91;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #748b91; /* Light background color */
     margin: 0;
     padding: 0;
+    color: #333; /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
+/* Dashboard Container */
 .dashboard-container {
-    width: 80%;
-    margin: 20px auto;
-    background: #c1d1cf;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 85%;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease; /* Smooth background color change */
 }
 
-h2 {
-    text-align: center;
-    color: #333;
+/* Dashboard Header */
+.dashboard-container h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #2c3e50; /* Professional dark header color */
+    font-weight: 600;
 }
 
-/* Table Styling */
+.dashboard-container h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #34495e; /* Softer color for subheadings */
+    font-weight: 500;
+}
+
+/* Styled Table */
 .styled-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    border-radius: 8px; /* Smooth table border radius */
+    overflow: hidden; /* Ensure smooth edges for table */
 }
 
+/* Table Headers */
 .styled-table th, .styled-table td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
 }
 
+/* Table Header Styles */
 .styled-table th {
-    background-color: #007bff;
+    background-color: #2980b9; /* Lively blue for headers */
     color: white;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
+/* Table Row Styles */
 .styled-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f4f4f4; /* Light gray for even rows */
 }
 
-/* Form Styling */
-
-/* Apply styles only to the inventory management form */
-.inventory-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 50%;
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* Updated styles for select to match input fields */
-.inventory-form select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: white;
-    appearance: none; /* Removes default browser styles */
-    width: 100%; /* Match input width */
+.styled-table tr:hover {
+    background-color: #ecf0f1; /* Subtle hover effect for rows */
 }
 
-/* Ensure the dropdown doesn't overflow */
-.inventory-form select:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-
-.inventory-form input, 
-.inventory-form button {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
+/* Button Styling */
 .btn {
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.1s;
-    width: 100px; 
-    margin-right: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    font-size: 0.9rem;
+    font-weight: 600; /* Bold text */
 }
 
-
+/* Update Button */
 .update-btn {
-    background-color: #28a745;
-    color: white;
+    background-color: #28a745; /* Green for update */
+    color: #fff;
 }
 
 .update-btn:hover {
     background-color: #218838;
+    transform: scale(1.05); /* Slight scale effect */
 }
 
-
+/* Delete Button */
 .delete-btn {
-    background-color: #dc3545; 
-    color: white;
+    background-color: #dc3545; /* Red for delete */
+    color: #fff;
 }
 
 .delete-btn:hover {
     background-color: #c82333;
+    transform: scale(1.05); /* Slight scale effect for hover */
 }
 
-td form {
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: white; /* White text color */
+}
+
+/* Dark Mode Dashboard Container */
+body.dark-mode .dashboard-container {
+    background-color: #1e1e1e; /* Darker background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow in dark mode */
+}
+
+/* Dark Mode Headings */
+body.dark-mode .dashboard-container h1,
+body.dark-mode .dashboard-container h2 {
+    color: #ecf0f1; /* Lighter text color for dark mode */
+}
+
+/* Dark Mode Styled Table */
+body.dark-mode .styled-table {
+    color: white;
+}
+
+body.dark-mode .styled-table th {
+    background-color: #2980b9; /* Maintain blue for headers */
+}
+
+body.dark-mode .styled-table tr:nth-child(even) {
+    background-color: #333; /* Darker rows for dark mode */
+}
+
+body.dark-mode .styled-table tr:hover {
+    background-color: #444; /* Darker hover effect */
+}
+
+/* Dark Mode Button Styling */
+body.dark-mode .btn {
+    color: white;
+}
+
+body.dark-mode .update-btn {
+    background-color: #28a745;
+}
+
+body.dark-mode .update-btn:hover {
+    background-color: #218838;
+}
+
+body.dark-mode .delete-btn {
+    background-color: #dc3545;
+}
+
+body.dark-mode .delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Smooth transition for table */
+.styled-table th, .styled-table td, .btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Add Product Form Styling */
+.inventory-form {
     display: flex;
-    gap: 10px; 
-    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 50%;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
-/* Styling for Add Product button */
-button[name="add_product"] {
+/* Dark Mode Add Product Form */
+body.dark-mode .inventory-form {
+    background: #444; /* Darker background for form */
+    color: white; /* White text */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Light shadow */
+}
+
+/* Input Fields and Select Styling */
+.inventory-form input,
+.inventory-form select,
+.inventory-form button {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input Focus Effect */
+.inventory-form input:focus,
+.inventory-form select:focus,
+.inventory-form button:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Dark Mode Input and Button */
+body.dark-mode .inventory-form input,
+body.dark-mode .inventory-form select,
+body.dark-mode .inventory-form button {
+    background: #555; /* Dark background for input and button */
+    color: white; /* White text */
+    border: 1px solid #666; /* Darker border */
+}
+
+/* Button Styling */
+.inventory-form button {
     background-color: #007bff;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-button[name="add_product"]:hover {
+.inventory-form button:hover {
     background-color: #0056b3;
+}
+
+/* Dark Mode Add Product Button */
+body.dark-mode .inventory-form button {
+    background-color: #0056b3;
+}
+
+/* File Input Styling */
+.inventory-form input[type="file"] {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    color: black;
+}
+
+/* Dark Mode File Input */
+body.dark-mode .inventory-form input[type="file"] {
+    background-color: #555; /* Dark background */
+    color: white; /* White text */
+    border: 1px solid #666; /* Darker border */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        width: 95%; /* Container takes more space on smaller screens */
+    }
+
+    .dashboard-container h1,
+    .dashboard-container h2 {
+        font-size: 1.8rem; /* Smaller font for smaller screens */
+    }
+
+    .styled-table th, .styled-table td {
+        font-size: 0.9rem;
+        padding: 10px; /* Smaller padding on smaller screens */
+    }
 }
