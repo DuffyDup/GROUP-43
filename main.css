@@ -1,5 +1,5 @@
 body{
-    background-color: #171f22;
+    background-color: #c1d1cf;
     
     }
 
@@ -9,7 +9,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #c1d1cf;
+    background-color: #171f22;
     font-family: Arial, sans-serif;
     padding: 10px 20px;
     margin-bottom: 20px;
