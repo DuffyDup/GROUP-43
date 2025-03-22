@@ -82,6 +82,7 @@ $products = $statement->fetchAll(PDO::FETCH_ASSOC);
             <?php endif; ?>
         </div>
     </div>
+    <script src="theme.js" defer></script>
 
 </body>
 </html>

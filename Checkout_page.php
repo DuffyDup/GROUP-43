@@ -156,5 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
+    <script src="theme.js" defer></script>
+
 </body>
 </html>

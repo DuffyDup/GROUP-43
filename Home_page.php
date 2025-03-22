@@ -90,6 +90,8 @@ session_start();
 
   <!-- Footer -->
   <?php include 'footer.php'; ?>
+  
+  <script src="theme.js" defer></script>
 
   <!-- JavaScript Link -->
   <script src="homepage.js"></script>

@@ -107,5 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
 
 <!-- Footer -->
 <?php include 'footer.php'; ?>
+<script src="theme.js" defer></script>
+
 </body>
 </html>

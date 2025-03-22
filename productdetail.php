@@ -150,5 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'], $_POST[
     </section>
 
     <?php include 'footer.php'; ?>
+    <script src="theme.js" defer></script>
+
 </body>
 </html>

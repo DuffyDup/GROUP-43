@@ -107,5 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review'], $_POST['rat
     </div>
 
     <?php include 'footer.php'; ?>
+    <script src="theme.js" defer></script>
+
 </body>
 </html>

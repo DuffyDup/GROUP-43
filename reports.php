@@ -82,6 +82,8 @@ $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
     </div>
     
     <?php include 'footer.php'; ?>
+    <script src="theme.js" defer></script>
+
 </body>
 </html>
 

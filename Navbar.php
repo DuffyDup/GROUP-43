@@ -88,6 +88,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <img src="account_logo/night-mode.png" alt="Toggle Dark Mode" width="30">
 </button>
 
+
+
     </div>
 </div>
 

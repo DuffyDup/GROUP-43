@@ -159,5 +159,7 @@
             <p>Outstanding customer Support</p>
         </div>
     </footer>
+    <script src="theme.js" defer></script>
+
 </body>
 </html>

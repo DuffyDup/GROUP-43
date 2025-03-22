@@ -152,5 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <br><br>
     <!-- Footer -->
 <?php include 'footer.php'; ?>
+<script src="theme.js" defer></script>
+
 </body>
 </html>
