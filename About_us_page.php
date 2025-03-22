@@ -20,6 +20,7 @@ session_start(); // Start the session to check login status
     <div class="about-us-container">
         <!-- Big Text Section -->
         <div class="sub-text" >
+            <h1>Welcome To Tech Nova!</h1>
             <p>
             At Tech Nova, we focus on delivering top-notch, pre-owned electronics, 
             such as smartphones, tablets, laptops, smartwatches, and iPads. 

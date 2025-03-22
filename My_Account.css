@@ -1,6 +1,13 @@
+/* Ensure body background color is applied */
+html, body {
+    background-color: #748b91; /* Make sure the body background is applied */
+    margin: 0;  /* Remove default margin for the body */
+    font-family: Arial, sans-serif; /* Set font family for consistency */
+}
+
 /* Container for the account form */
 .signup-container {
-    background-color: #fff;
+    background-color: #c1d1cf; /* Background color for the container */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
