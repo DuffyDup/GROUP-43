@@ -16,14 +16,14 @@
 .big-text h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #ffffffac; /* Blue from your color palette */
+    color: #5a5a5aac; /* Blue from your color palette */
     margin-bottom: 20px;
 }
 
 .big-text p {
     font-size: 18px;
     line-height: 1.6;
-    color: #ffffff7c;
+    color: #6b6b6b7c;
 }
 
 /* Sub-text parts containers */
@@ -46,14 +46,14 @@
 
 .sub-text h2 {
     font-size: 20px;
-    color: #ffffffac;
+    color: #5a5a5aac;
     margin-bottom: 10px;
 }
 
 .sub-text p {
     font-size: 16px;
     line-height: 1.5;
-    color: #ffffff7c;
+    color: #6b6b6b7c;
 }
 
 /* Responsive Design */

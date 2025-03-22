@@ -19,7 +19,7 @@ session_start(); // Start the session to check login status
     <!-- About Us Content -->
     <div class="about-us-container">
         <!-- Big Text Section -->
-        <div class="sub-text" style="background-color: #c1d1cf;">
+        <div class="sub-text" style="background-image: linear-gradient(to right, #666b64 , #748891, #636467);">
             <h1>Welcome to Tech Nova!</h1>
             <p>
             At Tech Nova, we focus on delivering top-notch, pre-owned electronics, 
@@ -32,7 +32,7 @@ session_start(); // Start the session to check login status
 
         <!-- 4 Smaller Text Sections -->
         <div class="sub-text-sections">
-            <div class="sub-text" style="background-image: linear-gradient(to right, #666b64 , #748891, #636467);">
+            <div class="sub-text" style="background-color: #666b64;">
                 <h2>Our Products</h2>
                 <p>We meticulously examine and restore each device to guarantee it adheres to the utmost standards of quality and dependability.</p>
             </div>
