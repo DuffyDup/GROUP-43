@@ -1,6 +1,9 @@
+body{
+    background-color: #748b91;
+}
 /* Main container for the product page */
 .product-container {
-    background-color: #fff;
+    background-color: #c1d1cf;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -8,7 +11,7 @@
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
-    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    /* background: linear-gradient(135deg, #ffffff, #f7f7f7); */
     margin-top: 20px;
 }
 

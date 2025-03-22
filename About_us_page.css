@@ -1,13 +1,19 @@
-/*  This is the general container for About Us page */
+body {
+    background-color: #748b91;
+}
+
 .about-us-container {
+    background-color: #c1d1cf;
     padding: 40px;
     font-family: Arial, sans-serif;
     color: white;
     max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Styling for Main text */
 .big-text {
     text-align: center;
     margin-bottom: 40px;
@@ -16,7 +22,7 @@
 .big-text h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #ffffffac; /* Blue from your color palette */
+    color: #000;
     margin-bottom: 20px;
 }
 
@@ -25,6 +31,7 @@
     line-height: 1.6;
     color: #ffffff7c;
 }
+
 
 /* Sub-text parts containers */
 .sub-text-sections {

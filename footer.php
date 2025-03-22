@@ -11,6 +11,11 @@
             flex-direction: column;
             color: #ffffff;
         }
+
+        footer {
+            margin-top: 40px; 
+        }
+
         .footer {
             background-color: #171f22;
             padding: 20px 0;
@@ -18,6 +23,7 @@
             display: flex;
             justify-content: space-around;
             margin-top: auto; 
+            flex-shrink: 0; /* Prevent footer from shrinking */
         }
 
         .footer-column {
@@ -45,6 +51,7 @@
             text-decoration: underline; 
             color: inherit; 
         }
+
         @media (max-width: 768px) {
             .footer {
                 flex-direction: column;
@@ -56,9 +63,15 @@
                 margin-bottom: 20px;
             }
         }
+
     </style>
 </head>
 <body>
+
+    <!-- Main content of the page -->
+    <div class="content">
+        <!-- Your main content goes here -->
+    </div>
 
     <!-- Footer Section -->
     <div class="footer">
@@ -81,5 +94,6 @@
             <p>Outstanding customer Support</p>
         </div>
     </div>
+
 </body>
 </html>
