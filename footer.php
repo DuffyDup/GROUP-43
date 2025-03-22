@@ -11,7 +11,7 @@
             flex-direction: column;
         }
         .footer {
-            background-color: #c1d1cf;
+            background-color: #171f22;
             padding: 20px 0;
             text-align: center;
             display: flex;
