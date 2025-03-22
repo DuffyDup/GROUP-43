@@ -14,14 +14,15 @@ $order_id = $_GET['order_id'];
 $email = $_SESSION['email'];
 
 try {
-    // Fetch order details
     $stmt = $db->prepare("
-        SELECT p.product_id, p.quantity, p.address, p.postcode, 
+        SELECT p.product_id, p.quantity, 
                pr.name AS product_name, pr.price AS product_price, 
-               (p.quantity * pr.price) AS total_price
+               (p.quantity * pr.price) AS total_price,
+               o.address, o.postcode
         FROM Purchased p
         JOIN Products pr ON p.product_id = pr.product_id
-        WHERE p.order_id = :order_id AND p.email = :email
+        JOIN Orders o ON p.order_id = o.order_id
+        WHERE p.order_id = :order_id AND o.email = :email
     ");
     $stmt->execute(['order_id' => $order_id, 'email' => $email]);
     $order_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -33,21 +34,19 @@ try {
         $address = $postcode = "Unknown";
     }
 
-    // Handle order cancellation
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_order'])) {
-        $delete_stmt = $db->prepare("DELETE FROM Purchased WHERE order_id = :order_id AND email = :email");
-        $delete_stmt->execute(['order_id' => $order_id, 'email' => $email]);
+        $delete_stmt = $db->prepare("DELETE FROM Purchased WHERE order_id = :order_id");
+        $delete_stmt->execute(['order_id' => $order_id]);
 
         echo "<script>alert('Order cancelled successfully.'); window.location.href='Previous_Order.php';</script>";
         exit;
     }
 
-    // Handle address update
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_address'])) {
         $new_address = htmlspecialchars($_POST['new_address']);
         $new_postcode = htmlspecialchars($_POST['new_postcode']);
 
-        $update_stmt = $db->prepare("UPDATE Purchased SET address = :new_address, postcode = :new_postcode WHERE order_id = :order_id AND email = :email");
+        $update_stmt = $db->prepare("UPDATE Orders SET address = :new_address, postcode = :new_postcode WHERE order_id = :order_id AND email = :email");
         $update_stmt->execute(['new_address' => $new_address, 'new_postcode' => $new_postcode, 'order_id' => $order_id, 'email' => $email]);
 
         echo "<script>alert('Address updated successfully.'); window.location.href='order_details.php?order_id=$order_id';</script>";
@@ -112,7 +111,6 @@ try {
         <?php endif; ?>
     </div>
 
-    <!-- Change Delivery Address Form -->
     <div class="update-address-container">
         <h2>Change Delivery Address</h2>
         <form method="POST">
@@ -131,3 +129,4 @@ try {
     <?php include 'footer.php'; ?>
 </body>
 </html>
+

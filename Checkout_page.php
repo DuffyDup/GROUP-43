@@ -4,13 +4,11 @@ require 'connectdb.php';
 
 $user_email = $_SESSION['email'];
 
-
 $user_query = "SELECT full_name, email FROM Users WHERE email = :email";
 $user_stmt = $db->prepare($user_query);
 $user_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
 $user_stmt->execute();
 $user_data = $user_stmt->fetch(PDO::FETCH_ASSOC);
-
 
 $basket_query = "
     SELECT 
@@ -33,62 +31,60 @@ $basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
 $basket_stmt->execute();
 $basket_result = $basket_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$total_basket_price = 0;
+$total_basket_price = array_sum(array_column($basket_result, 'total_price'));
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $country = $_POST['country'];
     $street_name = $_POST['street_name'];
     $house_number = $_POST['house_number'];
     $postcode = $_POST['postcode'];
-    $address =  $house_number. ' ' .$street_name .  ', ' . $country;
+    $address = $house_number . ' ' . $street_name . ', ' . $country;
 
     try {
         $db->beginTransaction();
 
-        foreach ($basket_result as $row) {
-   
-            $insert_stmt = $db->prepare("
-                INSERT INTO Purchased (email, product_id, quantity, address, postcode, time_of_order)
-                VALUES (:email, :product_id, :quantity, :address, :postcode, NOW())
-            ");
-            $insert_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
-            $insert_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
-            $insert_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
-            $insert_stmt->bindValue(':address', $address, PDO::PARAM_STR);
-            $insert_stmt->bindValue(':postcode', $postcode, PDO::PARAM_STR);
-            $insert_stmt->execute();
-        }
+        $order_id = mt_rand(1000000000, 9999999999);
 
-        $order_id = $db->lastInsertId();
-        $_SESSION['order_id'] = $order_id;
+        $order_stmt = $db->prepare("
+            INSERT INTO Orders (order_id, email, address, postcode, total_price, time_of_order)
+            VALUES (:order_id, :email, :address, :postcode, :total_price, NOW())
+        ");
+        $order_stmt->execute([
+            ':order_id' => $order_id,
+            ':email' => $user_email,
+            ':address' => $address,
+            ':postcode' => $postcode,
+            ':total_price' => $total_basket_price
+        ]);
 
- 
+        $insert_stmt = $db->prepare("
+            INSERT INTO Purchased (order_id, product_id, quantity)
+            VALUES (:order_id, :product_id, :quantity)
+        ");
+
         foreach ($basket_result as $row) {
-            $update_stock_stmt = $db->prepare("
-                UPDATE Products 
-                SET stock = stock - :quantity 
-                WHERE product_id = :product_id
-            ");
-            $update_stock_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
-            $update_stock_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
-            $update_stock_stmt->execute();
+            $insert_stmt->execute([
+                ':order_id' => $order_id,
+                ':product_id' => $row['product_id'],
+                ':quantity' => $row['product_quantity']
+            ]);
         }
 
         $clear_basket_stmt = $db->prepare("DELETE FROM Basket WHERE email = :email");
-        $clear_basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
-        $clear_basket_stmt->execute();
+        $clear_basket_stmt->execute([':email' => $user_email]);
 
         $db->commit();
 
+        $_SESSION['order_id'] = $order_id;
         echo "<script>alert('Order placed successfully! Order ID: $order_id'); window.location.href='order_confirmation.php';</script>";
-
     } catch (Exception $e) {
         $db->rollBack();
-        echo "<script>alert('Failed to place order: " . htmlspecialchars($e->getMessage()) . "');</script>";
+        error_log("Order failed: " . $e->getMessage());
+        echo "<script>alert('Failed to place order. Please try again.');</script>";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Checkout</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="Checkout_Page.css">
-    <link rel="icon" type="image/png" href="Tech_Nova.png">
 </head>
 <body>
     <?php include 'Navbar.php';?>
@@ -133,9 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <th>Quantity</th>
                         <th>Total Price</th>
                     </tr>
-                    <?php foreach ($basket_result as $row): 
-                        $total_basket_price += $row['total_price'];
-                    ?>
+                    <?php foreach ($basket_result as $row): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($row['product_name']); ?></td>
                             <td>£<?php echo number_format($row['product_price'], 2); ?></td>
