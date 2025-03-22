@@ -6,7 +6,7 @@ body {
     background-color: #c1d1cf;
     padding: 40px;
     font-family: Arial, sans-serif;
-    color: white;
+    color: black; /* Changed text color to black */
     max-width: 1200px;
     width: 90%;
     margin: 0 auto;
@@ -22,16 +22,15 @@ body {
 .big-text h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #000;
+    color: black; /* Changed text color to black */
     margin-bottom: 20px;
 }
 
 .big-text p {
     font-size: 18px;
     line-height: 1.6;
-    color: #ffffff7c;
+    color: black; /* Changed text color to black */
 }
-
 
 /* Sub-text parts containers */
 .sub-text-sections {
@@ -53,20 +52,20 @@ body {
 
 .sub-text h2 {
     font-size: 20px;
-    color: #ffffffac;
+    color: black; /* Changed text color to black */
     margin-bottom: 10px;
 }
 
 .sub-text p {
     font-size: 16px;
     line-height: 1.5;
-    color: #ffffff7c;
+    color: black; 
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .sub-text-sections {
-        flex-direction: column; /* Stack sub-texts on top of another text */
+        flex-direction: column;
     }
 
     .sub-text {

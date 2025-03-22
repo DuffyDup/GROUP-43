@@ -3,31 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <script src="theme.js" defer></script>
     <style>
-        html, body {
-            height: 100%;
+        body {
+            background-color: #748b91;
+            color: black;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            color: #ffffff;
+            font-family: Arial, sans-serif;
         }
 
         footer {
-            margin-top: 40px; 
-        }
-
-        .footer {
-            background-color: #171f22;
+            background-color: #c1d1cf;
             padding: 20px 0;
             text-align: center;
             display: flex;
             justify-content: space-around;
-            margin-top: auto; 
-            flex-shrink: 0; /* Prevent footer from shrinking */
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
 
         .footer-column {
-            width: 20%;
+            width: 30%;
+            margin-bottom: 20px;
         }
 
         .footer-column h3 {
@@ -43,38 +42,104 @@
         }
 
         .footer-column a {
-            text-decoration: none; 
-            color: inherit; 
+            text-decoration: none;
+            color: inherit;
         }
 
         .footer-column a:hover {
-            text-decoration: underline; 
-            color: inherit; 
+            text-decoration: underline;
+            color: inherit;
         }
 
-        @media (max-width: 768px) {
-            .footer {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-column {
-                width: 100%;
-                margin-bottom: 20px;
-            }
+        /* Dark mode styles for footer */
+        body.dark-mode footer {
+            background-color: #333333;
         }
 
+        body.dark-mode .footer-column h3 {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .footer-column p {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .footer-column a {
+            color: #007bff;
+        }
+
+        body.dark-mode .footer-column a:hover {
+            color: #0056b3;
+        }
+
+        /* Default light mode styles */
+        .loginuser, .sendtheOTP, .entertheOTP, .choosenewpassword {
+            background-color: #c1d1cf;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .entrybox {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #848484;
+            border-radius: 5px;
+            outline: none;
+            background: transparent;
+            box-sizing: border-box;
+        }
+
+        .entrybox input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(116, 139, 145, 0.5);
+        }
+
+        .signupbutton {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .loginuser button, .signupbutton button, .loged, .signup {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .loginuser button:hover, .signupbutton button:hover, .loged:hover, .signup:hover {
+            background-color: #0056b3;
+        }
+
+        #forgetlink {
+            color: #000;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Main content of the page -->
-    <div class="content">
-        <!-- Your main content goes here -->
-    </div>
-
-    <!-- Footer Section -->
-    <div class="footer">
+    <footer>
         <div class="footer-column">
             <h3>CONTACT INFORMATION</h3>
             <p>Phone: 07893929457</p>
@@ -93,7 +158,6 @@
             <p>Safeguarding the environment</p>
             <p>Outstanding customer Support</p>
         </div>
-    </div>
-
+    </footer>
 </body>
 </html>
