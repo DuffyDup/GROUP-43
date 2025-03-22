@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include 'Navbar.php'; ?>
 
 <div class="loginuser">
-    <h1>Login</h1>
+    <h1 style="margin-bottom: 20px; font-size: 24px; color: #333;">Login</h1>
     <form id="loginforuser" method="POST" action="Login_Page.php">
         <input type="email" name="email" placeholder="Email" class="entrybox" required><br><br>
         <input type="password" name="password" placeholder="Password" class="entrybox" required><br><br>
