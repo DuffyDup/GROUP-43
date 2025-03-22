@@ -32,7 +32,7 @@ session_start(); // Start the session to check login status
 
         <!-- 4 Smaller Text Sections -->
         <div class="sub-text-sections">
-            <div class="sub-text" style="background-color: #666B64;">
+            <div class="sub-text" style="background-image: linear-gradient(to right, #666b64 , #748891, #636467);">
                 <h2>Our Products</h2>
                 <p>We meticulously examine and restore each device to guarantee it adheres to the utmost standards of quality and dependability.</p>
             </div>
