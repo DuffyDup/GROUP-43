@@ -27,6 +27,7 @@
     color: #333;
 }
 
+
 .form-group {
     position: relative;
     margin-bottom: 20px;
@@ -92,5 +93,5 @@
 .details-container p {
     margin-bottom: 10px;
     font-size: 16px;
-    color: #f4f4f4;
+    color:#333;
 }
