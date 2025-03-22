@@ -9,7 +9,7 @@ body {
 .dashboard-container {
     width: 80%;
     margin: 20px auto;
-    background: #fff;
+    background-image: linear-gradient(to right, #666b6484 , #74889184, #63646784);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

@@ -11,7 +11,7 @@ body {
 .order-details {
     max-width: 800px;
     margin: 50px auto;
-    background: #ffffff;
+    background-image: linear-gradient(to right, #666b6484 , #74889184, #63646784);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
