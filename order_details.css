@@ -1,7 +1,7 @@
 /* General Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #748b91;
     margin: 0;
     padding: 0;
     color: #333;
@@ -11,7 +11,7 @@ body {
 .order-details {
     max-width: 800px;
     margin: 50px auto;
-    background: #ffffff;
+    background: #c1d1cf;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

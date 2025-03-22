@@ -1,3 +1,6 @@
+body{
+    background-color: #748b91;
+}
 /* Main container for the checkout page */
 .checkout-container {
     display: flex;
@@ -5,7 +8,8 @@
     margin: 20px auto;
     padding: 20px;
     max-width: 1200px;
-    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    background-color: #c1d1cf;
+    /* background: linear-gradient(135deg, #ffffff, #f7f7f7); */
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
