@@ -1,7 +1,7 @@
 
 /* Container for the signup form */
 .signup-container {
-    background-color: #c1d1cf84;
+    background-image: linear-gradient(to right, #666b6484 , #74889184, #63646784);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -9,7 +9,6 @@
     max-width: 400px;
     margin: 0 auto; 
     text-align: center;
-    /*background: linear-gradient(135deg, #ffffff, #f7f7f7);*/
     margin-top: 20px;
 
 }
@@ -70,7 +69,7 @@
 
 /* Button styling */
 .signup-btn {
-    background-color: #636467;
+    background-color: #171f22;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -82,7 +81,7 @@
 
 /* Hover over effect for signup button */
 .signup-btn:hover {
-    background-color: #666b64;
+    background-color: #748b91;
 }
 
 /* Responsive design */
