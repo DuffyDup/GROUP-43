@@ -10,6 +10,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background-image: linear-gradient(to right, #666b6484 , #74889184, #63646784);
 }
 
 .header {
