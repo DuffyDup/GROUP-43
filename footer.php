@@ -9,7 +9,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            color: white;
+            color: #ffffff;
         }
         .footer {
             background-color: #171f22;
