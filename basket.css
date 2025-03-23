@@ -55,7 +55,7 @@ body {
     cursor: pointer;
 }
 
-button:hover {
+.container button:hover {
     background-color: #e04350;
 }
 
