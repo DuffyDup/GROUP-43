@@ -178,19 +178,30 @@
         const status = document.getElementById('statusFilter').value.toLowerCase();
         const orderId = document.getElementById('orderIdFilter').value.toLowerCase();
         const customer = document.getElementById('customerFilter').value.toLowerCase();
-    
+        const dateFrom = document.getElementById('dateFromFilter').value;
+        const dateTo = document.getElementById('dateToFilter').value;
+
         const rows = document.querySelectorAll('#ordersTableBody tr');
     
         rows.forEach(row => {
             const rowStatus = row.querySelector('td:nth-child(6) .status-badge').textContent.toLowerCase();
             const rowOrderId = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
             const rowCustomer = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-    
+            const rowDate = row.querySelector('td:nth-child(2)').textContent.trim();
+
+            let dateMatch = true;
+            if (dateFrom) {
+                dateMatch = new Date(rowDate) >= new Date(dateFrom);
+            }
+            if (dateTo) {
+                dateMatch = dateMatch && new Date(rowDate) <= new Date(dateTo);
+            }
+
             const statusMatch = status === 'all' || rowStatus === status;
             const orderIdMatch = rowOrderId.includes(orderId);
             const customerMatch = rowCustomer.includes(customer);
     
-            if (statusMatch && orderIdMatch && customerMatch) {
+            if (statusMatch && orderIdMatch && customerMatch && dateMatch) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
