@@ -1,5 +1,5 @@
 /* Main Content */
-html, body {
+body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -9,11 +9,20 @@ html, body {
     height: 100%;
 }
 
+body.dark-mode {
+    background-color: #121212;
+}
+
+
 /* Main content container */
 .main-content {
     text-align: center;
     padding: 20px;
     flex: 1;
+}
+
+body.dark-mode .main-content{
+    background-color: #121212;
 }
 
 /* Slideshow Section */
@@ -172,11 +181,21 @@ footer {
 
 /* Product Card Styles */
 .product-cards {
+    background-color: #c1d1cf;
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 20px;
     flex-wrap: wrap;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .product-cards {
+    background: linear-gradient(135deg, #121212, #333333); /* Dark gradient */
+    color: white;
+    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1); /* Lighter shadow in dark mode */
 }
 
 .card {
@@ -188,6 +207,20 @@ footer {
     width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+}
+
+body.dark-mode .card {
+    background-color: #444; /* Darker background for cards */
+    border-color: #555; /* Lighter border for dark mode */
+    color:white;
+}
+
+body.dark-mode .card p{
+    color:white;
+}
+
+body.dark-mode .card h1{
+    color:white;
 }
 
 .card:hover {
