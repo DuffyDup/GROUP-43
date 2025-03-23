@@ -60,6 +60,7 @@ if (isset($_POST['add_product'])) {
     $price2 = $_POST['price2'];
     $stock2 = $_POST['stock2'];
     $category2 = $_POST['category2']; 
+    $condition = $_POST['condition']; 
 
     // Define category-to-folder mapping
     $category_folders = [
@@ -98,8 +99,8 @@ if (isset($_POST['add_product'])) {
                     echo "<p style='color:red'>This product already exists. Use the table above to update stock.</p>";
                 } else {
                     // Insert into database with correct image path
-                    $addstmt = $db->prepare("INSERT INTO Products (name, picture, description, stock, category, price) VALUES (?, ?, ?, ?, ?, ?)");
-                    $addstmt->execute([$product_name2, $destination, $product_description2, $stock2, $category2, $price2]);
+                    $addstmt = $db->prepare("INSERT INTO Products (name, picture, description, stock, category, price, product_condition) VALUES (?, ?, ?, ?, ?, ?,?)");
+                    $addstmt->execute([$product_name2, $destination, $product_description2, $stock2, $category2, $price2,$condition]);
 
                     echo "<script>alert('Product added successfully.');</script>";
                     
@@ -219,6 +220,14 @@ if (isset($_POST['add_product'])) {
                 <option value="ipad">iPad</option>
                 <option value="laptop">Laptop</option>
                 <option value="headphone">Headphone</option>
+            </select>
+
+            <select name="condition" required>
+                <option value="">Select Condition</option>
+                <option value="Poor">Poor</option>
+                <option value="Fair">Fair</option>
+                <option value="Good">Good</option>
+                <option value="Excellent">Excellent</option>
             </select>
 
             <input type="file" name="product_image2" required>
