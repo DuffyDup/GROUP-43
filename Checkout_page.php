@@ -43,40 +43,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $db->beginTransaction();
 
-        do {
-            
-            $check_query = "SELECT COUNT(*) FROM Purchased WHERE order_id = :order_id";
-            $check_stmt = $db->prepare($check_query);
-            $check_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
-            $check_stmt->execute();
-            $exists = $check_stmt->fetchColumn();
-        } while ($exists > 0);
+        $order_id = mt_rand(1000000000, 9999999999);
+
+        $order_stmt = $db->prepare("
+            INSERT INTO Orders (order_id, email, address, postcode, total_price, time_of_order)
+            VALUES (:order_id, :email, :address, :postcode, :total_price, NOW())
+        ");
+        $order_stmt->execute([
+            ':order_id' => $order_id,
+            ':email' => $user_email,
+            ':address' => $address,
+            ':postcode' => $postcode,
+            ':total_price' => $total_basket_price
+        ]);
+
+        $insert_stmt = $db->prepare("
+            INSERT INTO Purchased (order_id, product_id, quantity)
+            VALUES (:order_id, :product_id, :quantity)
+        ");
 
         foreach ($basket_result as $row) {
-           
-            $insert_stmt = $db->prepare("
-            INSERT INTO Purchased (email, product_id, quantity, total_price, address, postcode, time_of_order)
-            VALUES (:email, :product_id, :quantity, :total_price, :address, :postcode, NOW())
-        ");
-        
-            
-            $insert_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
-            $insert_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
-            $insert_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
-            $insert_stmt->bindValue(':total_price', $row['total_price'], PDO::PARAM_STR);
-            $insert_stmt->bindValue(':address', $address, PDO::PARAM_STR);
-            $insert_stmt->bindValue(':postcode', $postcode, PDO::PARAM_STR);
-            $insert_stmt->execute();
-
-            $update_stock = "
-                UPDATE Products 
-                SET stock = stock - :quantity 
-                WHERE product_id = :product_id
-            ";
-            $update_stock_stmt = $db->prepare($update_stock);
-            $update_stock_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
-            $update_stock_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
-            $update_stock_stmt->execute();
+            $insert_stmt->execute([
+                ':order_id' => $order_id,
+                ':product_id' => $row['product_id'],
+                ':quantity' => $row['product_quantity']
+            ]);
         }
 
         $clear_basket_stmt = $db->prepare("DELETE FROM Basket WHERE email = :email");
@@ -101,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
     <link rel="stylesheet" href="Checkout_Page.css">
 </head>
 <body>
@@ -165,6 +157,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
-
 </body>
 </html>
