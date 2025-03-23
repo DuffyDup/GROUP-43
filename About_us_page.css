@@ -14,6 +14,12 @@ body {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+body.dark-mode .about-us-container{
+    background: linear-gradient(135deg, #121212, #333333); /* Dark gradient */
+   color: white;
+   box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1); /* Lighter shadow in dark mode */
+}
+
 .big-text {
     text-align: center;
     margin-bottom: 40px;
@@ -26,10 +32,18 @@ body {
     margin-bottom: 20px;
 }
 
+body.dark-mode .big-text h1{
+    color: white;
+}
+
 .big-text p {
     font-size: 18px;
     line-height: 1.6;
     color: black; /* Changed text color to black */
+}
+
+body.dark-mode .big-text p{
+    color: white;
 }
 
 /* Sub-text parts containers */
@@ -50,16 +64,30 @@ body {
     text-align: center;
 }
 
+body.dark-mode .sub-text{
+    background-color: #444; /* Darker background for cards */
+    border-color: #555; /* Lighter border for dark mode */
+    color:white;
+}
+
 .sub-text h2 {
     font-size: 20px;
     color: black; /* Changed text color to black */
     margin-bottom: 10px;
 }
 
+body.dark-mode .sub-text h2{
+    color: white;
+}
+
 .sub-text p {
     font-size: 16px;
     line-height: 1.5;
     color: black; 
+}
+
+body.dark-mode .sub-text p{
+    color: white;
 }
 
 /* Responsive Design */
