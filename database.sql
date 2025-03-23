@@ -10,16 +10,18 @@ CREATE TABLE Users (
     type ENUM('customer', 'admin') NOT NULL -- User type: either customer or admin to figure out what home page to take them to
 );
 
--- Create the Products table
+
 CREATE TABLE Products (
-    product_id INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key with auto-increment
+    product_id INT AUTO_INCREMENT PRIMARY KEY,-- Primary Key with auto-increment
     name VARCHAR(255) NOT NULL,
-    picture VARCHAR(255) NOT NULL, -- Path to product image
+    picture VARCHAR(255) NOT NULL,-- Path to product image
     description VARCHAR(255) NOT NULL,
-    stock INT NOT NULL, -- Number of items available
-    category ENUM('phone','watch','ipad','laptop','headphone') NOT NULL, -- Product category (e.g., electronics)
-    price DECIMAL(10, 2) NOT NULL -- Product price with 2 decimal places
+    stock INT NOT NULL,-- Number of items available
+    category ENUM('phone', 'watch', 'ipad', 'laptop', 'headphone') NOT NULL, -- Product category
+    price DECIMAL(10, 2) NOT NULL,
+    product_condition ENUM('Poor', 'Fair', 'Good', 'Excellent') NOT NULL-- condition o the product
 );
+
 
 -- Create the Purchased table with order_id as the primary key
 CREATE TABLE `Purchased` (
@@ -81,7 +83,7 @@ INSERT INTO `products` (`product_id`, `name`, `picture`, `description`, `stock`,
 (6, 'Samsung Galaxy Book 2 - Poor', './Laptops/samsunggalaxybook2.png', 'A compact yet capable laptop, the Samsung Galaxy Book 2 features a vibrant AMOLED display, a responsive keyboard, and a lightweight chassis. Perfect for students and professionals looking for an affordable laptop with reliable performance and excellent po', 3, 'laptop', 349.99, 'excellent'),
 (7, 'Black iPhone 16 - Excellent', './Phones/16black.png', 'The iPhone 16 is built for speed and efficiency, featuring the A17 Bionic chip and an advanced OLED display. With a stunning black finish, ultra-fast 5G connectivity, and improved battery life, this phone is perfect for multitasking, gaming, and capturing', 50, 'phone', 699.99, 'excellent'),
 (8, 'Gold iPhone 16 Pro Max - Good', './Phones/16promaxgold.png', 'A luxury smartphone that combines cutting-edge technology with a sleek gold design. The iPhone 16 Pro Max features an A17 Pro chip for next-level performance, a ProMotion OLED display with incredible brightness, and a triple-lens camera system that captur', 30, 'phone', 1099.99, 'excellent'),
-(11), 'Black Samsung Galaxy S23 - Fair', './Phones/s23black.png', 'A balanced smartphone featuring an immersive AMOLED display, a powerful Snapdragon processor, and a multi-lens camera system. The Galaxy S23 is designed for those who want reliable performance, great photography, and long-lasting battery life.', 100, 'phone', 699.99, 'excellent'),
+(11, 'Black Samsung Galaxy S23 - Fair', './Phones/s23black.png', 'A balanced smartphone featuring an immersive AMOLED display, a powerful Snapdragon processor, and a multi-lens camera system. The Galaxy S23 is designed for those who want reliable performance, great photography, and long-lasting battery life.', 100, 'phone', 699.99, 'excellent'),
 (12, 'Samsung Galaxy S24 Ultra - Excellent', './Phones/s24ultra.png', 'The ultimate flagship smartphone with a massive 6.8-inch Dynamic AMOLED display, 200MP ultra-clear camera, and S Pen support. Built for power users, the S24 Ultra delivers unmatched performance with its Snapdragon 8 Gen 3 processor and all-day battery.', 40, 'phone', 799.99, 'excellent'),
 (13, 'White Samsung Galaxy S23 - Poor', './Phones/s23white.png', 'A stylish and budget-friendly smartphone with a smooth AMOLED display, a powerful yet efficient processor, and a capable camera system. The Galaxy S23 is a solid choice for users looking for an affordable yet feature-packed device.', 20, 'phone', 599.99, 'excellent'),
 (14, 'iPhone 16 Pro Max - Excellent', './Phones/iphone16promax.png', 'A premium smartphone designed for those who demand the best. Featuring an advanced ProMotion XDR display, a lightning-fast A17 Pro chip, and a professional-grade triple-lens camera system, the iPhone 16 Pro Max is the ultimate flagship device.', 10, 'phone', 1099.99, 'excellent'),
