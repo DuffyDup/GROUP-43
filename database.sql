@@ -102,3 +102,7 @@ INSERT INTO `products` (`product_id`, `name`, `picture`, `description`, `stock`,
 
 
 
+ALTER TABLE Purchased
+ADD COLUMN purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN total_price DECIMAL(10,2) NOT NULL, 
+ADD COLUMN order_status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending';
