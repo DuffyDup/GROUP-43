@@ -37,6 +37,26 @@ if (isset($_POST['cancelOrder']) && isset($_POST['order_id'])) {
     exit;
 }
 
+// Handle status update request
+if (isset($_POST['updateStatus']) && isset($_POST['order_id']) && isset($_POST['status'])) {
+    $orderId = $_POST['order_id'];
+    $newStatus = $_POST['status'];
+
+    try {
+        // Update order status in database
+        $stmt = $db->prepare("UPDATE Purchased SET order_status = :status WHERE order_id = :order_id");
+        $stmt->bindParam(':status', $newStatus);
+        $stmt->bindParam(':order_id', $orderId);
+        $stmt->execute();
+
+        echo "Order status updated to '$newStatus'.";
+    } catch (PDOException $e) {
+        echo "Error updating order status: " . $e->getMessage();
+    }
+
+    exit;
+}
+
 function displayOrders($orders){
     foreach ($orders as $order) {
         echo "<tr>
@@ -57,13 +77,15 @@ function displayOrders($orders){
             </td>
             </tr>";
         } else {
-            echo "<td><span class='status-badge status-processing'>" . htmlspecialchars($order['status']) . "</span></td>
-            <td>
-                <select id='changeStatus-" . htmlspecialchars($order['order_id']) . "' class='status-dropdown' onchange='changeOrderStatus(\"" . htmlspecialchars($order['order_id']) . "\")'>
-                    <option value='shipped'>Shipped</option>
-                    <option value='delivered'>Delivered</option>
+            echo "<td id='status-" . htmlspecialchars($order['order_id']) . "'>
+                    <span class='status-badge status-processing'>" . htmlspecialchars($order['status']) . "</span>
+                </td>";
+            echo "<td>
+                <select id='changeStatus-" . htmlspecialchars($order['order_id']) . "' class='status-dropdown'>
+                    <option value='shipped' " . ($status == 'shipped' ? 'selected' : '') . ">Shipped</option>
+                    <option value='delivered' " . ($status == 'delivered' ? 'selected' : '') . ">Delivered</option>
                 </select>
-            </td>
+              </td>
             <td class='actions'>
                 <button class='btn-success' title='Save Changes' onclick='saveChanges(\"" . htmlspecialchars($order['order_id']) . "\")'>Save Changes</button>
                 <button class='btn-danger' title='Cancel' onclick='cancelOrder(\"" . htmlspecialchars($order['order_id']) . "\")'>Cancel</button>
@@ -333,6 +355,29 @@ $acceptedOrdersHTML = ob_get_clean();
             })
             .catch(error => console.error("Error:", error));
         }
+    }
+
+    // Handle status changes
+    function saveChanges(orderId) {
+        const selectedStatus = document.getElementById(`changeStatus-${orderId}`).value;
+
+        fetch('ProcessOrder.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `updateStatus=true&order_id=${orderId}&status=${selectedStatus}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+
+            // Update the status text in the table
+            const statusCell = document.getElementById(`status-${orderId}`);
+            if (statusCell) {
+                statusCell.textContent = selectedStatus.charAt(0).toUpperCase() + selectedStatus.slice(1);
+                statusCell.className = `status-badge status-${selectedStatus.toLowerCase()}`;
+            }
+        })
+        .catch(error => console.error("Error updating status:", error));
     }
 </script>
     
