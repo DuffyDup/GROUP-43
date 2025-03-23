@@ -22,10 +22,18 @@ CREATE TABLE Products (
 );
 
 -- Create the Purchased table with order_id as the primary key
-CREATE TABLE `purchased` (
-  `order_id` varchar(36) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+CREATE TABLE `Purchased` (
+  `order_id` VARCHAR(36) NOT NULL,  -- Unique order ID (UUID recommended)
+  `email` VARCHAR(255) NOT NULL,  -- User email linked to the order
+  `product_id` INT(11) NOT NULL,  -- Product being purchased
+  `quantity` INT(11) NOT NULL,  -- Quantity of the product
+  `total_price` DECIMAL(10,2) NOT NULL,  -- Total cost of the order
+  `purchase_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp when the order was placed
+  `order_status` ENUM('Pending', 'Shipped', 'Delivered', 'Cancelled') DEFAULT 'Pending', -- Order status
+  
+  PRIMARY KEY (`order_id`, `product_id`),  -- Composite primary key to avoid duplicate product entries
+  FOREIGN KEY (`email`) REFERENCES `Users`(`email`) ON DELETE CASCADE,
+  FOREIGN KEY (`product_id`) REFERENCES `Products`(`product_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -91,10 +99,6 @@ INSERT INTO `products` (`product_id`, `name`, `picture`, `description`, `stock`,
 (26, 'Samsung Galaxy Tab S10 Ultra - Excellent', './Tablet_images/samsungs10ultra.png', 'The next-generation Samsung Galaxy Tab S10 Ultra features a breathtaking 14.6-inch AMOLED display with ultra-smooth refresh rates, an upgraded S Pen for precision tasks, and cutting-edge AI-powered features for the ultimate tablet experience.', 15, 'ipad', 579.99, 'excellent');
 
 
-ALTER TABLE Purchased
-ADD COLUMN purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp for order
-ADD COLUMN total_price DECIMAL(10,2) NOT NULL, -- Total order cost
-ADD COLUMN order_status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending'; -- Status of the order
 
 
 
