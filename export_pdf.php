@@ -28,6 +28,7 @@ $sql = "
            SUM(pur.quantity * p.price) AS total_revenue
     FROM Purchased pur
     JOIN Products p ON pur.product_id = p.product_id
+    JOIN Orders o ON o.order_id = pur.order_id  -- Ensure it links with Orders table
     GROUP BY pur.product_id
     ORDER BY total_quantity_sold DESC
     LIMIT 10";

@@ -26,7 +26,6 @@ CREATE TABLE Products (
 -- Create the Purchased table with order_id as the primary key
 CREATE TABLE Purchased (
   order_id INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(255),
   product_id INT,
   quantity INT NOT NULL,
   address VARCHAR(255) NOT NULL,
@@ -34,7 +33,6 @@ CREATE TABLE Purchased (
   time_of_order DATETIME DEFAULT CURRENT_TIMESTAMP,
   total_price DECIMAL(10,2) NOT NULL,
   order_status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending',
-  FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE,
   FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
