@@ -303,20 +303,6 @@ $acceptedOrdersHTML = ob_get_clean();
         });
     });
 
-    // handle refresh data button
-    document.getElementById("refreshBtn").addEventListener("click", function() {
-    fetch(window.location.href + "?fetchOrders=true")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("ordersTableBody").innerHTML = data;
-        })
-        .catch(error => console.error("Error fetching data:", error));
-    });
-
-    //document.getElementById("refreshBtn").addEventListener("click", function() {
-    //    location.reload();
-    //});
-
     // Handle accept order button
     function acceptOrder(orderId) {
         if (confirm("Are you sure you want to accept this order?")) {
@@ -379,6 +365,20 @@ $acceptedOrdersHTML = ob_get_clean();
         })
         .catch(error => console.error("Error updating status:", error));
     }
+
+        // handle refresh data button
+        document.getElementById("refreshBtn").addEventListener("click", function() {
+    fetch(window.location.href + "?fetchOrders=true")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("ordersTableBody").innerHTML = data;
+        })
+        .catch(error => console.error("Error fetching data:", error));
+    });
+
+    document.getElementById("refreshBtn").addEventListener("click", function() {
+        location.reload();
+    });
 </script>
     
     
