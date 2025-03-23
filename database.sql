@@ -23,9 +23,8 @@ CREATE TABLE Products (
 );
 
 
--- Create the Purchased table with order_id as the primary key
 CREATE TABLE Purchased (
-  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id VARCHAR(36) PRIMARY KEY,
   product_id INT,
   quantity INT NOT NULL,
   address VARCHAR(255) NOT NULL,
