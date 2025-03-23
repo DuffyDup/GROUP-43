@@ -15,6 +15,34 @@ body {
     color: black;
 }
 
+.loginuser h1{
+    margin-bottom: 20px; 
+    font-size: 24px; 
+    color: #333;
+}
+
+body.dark-mode .loginuser, .sendtheOTP, .entertheOTP, .choosenewpassword {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .loginuser input, .sendtheOTP input, .entertheOTP input, .choosenewpassword input{
+    color:white;
+}
+
+body.dark-mode .loginuser ::placeholder, .sendtheOTP ::placeholder, .entertheOTP ::placeholder, .choosenewpassword ::placeholder{
+    color:white;
+}
+
+body.dark-mode .loginuser h1, .sendtheOTP h1, .entertheOTP h1, .choosenewpassword h1{
+    color:white;
+}
+
+body.dark-mode .loginuser label{
+    color:white;
+}
+
+
+
 .entrybox {
     width: 100%;
     padding: 10px;
