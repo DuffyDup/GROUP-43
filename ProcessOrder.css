@@ -111,6 +111,8 @@ select, input {
     text-align: center;
     width: 80px;
     display: inline-block;
+    justify-content: center;
+    align-items: center;
 }
 
 .status-pending {

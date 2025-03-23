@@ -313,9 +313,9 @@ $acceptedOrdersHTML = ob_get_clean();
         .catch(error => console.error("Error fetching data:", error));
     });
 
-    document.getElementById("refreshBtn").addEventListener("click", function() {
-        location.reload();
-    });
+    //document.getElementById("refreshBtn").addEventListener("click", function() {
+    //    location.reload();
+    //});
 
     // Handle accept order button
     function acceptOrder(orderId) {
