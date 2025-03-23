@@ -24,19 +24,19 @@ CREATE TABLE Products (
 
 
 -- Create the Purchased table with order_id as the primary key
-CREATE TABLE `Purchased` (
-  `order_id` VARCHAR(36) NOT NULL,  -- Unique order ID (UUID recommended)
-  `email` VARCHAR(255) NOT NULL,  -- User email linked to the order
-  `product_id` INT(11) NOT NULL,  -- Product being purchased
-  `quantity` INT(11) NOT NULL,  -- Quantity of the product
-  `total_price` DECIMAL(10,2) NOT NULL,  -- Total cost of the order
-  `purchase_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Timestamp when the order was placed
-  `order_status` ENUM('Pending', 'Shipped', 'Delivered', 'Cancelled') DEFAULT 'Pending', -- Order status
-  
-  PRIMARY KEY (`order_id`, `product_id`),  -- Composite primary key to avoid duplicate product entries
-  FOREIGN KEY (`email`) REFERENCES `Users`(`email`) ON DELETE CASCADE,
-  FOREIGN KEY (`product_id`) REFERENCES `Products`(`product_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE Purchased (
+  order_id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255),
+  product_id INT,
+  quantity INT NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  postcode VARCHAR(20) NOT NULL,
+  time_of_order DATETIME DEFAULT CURRENT_TIMESTAMP,
+  total_price DECIMAL(10,2) NOT NULL,
+  order_status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending',
+  FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- Create the Basket table
