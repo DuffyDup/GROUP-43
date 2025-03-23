@@ -24,7 +24,7 @@ CREATE TABLE Products (
 
 
 CREATE TABLE Purchased (
-  order_id VARCHAR(36) PRIMARY KEY,
+  order_id VARCHAR(36),
   product_id INT,
   quantity INT NOT NULL,
   address VARCHAR(255) NOT NULL,
@@ -32,11 +32,12 @@ CREATE TABLE Purchased (
   time_of_order DATETIME DEFAULT CURRENT_TIMESTAMP,
   total_price DECIMAL(10,2) NOT NULL,
   order_status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending',
+  PRIMARY KEY (order_id, product_id),  -- Allows multiple products per order
   FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- Create the Basket table
+
 CREATE TABLE Basket (
     email VARCHAR(255), -- Foreign Key to Users
     product_id INT, -- Foreign Key to Products
@@ -54,7 +55,7 @@ CREATE TABLE Basket (
   `time_of_order` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Create the Reviews table
+
 CREATE TABLE Reviews (
     email VARCHAR(255), -- Foreign Key to Users
     product_id INT, -- Foreign Key to Products

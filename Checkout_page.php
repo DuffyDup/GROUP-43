@@ -2,26 +2,24 @@
 session_start();
 require 'connectdb.php';
 
-// Check if user is logged in
+
 if (!isset($_SESSION['email'])) {
     die("User not logged in. Please log in first.");
 }
 
 $user_email = $_SESSION['email'];
 
-// Fetch user details
 $user_query = "SELECT full_name, email FROM Users WHERE email = :email";
 $user_stmt = $db->prepare($user_query);
 $user_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
 $user_stmt->execute();
 $user_data = $user_stmt->fetch(PDO::FETCH_ASSOC);
 
-// Ensure user data is retrieved
 if (!$user_data) {
     die("User not found. Please log in again.");
 }
 
-// Fetch basket items
+
 $basket_query = "
     SELECT 
         p.product_id AS product_id,
@@ -43,17 +41,16 @@ $basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
 $basket_stmt->execute();
 $basket_result = $basket_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Calculate total basket price
+
 $total_basket_price = $basket_result ? array_sum(array_column($basket_result, 'total_price')) : 0;
 
-// Handle order placement
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $country = $_POST['country'] ?? '';
     $street_name = $_POST['street_name'] ?? '';
     $house_number = $_POST['house_number'] ?? '';
     $postcode = $_POST['postcode'] ?? '';
 
-    // Validate input fields
     if (empty($country) || empty($street_name) || empty($house_number) || empty($postcode)) {
         die("All address fields are required.");
     }
@@ -63,10 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $db->beginTransaction();
 
-        // Generate unique order ID
+        
         $order_id = mt_rand(1000000000, 9999999999);
 
-        // Insert order details
+        
         $order_stmt = $db->prepare("
             INSERT INTO Orders (order_id, email, address, postcode, total_price, time_of_order)
             VALUES (:order_id, :email, :address, :postcode, :total_price, NOW())
@@ -79,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':total_price' => $total_basket_price
         ]);
 
-        // Insert purchased items
+  
         $insert_stmt = $db->prepare("
             INSERT INTO Purchased (order_id, product_id, quantity)
             VALUES (:order_id, :product_id, :quantity)
@@ -93,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
         }
 
-        // Clear the basket
+
         $clear_basket_stmt = $db->prepare("DELETE FROM Basket WHERE email = :email");
         $clear_basket_stmt->execute([':email' => $user_email]);
 
