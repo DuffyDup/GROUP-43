@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Order Processing</title>
     <link rel="stylesheet" href="ProcessOrder.css">
+    <link rel="stylesheet" href="main.css"> 
+    <link rel="icon" type="image/png" href="Tech_Nova.png">
+    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
+    <?php include 'Navbar.php'; ?> 
+
     <div class="container">
         <div class="header">
             <h1>Order Processing</h1>
@@ -54,6 +59,7 @@
         </div>
         
         <table class="orders-table">
+            <h2>Pending Orders</h2>
             <thead>
                 <tr>
                     <th>Order ID</th>
@@ -71,117 +77,101 @@
                     <td>ORD-1001</td>
                     <td>2025-03-20</td>
                     <td>random person</td>
-                    <td> items</td>
+                    <td>items</td>
                     <td>£89.99</td>
                     <td><span class="status-badge status-pending">Pending</span></td>
                     <td>-</td>
                     <td class="actions">
-                        <button class="btn-primary" title="View Order">View</button>
-                        <button class="btn-success" title="Edit Status">Edit</button>
-                        <button class="btn-danger" title="Cancel Order">Cancel</button>
-                        <button class="btn-danger outline" title="Issue Refund">Refund</button>
+                        <button class="btn-success" title="Accept Order" onclick="acceptOrder('ORD-1001')">Accept</button>
+                        <button class="btn-danger" title="Cancel Order" onclick="cancelOrder('ORD-1001')">Cancel</button>
                     </td>
                 </tr>
                 <tr>
                     <td>ORD-1002</td>
                     <td>2025-03-18</td>
-                    <td>random person </td>
-                    <td> item</td>
+                    <td>random person</td>
+                    <td>item</td>
                     <td>£45.50</td>
-                    <td><span class="status-badge status-shipped">Shipped</span></td>
-                    <td>TRK123456</td>
+                    <td><span class="status-badge status-pending">Pending</span></td>
+                    <td>-</td>
                     <td class="actions">
-                        <button class="btn-primary" title="View Order">View</button>
-                        <button class="btn-success" title="Edit Status">Edit</button>
-                        <button class="btn-danger" title="Cancel Order">Cancel</button>
-                        <button class="btn-danger outline" title="Issue Refund">Refund</button>
+                        <button class="btn-success" title="Accept Order" onclick="acceptOrder('ORD-1002')">Accept</button>
+                        <button class="btn-danger" title="Cancel Order" onclick="cancelOrder('ORD-1002')">Cancel</button>
                     </td>
                 </tr>
             </tbody>
         </table>
         
-        <div class="pagination" id="pagination">
-          
+        <div class="accepted-orders">
+            <h2>Accepted Orders</h2>
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Tracking #</th>
+                        <th>Change Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="acceptedOrdersTable">
+                    <tr id="ORD-1001">
+                        <td>ORD-1001</td>
+                        <td>2025-03-20</td>
+                        <td>random person</td>
+                        <td>items</td>
+                        <td>£89.99</td>
+                        <td><span class="status-badge status-processing">Processing</span></td>
+                        <td>-</td>
+                        <td>
+                            <select id="changeStatus-ORD-1001" class="status-dropdown" onchange="changeOrderStatus('ORD-1001')">
+                                <option value="pending">Pending</option>
+                                <option value="processing" selected>Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                            </select>
+                        </td>
+                        <td class="actions">
+                            <button class="btn-success" title="Save Changes" onclick="saveChanges('ORD-1001')">Save Changes</button>
+                            <button class="btn-danger" title="Cancel" onclick="cancelOrder('ORD-1001')">Cancel</button>
+                        </td>
+                    </tr>
+                    <tr id="ORD-1002">
+                        <td>ORD-1002</td>
+                        <td>2025-03-18</td>
+                        <td>random person</td>
+                        <td>item</td>
+                        <td>£45.50</td>
+                        <td><span class="status-badge status-shipped">Shipped</span></td>
+                        <td>TRK123456</td>
+                        <td>
+                            <select id="changeStatus-ORD-1002" class="status-dropdown" onchange="changeOrderStatus('ORD-1002')">
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped" selected>Shipped</option>
+                                <option value="delivered">Delivered</option>
+                            </select>
+                        </td>
+                        <td class="actions">
+                            <button class="btn-success" title="Save Changes" onclick="saveChanges('ORD-1002')">Save Changes</button>
+                            <button class="btn-danger" title="Cancel" onclick="cancelOrder('ORD-1002')">Cancel</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    
-   
-    <div class="modal" id="updateStatusModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Update Order Status</h2>
-                <button class="close-btn">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="order-details">
-                    <div class="order-detail">
-                        <h4>Order ID</h4>
-                        <p id="modalOrderId">ORD-12345</p>
-                    </div>
-                    <div class="order-detail">
-                        <h4>Customer</h4>
-                        <p id="modalCustomer">John Doe</p>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="orderStatus">Status</label>
-                    <select id="orderStatus" class="form-control">
-                        <option value="pending">Pending</option>
-                        <option value="processing">Processing</option>
-                        <option value="shipped">Shipped</option>
-                        <option value="delivered">Delivered</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                </div>
-                
-                <div class="form-group" id="trackingNumberGroup">
-                    <label for="trackingNumber">Tracking Number</label>
-                    <input type="text" id="trackingNumber" class="form-control" placeholder="Enter tracking number">
-                </div>
-                
-                <div class="form-group" id="cancellationReasonGroup" style="display: none;">
-                    <label for="cancellationReason">Cancellation Reason</label>
-                    <select id="cancellationReason" class="form-control">
-                        <option value="customer-request">Customer Request</option>
-                        <option value="out-of-stock">Item Out of Stock</option>
-                        <option value="payment-issue">Payment Issue</option>
-                        <option value="fraudulent">Fraudulent Order</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group" id="cancellationNotesGroup" style="display: none;">
-                    <label for="cancellationNotes">Notes</label>
-                    <textarea id="cancellationNotes" class="form-control" placeholder="Additional notes..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" id="saveStatusBtn">Save Changes</button>
-                <button class="close-btn">Cancel</button>
-            </div>
-        </div>
-    </div>
-    
- 
-    <div class="modal" id="viewOrderModal">
-        <div class="modal-content" style="width: 600px; max-width: 90%;">
-            <div class="modal-header">
-                <h2>Order Details</h2>
-                <button class="close-btn">&times;</button>
-            </div>
-            <div class="modal-body" id="orderDetailsContent">
-               
-            </div>
-            <div class="modal-footer">
-                <button class="close-btn">Close</button>
-            </div>
-        </div>
-    </div>
-    
-  
+
+    <?php include 'footer.php'; ?> 
+
 </body>
 </html>
+
+
 
 <script>
     document.getElementById('applyFiltersBtn').addEventListener('click', () => {
