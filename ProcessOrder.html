@@ -183,5 +183,30 @@
 </body>
 </html>
 
-
+<script>
+    document.getElementById('applyFiltersBtn').addEventListener('click', () => {
+        const status = document.getElementById('statusFilter').value.toLowerCase();
+        const orderId = document.getElementById('orderIdFilter').value.toLowerCase();
+        const customer = document.getElementById('customerFilter').value.toLowerCase();
+    
+        const rows = document.querySelectorAll('#ordersTableBody tr');
+    
+        rows.forEach(row => {
+            const rowStatus = row.querySelector('td:nth-child(6) .status-badge').textContent.toLowerCase();
+            const rowOrderId = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+            const rowCustomer = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+    
+            const statusMatch = status === 'all' || rowStatus === status;
+            const orderIdMatch = rowOrderId.includes(orderId);
+            const customerMatch = rowCustomer.includes(customer);
+    
+            if (statusMatch && orderIdMatch && customerMatch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+    </script>
+    
     
