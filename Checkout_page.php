@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->beginTransaction();
 
         do {
-            $order_id = rand(100000, 999999);
+            
             $check_query = "SELECT COUNT(*) FROM Purchased WHERE order_id = :order_id";
             $check_stmt = $db->prepare($check_query);
             $check_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
@@ -56,14 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($basket_result as $row) {
            
             $insert_stmt = $db->prepare("
-            INSERT INTO Purchased (order_id, email, product_id, quantity, address, postcode, time_of_order)
-            VALUES (:order_id, :email, :product_id, :quantity, :address, :postcode, NOW())
+            INSERT INTO Purchased (email, product_id, quantity, total_price, address, postcode, time_of_order)
+            VALUES (:email, :product_id, :quantity, :total_price, :address, :postcode, NOW())
         ");
         
-            $insert_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
+            
             $insert_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
             $insert_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
             $insert_stmt->bindValue(':quantity', $row['product_quantity'], PDO::PARAM_INT);
+            $insert_stmt->bindValue(':total_price', $row['total_price'], PDO::PARAM_STR);
             $insert_stmt->bindValue(':address', $address, PDO::PARAM_STR);
             $insert_stmt->bindValue(':postcode', $postcode, PDO::PARAM_STR);
             $insert_stmt->execute();

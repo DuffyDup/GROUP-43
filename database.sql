@@ -85,3 +85,11 @@ INSERT INTO Products (name, picture, description, stock, category, price) VALUES
 ('Apple Watch Series 9', './Smart_watches_images/applewatch9.png', 'Sleek and powerful smartwatch with advanced health tracking.', 10, 'watch', 249.99),
 ('Apple Watch Series 10', './Smart_watches_images/applewatch10.png', 'Sleek and powerful smartwatch with advanced health tracking.', 10, 'watch', 299.99),
 ('Black Apple Watch Series 10', './Smart_watches_images/Applewatch10_black.png', 'Sleek and powerful smartwatch with advanced health tracking.', 10, 'watch', 299.99);
+
+ALTER TABLE Purchased
+ADD COLUMN purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp for order
+ADD COLUMN total_price DECIMAL(10,2) NOT NULL, -- Total order cost
+ADD COLUMN order_status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending'; -- Status of the order
+
+
+
