@@ -85,10 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Phone: 447893929457</p>
             <p>Address: Aston St, Birmingham B4 7ET</p>
         </div>
-    </div>
-
-    <br><br>
-<!-- Footer -->
+    </div><br><br>
+    <!-- Footer -->
 <?php include 'footer.php'; ?>
+
 </body>
 </html>

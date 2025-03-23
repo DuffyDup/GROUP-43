@@ -6,25 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Check local storage for theme preference
+    // Set initial theme based on localStorage
     const currentTheme = localStorage.getItem("theme");
+    console.log('Current Theme from localStorage: ', currentTheme); // Debugging line
+
+    // If "dark" is saved in localStorage, apply dark mode
     if (currentTheme === "dark") {
         document.body.classList.add("dark-mode");
-        darkModeToggle.textContent = "Switch to: Light Mode"; // Text for light mode
-    } else {
-        darkModeToggle.textContent = " Switch to: Dark Mode"; // Text for dark mode
     }
 
+    // Toggle dark mode on button click
     darkModeToggle.addEventListener("click", function () {
         document.body.classList.toggle("dark-mode");
 
         if (document.body.classList.contains("dark-mode")) {
             localStorage.setItem("theme", "dark");
-            darkModeToggle.textContent = "Switch to: Light Mode"; // Text for light mode
+            console.log("Dark mode enabled");
         } else {
             localStorage.setItem("theme", "light");
-            darkModeToggle.textContent = "Switch to: Dark Mode"; // Text for dark mode
+            console.log("Light mode enabled");
         }
     });
 });
-

@@ -1,30 +1,23 @@
-body{
+body {
     background-color: #748b91;
-    
-    }
+}
 
-/*
-This div is for the outer box style of the login page.
-
-/* This section styles the main login area. */
-.loginuser, .sendtheOTP, .entertheOTP, .choosenewpassword{
+.loginuser, .sendtheOTP, .entertheOTP, .choosenewpassword {
     background-color: #c1d1cf;
     padding: 30px;
-    border-radius: 10px; 
+    border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
-    margin: 0 auto; 
+    margin: 0 auto;
     text-align: center;
-    /*background: linear-gradient(135deg, #ffffff, #f7f7f7);*/
     margin-top: 20px;
     color: black;
 }
 
-/* This section sets the style of the entry boxes. */
-.entrybox{
+.entrybox {
     width: 100%;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     font-size: 16px;
     border: 2px solid #848484;
     border-radius: 5px;
@@ -34,19 +27,17 @@ This div is for the outer box style of the login page.
 }
 
 .entrybox input:focus {
-    border-color: #748b91;
+    border-color: #007bff;
     box-shadow: 0 0 5px rgba(116, 139, 145, 0.5);
 }
 
-
-/* This section is for the  */
-.signupbutton{
+.signupbutton {
     display: flex;
     justify-content: center;
     margin-top: 15px;
 }
 
-.loged, button{
+.loginuser button, .signupbutton button, .loged, .signup {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -57,34 +48,18 @@ This div is for the outer box style of the login page.
     transition: background-color 0.3s ease;
 }
 
-.loged:hover {
+.loginuser button:hover, .signupbutton button:hover, .loged:hover, .signup:hover {
     background-color: #0056b3;
 }
 
-.signup{
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-} 
-
-.signup:hover {
-    background-color: #0056b3;
-}
-
-
-#forgetlink{
+#forgetlink {
     color: #000;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
-/* Responsive design */
 @media (max-width: 480px) {
     .signup-container {
         padding: 20px;

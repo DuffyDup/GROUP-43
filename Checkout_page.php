@@ -31,15 +31,14 @@ $basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
 $basket_stmt->execute();
 $basket_result = $basket_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$total_basket_price = 0;
+$total_basket_price = array_sum(array_column($basket_result, 'total_price'));
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $country = $_POST['country'];
     $street_name = $_POST['street_name'];
     $house_number = $_POST['house_number'];
     $postcode = $_POST['postcode'];
-    $address =  $house_number. ' ' .$street_name .  ', ' . $country;
+    $address = $house_number . ' ' . $street_name . ', ' . $country;
 
     try {
         $db->beginTransaction();
@@ -79,24 +78,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $update_stock_stmt->bindValue(':product_id', $row['product_id'], PDO::PARAM_INT);
             $update_stock_stmt->execute();
         }
-  
-        $clear_basket_query = "DELETE FROM Basket WHERE email = :email";
-        $clear_basket_stmt = $db->prepare($clear_basket_query);
-        $clear_basket_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
-        $clear_basket_stmt->execute();
-    
+
+        $clear_basket_stmt = $db->prepare("DELETE FROM Basket WHERE email = :email");
+        $clear_basket_stmt->execute([':email' => $user_email]);
+
         $db->commit();
-    
-        $_SESSION['order_id'] = $order_id; 
+
+        $_SESSION['order_id'] = $order_id;
         echo "<script>alert('Order placed successfully! Order ID: $order_id'); window.location.href='order_confirmation.php';</script>";
-        
     } catch (Exception $e) {
         $db->rollBack();
-        echo "<script>alert('Failed to place order: " . htmlspecialchars($e->getMessage()) . "');</script>";
+        error_log("Order failed: " . $e->getMessage());
+        echo "<script>alert('Failed to place order. Please try again.');</script>";
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,8 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Checkout</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="Checkout_Page.css">
-    <link rel="icon" type="image/png" href="Tech_Nova.png">
-    <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
 <body>
     <?php include 'Navbar.php';?>
@@ -116,10 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2>Your Details</h2>
             <form action="Checkout_page.php" method="post" class="customer-form">
                 <div class="form-group">
-                    <input type="text" id="full-name" name="full_name" value="<?php echo ($user_data['full_name']); ?>" placeholder="Full Name" required disabled>
+                    <input type="text" id="full-name" name="full_name" value="<?php echo htmlspecialchars($user_data['full_name']); ?>" placeholder="Full Name" required disabled>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" value="<?php echo ($user_data['email']); ?>" placeholder="Email" required disabled>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_data['email']); ?>" placeholder="Email" required disabled>
                 </div>
                 <div class="form-group">
                     <input type="text" id="country" name="country" placeholder="Country/Region" required>
@@ -142,9 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <th>Quantity</th>
                         <th>Total Price</th>
                     </tr>
-                    <?php foreach ($basket_result as $row): 
-                        $total_basket_price += $row['total_price'];
-                    ?>
+                    <?php foreach ($basket_result as $row): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($row['product_name']); ?></td>
                             <td>£<?php echo number_format($row['product_price'], 2); ?></td>
@@ -172,7 +165,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
-    <!-- Footer -->
 
 </body>
 </html>

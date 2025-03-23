@@ -65,8 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account</title>
-    <link rel="stylesheet" href="Customer_SignUp.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="Customer_SignUp.css">
     <link rel="icon" type="image/png" href="Tech_Nova.png">
     <link rel="icon" type="image/x-icon" href="Tech_Nova.png">
 </head>
@@ -102,10 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit-changes'])) {
 
     </form>
     
-</div>
+</div><br>
 
-<br><br>
+
 <!-- Footer -->
 <?php include 'footer.php'; ?>
+
 </body>
 </html>

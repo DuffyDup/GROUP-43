@@ -1,14 +1,19 @@
-/*  This is the general container for About Us page */
-.about-us-container {
-    padding: 40px;
-    background-color: #f9f9f9; /* Light gray contrst */
-    font-family: Arial, sans-serif;
-    color: #333;
-    max-width: 1200px;
-    margin: 0 auto;
+body {
+    background-color: #748b91;
 }
 
-/* Styling for Main text */
+.about-us-container {
+    background-color: #c1d1cf;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    color: black; /* Changed text color to black */
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .big-text {
     text-align: center;
     margin-bottom: 40px;
@@ -17,14 +22,14 @@
 .big-text h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #000; /* Blue from your color palette */
+    color: black; /* Changed text color to black */
     margin-bottom: 20px;
 }
 
 .big-text p {
     font-size: 18px;
     line-height: 1.6;
-    color: #555;
+    color: black; /* Changed text color to black */
 }
 
 /* Sub-text parts containers */
@@ -47,20 +52,20 @@
 
 .sub-text h2 {
     font-size: 20px;
-    color: #000;
+    color: black; /* Changed text color to black */
     margin-bottom: 10px;
 }
 
 .sub-text p {
     font-size: 16px;
     line-height: 1.5;
-    color: #666;
+    color: black; 
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .sub-text-sections {
-        flex-direction: column; /* Stack sub-texts on top of another text */
+        flex-direction: column;
     }
 
     .sub-text {

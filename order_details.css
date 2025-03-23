@@ -1,0 +1,164 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #748b91;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Order Details Container */
+.order-details {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #c1d1cf;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.order-details h2 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+/* Order Information */
+.order-details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Table Styling */
+.order-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-details th,
+.order-details td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.order-details th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.order-details td {
+    background-color: #f9f9f9;
+}
+
+/* Review Product Link */
+.order-details a {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.order-details a:hover {
+    text-decoration: underline;
+}
+
+/* Cancel Order Button */
+.cancel-order-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.cancel-order-btn:hover {
+    background-color: #c82333;
+}
+
+/* Change Delivery Address Form */
+.update-address-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update-address-container h2 {
+    text-align: center;
+    color: #2d3e43;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* Labels */
+.update-address-container label {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Input Fields */
+.update-address-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Submit Button */
+.update-address-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    transition: background 0.3s ease-in-out;
+}
+
+.update-address-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .order-details,
+    .update-address-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .order-details table {
+        font-size: 14px;
+    }
+
+    .order-details th,
+    .order-details td {
+        padding: 8px;
+    }
+
+    .update-address-container button {
+        width: auto;
+    }
+}

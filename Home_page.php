@@ -90,6 +90,7 @@ session_start();
 
   <!-- Footer -->
   <?php include 'footer.php'; ?>
+  
 
   <!-- JavaScript Link -->
   <script src="homepage.js"></script>

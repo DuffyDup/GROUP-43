@@ -19,8 +19,8 @@ session_start(); // Start the session to check login status
     <!-- About Us Content -->
     <div class="about-us-container">
         <!-- Big Text Section -->
-        <div class="big-text">
-            <h1>Welcome to Tech Nova!</h1>
+        <div class="sub-text" >
+            <h1>Welcome To Tech Nova!</h1>
             <p>
             At Tech Nova, we focus on delivering top-notch, pre-owned electronics, 
             such as smartphones, tablets, laptops, smartwatches, and iPads. 
@@ -28,11 +28,11 @@ session_start(); // Start the session to check login status
             those mindful of their spending. Whether you're in school, at work, or 
             simply seeking a great bargain, we have everything you need.
             </p>
-        </div>
+        </div><br>
 
         <!-- 4 Smaller Text Sections -->
         <div class="sub-text-sections">
-            <div class="sub-text">
+            <div class="sub-text" >
                 <h2>Our Products</h2>
                 <p>We meticulously examine and restore each device to guarantee it adheres to the utmost standards of quality and dependability.</p>
             </div>
@@ -44,14 +44,15 @@ session_start(); // Start the session to check login status
                 <h2>Sustainability</h2>
                 <p>Purchasing pre-owned electronics allows you to save money while also contributing to the reduction of electronic waste and safeguarding the environment.</p>
             </div>
-            <div class="sub-text">
+            <div class="sub-text" >
                 <h2>Customer Commitment</h2>
                 <p>We are committed to delivering outstanding customer support and ensuring that your experience with us is seamless and trouble-free.</p>
             </div>
         </div>
     </div>
     <!-- End of About Us -->
-    <!-- Footer -->
+    <!-- Footer --><br>
     <?php include 'footer.php'; ?>
+
 </body>
 </html>

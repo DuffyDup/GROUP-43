@@ -10,32 +10,33 @@ if (!isset($_SESSION['order_id']) || !isset($_SESSION['email'])) {
 $order_id = $_SESSION['order_id'];
 $user_email = $_SESSION['email'];
 
-// Fetch order details
+// Fetch order details (Corrected Query)
 $order_query = "
     SELECT 
         p.name AS product_name,
         p.price AS product_price,
         pr.quantity AS product_quantity,
-        pr.address,
-        pr.postcode
+        o.address,
+        o.postcode
     FROM Purchased pr
     JOIN Products p ON pr.product_id = p.product_id
-    WHERE pr.order_id = :order_id AND pr.email = :email
+    JOIN Orders o ON pr.order_id = o.order_id
+    WHERE pr.order_id = :order_id AND o.email = :email
 ";
 $order_stmt = $db->prepare($order_query);
-$order_stmt->bindValue(':order_id', $order_id, PDO::PARAM_INT);
+$order_stmt->bindValue(':order_id', $order_id, PDO::PARAM_STR);
 $order_stmt->bindValue(':email', $user_email, PDO::PARAM_STR);
 $order_stmt->execute();
 $order_details = $order_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
+// Check if order exists
 if (!$order_details) {
     echo "<script>alert('Order not found.'); window.location.href='index.php';</script>";
     exit();
 }
 
-
-$shipping_address = $order_details[0]['address'] . ', ' . $order_details[0]['postcode'];
+// Fetch shipping address
+$shipping_address = htmlspecialchars($order_details[0]['address']) . ', ' . htmlspecialchars($order_details[0]['postcode']);
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +55,7 @@ $shipping_address = $order_details[0]['address'] . ', ' . $order_details[0]['pos
     <div class="confirmation-container">
         <h1>Order Confirmation</h1>
         <p><strong>Order ID:</strong> <?php echo htmlspecialchars($order_id); ?></p>
-        <p><strong>Shipping Address:</strong> <?php echo htmlspecialchars($shipping_address); ?></p>
+        <p><strong>Shipping Address:</strong> <?php echo $shipping_address; ?></p>
 
         <h2>Order Summary</h2>
         <table border="1">
@@ -73,7 +74,7 @@ $shipping_address = $order_details[0]['address'] . ', ' . $order_details[0]['pos
                 <tr>
                     <td><?php echo htmlspecialchars($item['product_name']); ?></td>
                     <td>£<?php echo number_format($item['product_price'], 2); ?></td>
-                    <td><?php echo $item['product_quantity']; ?></td>
+                    <td><?php echo htmlspecialchars($item['product_quantity']); ?></td>
                     <td>£<?php echo number_format($item_total, 2); ?></td>
                 </tr>
             <?php endforeach; ?>

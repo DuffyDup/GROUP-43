@@ -81,5 +81,6 @@
         <input type="submit" name="submit" value="Add Project"><br> 
     </form>
 </section>
+
 </body>
 </html>

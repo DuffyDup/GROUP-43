@@ -130,5 +130,6 @@ foreach ($basket_items as $item) {
         <?php endif; ?>
     </div>
     <?php include 'footer.php'; ?>
+
 </body>
 </html>
