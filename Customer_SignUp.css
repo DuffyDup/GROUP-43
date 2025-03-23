@@ -15,6 +15,11 @@ body {
     margin-top: 20px;
 }
 
+body.dark-mode .signup-container{
+    background-color: #444;
+    color: white;
+}
+
 /* Form group styling */
 .form-group {
     position: relative;
@@ -33,6 +38,12 @@ body {
     background: transparent;
 }
 
+body.dark-mode .form-group input {
+    background: #444;
+    color: white;
+}
+
+
 /* Style for the labels */
 .form-group label {
     position: absolute;
@@ -46,6 +57,12 @@ body {
     pointer-events: none;
     transition: 0.3s ease;
 }
+
+body.dark-mode .form-group label {
+    background: #444;
+    color: white;
+}
+
 
 /* When the input is focused or contains text */
 .form-group input:focus + label,
