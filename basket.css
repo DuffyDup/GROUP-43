@@ -17,6 +17,9 @@ body {
     background-color: #c1d1cf;
 }
 
+body.dark-mode .container{
+    background-color: #333;
+}
 .cart-item {
     display: flex;
     margin-bottom: 15px;
