@@ -21,19 +21,19 @@ body {
     color: #333;
 }
 
-body.dark-mode .loginuser, .sendtheOTP, .entertheOTP, .choosenewpassword {
+body.dark-mode .loginuser,body.dark-mode .sendtheOTP,body.dark-mode .entertheOTP,body.dark-mode .choosenewpassword {
     background-color: #1e1e1e;
 }
 
-body.dark-mode .loginuser input, .sendtheOTP input, .entertheOTP input, .choosenewpassword input{
+body.dark-mode .loginuser input,body.dark-mode .sendtheOTP input,body.dark-mode .entertheOTP input,body.dark-mode .choosenewpassword input{
     color:white;
 }
 
-body.dark-mode .loginuser ::placeholder, .sendtheOTP ::placeholder, .entertheOTP ::placeholder, .choosenewpassword ::placeholder{
+body.dark-mode .loginuser ::placeholder,body.dark-mode .sendtheOTP ::placeholder,body.dark-mode .entertheOTP ::placeholder,body.dark-mode .choosenewpassword ::placeholder{
     color:white;
 }
 
-body.dark-mode .loginuser h1, .sendtheOTP h1, .entertheOTP h1, .choosenewpassword h1{
+body.dark-mode .loginuser h1,body.dark-mode .sendtheOTP h1,body.dark-mode .entertheOTP h1,body.dark-mode .choosenewpassword h1{
     color:white;
 }
 
@@ -65,7 +65,7 @@ body.dark-mode .loginuser label{
     margin-top: 15px;
 }
 
-.loginuser button, .signupbutton button, .loged, .signup {
+.loginuser button, .signupbutton button, .loged, .signup, .sendtheOTP button, .entertheOTP button, .choosenewpassword button{
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
