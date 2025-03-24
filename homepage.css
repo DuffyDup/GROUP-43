@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #748b91; /* Background color matching Admin Signup page */
+    background-color: #748b91; 
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -28,7 +28,7 @@ body.dark-mode .main-content{
 /* Quote Section */
 .quote-section {
     text-align: center;
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    background: rgba(255, 255, 255, 0.2); 
     padding: 15px 30px;
     margin: 10px auto;
     border-radius: 10px;
@@ -36,14 +36,14 @@ body.dark-mode .main-content{
     font-size: 22px;
     font-weight: bold;
     font-family: "Arial", sans-serif;
-    color: #333; /* Dark text for contrast */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    color: #333; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Dark Mode Styling */
 body.dark-mode .quote-section {
-    background: rgba(0, 0, 0, 0.5); /* Darker semi-transparent */
-    color: #fff; /* White text */
+    background: rgba(0, 0, 0, 0.5); 
+    color: #fff; 
 }
 
 
@@ -56,10 +56,10 @@ body.dark-mode .quote-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;  /* Adjust height for a more consistent layout */
+    height: 500px;  
     background-color: #f4f4f471;
-    border-radius: 10px; /* Rounded corners for slideshow */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Slide images */
@@ -216,9 +216,9 @@ footer {
 }
 
 body.dark-mode .product-cards {
-    background: linear-gradient(135deg, #121212, #333333); /* Dark gradient */
+    background: linear-gradient(135deg, #121212, #333333); 
     color: white;
-    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1); /* Lighter shadow in dark mode */
+    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1); 
 }
 
 .card {
@@ -233,8 +233,8 @@ body.dark-mode .product-cards {
 }
 
 body.dark-mode .card {
-    background-color: #444; /* Darker background for cards */
-    border-color: #555; /* Lighter border for dark mode */
+    background-color: #444; 
+    border-color: #555; 
     color:white;
 }
 
