@@ -40,10 +40,6 @@ session_start();
           <img src="Tablet_images/ipadpro11inch.png" alt="Product 3" style="width:70%">
         </a>
       </div>
-
-      <!-- Navigation buttons -->
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <br>
     <!-- Dots for navigation -->
