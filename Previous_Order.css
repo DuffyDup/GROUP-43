@@ -1,21 +1,25 @@
-/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #748b91;
     margin: 0;
     padding: 0;
     color: #333;
+    min-height: 100vh;
+    position: relative;
 }
 
-/* Main Container */
 .previous-orders {
     max-width: 900px;
-    margin: 50px auto;
+    margin: 50px auto 100px;
     background: #c1d1cf;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+body.dark-mode .previous-orders {
+    background-color: #444;
 }
 
 .previous-orders h2 {
@@ -30,7 +34,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Table Styling - Scoped to .previous-orders */
 .previous-orders table {
     width: 100%;
     border-collapse: collapse;
@@ -58,7 +61,10 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Links inside the orders table */
+body.dark-mode td {
+    background-color: #444;
+}
+
 .previous-orders a {
     text-decoration: none;
     color: #007bff;
@@ -69,7 +75,12 @@ body {
     text-decoration: underline;
 }
 
-/* Responsive Design */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .previous-orders {
         width: 90%;
