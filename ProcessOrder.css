@@ -163,6 +163,10 @@ body.dark-mode .filters tr{
     margin-bottom: 20px;
 }
 
+body.dark-mode .accepted-orders h2 {
+color: white;
+}
+
 .pending-orders .orders-table {
     margin-top: 30px;
 }
