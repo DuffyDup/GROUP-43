@@ -56,7 +56,7 @@ session_start();
     <!-- Product Card Section -->
     <section class="product-cards">
       <div class="card">
-        <a href="productdetail.php?product_id=22">
+        <a href="productdetail.php?product_id=20">
           <img src="Smart_watches_images/Applewatch9.png" alt="Product 1" class="product-image">
           <h1>Apple Watch</h1>
           <p>Series 9</p>
@@ -65,7 +65,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="productdetail.php?product_id=19">
+        <a href="productdetail.php?product_id=17">
           <img src="Audio_Devices_images/Alexa1.png" alt="Product 2" class="product-image">
           <h1>Amazon Echo Dot</h1>
           <p>5th Generation</p>
@@ -83,7 +83,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="productdetail.php?product_id=9">
+        <a href="productdetail.php?product_id=11">
           <img src="Phones/s23black.png" alt="Product 4" class="product-image">
           <h1>Samsung Galaxy</h1>
           <p>S23</p>
@@ -92,7 +92,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="productdetail.php?product_id=23">
+        <a href="productdetail.php?product_id=21">
           <img src="Smart_watches_images/Apple watch 10.png" alt="Product 4" class="product-image">
           <h1>Apple Watch</h1>
           <p>Series 10</p>
@@ -101,7 +101,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="productdetail.php?product_id=13">
+        <a href="productdetail.php?product_id=15">
           <img src="Tablet_images/ipadair2024blue.png" alt="Product 4" class="product-image">
           <h1>Apple iPad Air</h1>
           <p>iPad Air 2024</p>
@@ -110,7 +110,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="productdetail.php?product_id=12">
+        <a href="productdetail.php?product_id=14">
           <img src="Phones/iphone16promaxback.png" alt="Product 4" class="product-image">
           <h1>Apple iPhone</h1>
           <p>iPhone 16 Pro Max</p>
@@ -119,7 +119,7 @@ session_start();
       </div>
 
       <div class="card">
-        <a href="productdetail.php?product_id=9">
+        <a href="productdetail.php?product_id=4">
           <img src="Laptops/macbook air2024.png" alt="Product 4" class="product-image">
           <h1>Apple Macbook</h1>
           <p>Macbook Air M3 2024</p>
