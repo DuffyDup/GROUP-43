@@ -25,6 +25,28 @@ body.dark-mode .main-content{
     background-color: #121212;
 }
 
+/* Quote Section */
+.quote-section {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    padding: 15px 30px;
+    margin: 10px auto;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Arial", sans-serif;
+    color: #333; /* Dark text for contrast */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Dark Mode Styling */
+body.dark-mode .quote-section {
+    background: rgba(0, 0, 0, 0.5); /* Darker semi-transparent */
+    color: #fff; /* White text */
+}
+
+
 /* Slideshow Section */
 .slideshow-container {
     position: relative;
@@ -51,6 +73,7 @@ body.dark-mode .main-content{
     object-fit: contain;
     object-position: center;
 }
+
 
 /* Caption text */
 .text {

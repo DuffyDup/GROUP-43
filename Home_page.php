@@ -16,6 +16,11 @@ session_start();
   <!-- Include the Navigation -->
   <?php include 'Navbar.php'; ?>
 
+  <!-- Quote Section -->
+<section class="quote-section">
+    <p class="quote-text">"Premium Tech, Renewed for a Better Tomorrow. Smart Savings, Sustainable Choices."</p>
+</section>
+
   <!-- Main Content -->
   <section class="main-content">
     <!-- Image Slideshow -->
@@ -83,6 +88,42 @@ session_start();
           <h1>Samsung Galaxy</h1>
           <p>S23</p>
           <p class="price">£699.99</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="productdetail.php?product_id=23">
+          <img src="Smart_watches_images/Apple watch 10.png" alt="Product 4" class="product-image">
+          <h1>Apple Watch</h1>
+          <p>Series 10</p>
+          <p class="price">£299.99</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="productdetail.php?product_id=13">
+          <img src="Tablet_images/ipadair2024blue.png" alt="Product 4" class="product-image">
+          <h1>Apple iPad Air</h1>
+          <p>iPad Air 2024</p>
+          <p class="price">£699.99</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="productdetail.php?product_id=12">
+          <img src="Phones/iphone16promaxback.png" alt="Product 4" class="product-image">
+          <h1>Apple iPhone</h1>
+          <p>iPhone 16 Pro Max</p>
+          <p class="price">£1099.99</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="productdetail.php?product_id=9">
+          <img src="Laptops/macbook air2024.png" alt="Product 4" class="product-image">
+          <h1>Apple Macbook</h1>
+          <p>Macbook Air M3 2024</p>
+          <p class="price">£900.99</p>
         </a>
       </div>
     </section>
