@@ -35,11 +35,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <!-- Conditional Dropdown for Basket (Visible for customers only) -->
         <?php if (isset($_SESSION['email']) && $_SESSION['type'] === 'customer'): ?>
-            <a href="basket.php">
-     <button class="cart-button">
-         <img src="search_bar_logo/basket-icon.png" alt="Basket" style="width: 24px; height: 24px;">
-     </button>
- </a>
+            <a href="basket.php">Basket</a>
         <?php endif; ?>
 
         <!-- Admin Options Dropdown (Visible for admins only) -->
@@ -56,9 +52,9 @@ if (session_status() === PHP_SESSION_NONE) {
         <?php endif; ?>
     </div>
 
-
+    <!-- Right Section -->
     <div class="nav-right">
-
+        <!-- Search Bar -->
         <div class="search-container">
             <form action="search_results.php" method="GET">
                 <input type="text" class="search-input" placeholder="Search..." name="query">
