@@ -73,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <textarea name="message" rows="5" placeholder=" " required></textarea>
                     <label>Your Message</label>
                 </div>
+                <p>Please fill out the contact form in order to return an item. Your details and order information are required for processing the return. Thank you!</p>
+
                 <button type="submit" class="contact-btn">Send Message</button>
             </form>
         </div>
