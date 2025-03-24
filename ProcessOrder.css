@@ -27,6 +27,10 @@ body {
     margin-bottom: 30px;
 }
 
+body.dark-mode .header h1{
+    color: white;
+}
+
 .header h1 {
     font-size: 2.5rem;
     color: #2c3e50;
@@ -40,6 +44,10 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+}
+
+body.dark-mode .filters{
+    background-color: #444;
 }
 
 .filter-row {
@@ -60,6 +68,11 @@ label {
     font-size: 14px;
     color: #555;
 }
+
+body.dark-mode .filters label{
+   color: white;
+}
+
 
 select, input {
     padding: 8px 12px;
@@ -93,6 +106,9 @@ select, input {
     text-transform: uppercase;
 }
 
+body.dark-mode .filters tr{
+    color: #444;
+ }
 /* Table Row Styling */
 .orders-table tr:nth-child(even) {
     background-color: #f4f4f4; /* Light gray for even rows */
@@ -145,6 +161,10 @@ select, input {
     font-size: 2rem;
     color: #333;
     margin-bottom: 20px;
+}
+
+body.dark-mode .accepted-orders h2 {
+color: white;
 }
 
 .pending-orders .orders-table {
@@ -280,9 +300,11 @@ body.dark-mode .orders-table tr:nth-child(even) {
     background-color: #333;
 }
 
-body.dark-mode .orders-table tr:hover {
+body.dark-mode .orders-table tr:nth-child(odd) {
     background-color: #444;
 }
+
+
 
 /* Dark Mode Button Styling */
 body.dark-mode .btn {
