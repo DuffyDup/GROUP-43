@@ -56,10 +56,10 @@ body.dark-mode .quote-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;  
-    background-color: #f4f4f471;
-    border-radius: 10px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    height: auto;
+    background: none; 
+    border-radius: 0; 
+    box-shadow: none; 
 }
 
 /* Slide images */
@@ -70,10 +70,8 @@ body.dark-mode .quote-section {
 .mySlides img {
     width: 100%;
     height: auto;
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover; 
 }
-
 
 /* Caption text */
 .text {
@@ -87,38 +85,6 @@ body.dark-mode .quote-section {
     padding: 8px 12px;
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 2; 
-}
-
-/* Navigation buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); 
-    width: auto;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    user-select: none;
-    border-radius: 0 3px 3px 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 10; 
-}
-
-.next {
-    right: 10px;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev {
-    left: 10px; 
-    border-radius: 0 3px 3px 0;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
 }
 
 /* Dots */
