@@ -157,7 +157,6 @@ fetchAcceptedOrders($db);
 $acceptedOrdersHTML = ob_get_clean();
 ?>
 
-?>
 
 
 <!DOCTYPE html>
