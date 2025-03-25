@@ -1,12 +1,14 @@
 <?php
-function getSalesData($db) {
+function getSalesData($db)
+{
     $sql = "SELECT * FROM Purchased ORDER BY purchase_date DESC";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getTopSellingProducts($db) {
+function getTopSellingProducts($db)
+{
     $sql = "SELECT P.name, COUNT(O.product_id) as sold_count 
             FROM Purchased O 
             JOIN Products P ON O.product_id = P.product_id 
@@ -17,7 +19,8 @@ function getTopSellingProducts($db) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getOrderStatistics($db) {
+function getOrderStatistics($db)
+{
     $stats = [];
 
     // Get total orders
@@ -55,7 +58,7 @@ function getOrderStatistics($db) {
         FROM Purchased
         GROUP BY month
         ORDER BY month ASC";
-    
+
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $revenue_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
