@@ -2,6 +2,8 @@
 require_once('tcpdf/tcpdf.php');
 require 'connectdb.php';
 
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
+
 // Extend TCPDF class for custom header/footer
 class MYPDF extends TCPDF {
     public function Header() {
@@ -26,9 +28,9 @@ $sql = "
     SELECT p.name AS product_name, 
            SUM(pur.quantity) AS total_quantity_sold, 
            SUM(pur.quantity * p.price) AS total_revenue
-    FROM Purchased pur
-    JOIN Products p ON pur.product_id = p.product_id
-    JOIN Orders o ON o.order_id = pur.order_id  -- Ensure it links with Orders table
+    FROM purchased pur
+    JOIN products p ON pur.product_id = p.product_id
+    JOIN orders o ON o.order_id = pur.order_id  -- Ensure it links with Orders table
     GROUP BY pur.product_id
     ORDER BY total_quantity_sold DESC
     LIMIT 10";
