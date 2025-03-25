@@ -1,8 +1,7 @@
-CREATE DATABASE TechNova;
-USE TechNova;
+USE cs2team43_db;
 
 -- Create the Users table
-CREATE TABLE Users (
+CREATE TABLE users (
     email VARCHAR(255) PRIMARY KEY, -- Primary Key
     full_name VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -11,11 +10,11 @@ CREATE TABLE Users (
 );
 
 
-CREATE TABLE Products (
+CREATE TABLE products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,-- Primary Key with auto-increment
     name VARCHAR(255) NOT NULL,
     picture VARCHAR(255) NOT NULL,-- Path to product image
-    description VARCHAR(255) NOT NULL,
+    description VARCHAR(1000) NOT NULL,
     stock INT NOT NULL,-- Number of items available
     category ENUM('phone', 'watch', 'ipad', 'laptop', 'headphone') NOT NULL, -- Product category
     price DECIMAL(10, 2) NOT NULL,
@@ -23,7 +22,7 @@ CREATE TABLE Products (
 );
 
 
-CREATE TABLE Purchased (
+CREATE TABLE purchased (
   order_id VARCHAR(36),
   product_id INT,
   quantity INT NOT NULL,
@@ -33,17 +32,17 @@ CREATE TABLE Purchased (
   total_price DECIMAL(10,2) NOT NULL,
   order_status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending',
   PRIMARY KEY (order_id, product_id),  -- Allows multiple products per order
-  FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+  FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
-CREATE TABLE Basket (
+CREATE TABLE basket (
     email VARCHAR(255), -- Foreign Key to Users
     product_id INT, -- Foreign Key to Products
     quantity INT NOT NULL, -- Quantity of the item in the basket
-    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE, 
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+    FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE, 
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 );
 
  CREATE TABLE `orders` (
@@ -56,17 +55,17 @@ CREATE TABLE Basket (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-CREATE TABLE Reviews (
+CREATE TABLE reviews (
     email VARCHAR(255), -- Foreign Key to Users
     product_id INT, -- Foreign Key to Products
     rating ENUM('1','2','3','4','5') NOT NULL, -- The rating given to the product
     review VARCHAR(255) NOT NULL, -- Text of the review
-    FOREIGN KEY (email) REFERENCES Users(email) ON DELETE CASCADE, 
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+    FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE, 
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 );
 
 -- Insert sample data into Users table
-INSERT INTO Users (email, full_name, password, phone_number, type) VALUES
+INSERT INTO users (email, full_name, password, phone_number, type) VALUES
 ('admin1@ad.com', 'cole palmer', '$2y$10$B2p8HrvTA5uqYYVcSO5mfusVRtGfvUU0a/EqR/r/VuCDPB4j7Mbia', '071243214078', 'admin'),
 ('bob@gmail.com', 'bill bob', '$2y$10$geYdMT8WPy4aDxr1Ok8tveTwdQeELtzIKTE6fQzsmr3/g9K1Rhk5G', '12321312', 'customer'),
 ('noah@gmail.com', 'noah oliver smith', '$2y$10$pars6sq.xnjwZQOUKFs9b.Dxpw8ZWrIbVWKVCeMorDYvU3eJd3lj2', '076451251267', 'customer');
@@ -106,5 +105,5 @@ INSERT INTO `products` (`product_id`, `name`, `picture`, `description`, `stock`,
 
 
 
-ALTER TABLE Purchased
+ALTER TABLE purchased
 ADD COLUMN purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
