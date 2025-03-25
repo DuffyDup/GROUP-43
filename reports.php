@@ -62,7 +62,7 @@ session_start(); // Start the session to check login status
             <div class="stats-container">
                 <div class="stat-box">
                     <h4>Total Orders</h4>
-                    <p><?= $stats['total_orders']; ?></p>
+                    <p><?= $stats['total_orders'] ?></p>
                 </div>
                 <div class="stat-box">
                     <h4>Pending Orders</h4>
